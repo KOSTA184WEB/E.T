@@ -10,7 +10,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import kosta.controller.Action;
+import et.controller.Action;
 
 @WebListener
 public class ActionMappingListener implements ServletContextListener {
