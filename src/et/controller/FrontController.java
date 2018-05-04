@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/elec")
+@WebServlet("/ET")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -30,7 +30,7 @@ public class FrontController extends HttpServlet {
 		//map에서 key에 해당해는 클래스를 꺼내서 메소드를 호출하고 리턴값을 받는다.
 		
 		//리턴값(ModelAndView)에 따라 이동방식과 이동경로를 정한다.
-		
+		System.out.println(key);
 		Action action = map.get(key);
 		ModelAndView mv = action.execute(request, response);
 		if(mv.isRedirect()) {
