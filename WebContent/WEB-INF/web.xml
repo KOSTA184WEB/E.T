@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>ET_Project</display-name>
+  <display-name>ETBackUp</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- listener 에서 사용하게 될 파일의 이름을 init으로 전달한다.
+  		ResourceBundle 객체를 이용할 것이므로 확장자는 생략, 경로는 classes 폴더 기준 -->
+  <context-param>
+  	<param-name>fileName</param-name>
+  	<param-value>et/util/actionMapping</param-value>
+  </context-param>
 </web-app>
