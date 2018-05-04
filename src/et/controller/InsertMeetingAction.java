@@ -10,8 +10,10 @@ public class InsertMeetingAction implements Action {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		ModelAndView mv = new ModelAndView();
+		mv.setPath("index.html");
+		mv.setRedirect(true);
+		return mv;
 	}
 
 }
