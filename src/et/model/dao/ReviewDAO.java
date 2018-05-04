@@ -33,8 +33,5 @@ public interface ReviewDAO {
 	 * 후기 상세보기
 	 **/
 	
-	/**
-	 * */
-	
 	
 }

@@ -14,10 +14,13 @@ public class ReviewDTO {
 	
 	public void ReviewDTO() {}
 
-	public ReviewDTO(String reviewId, String reviewTitle, String reviewContents, int reviewReadnum, String fileName,
-			int fileSize, String reviewPw) {
+	public ReviewDTO(String reviewId, String partId, String memberId, String resId, String reviewTitle,
+			String reviewContents, int reviewReadnum, String fileName, int fileSize, String reviewPw) {
 		super();
 		this.reviewId = reviewId;
+		this.partId = partId;
+		this.memberId = memberId;
+		this.resId = resId;
 		this.reviewTitle = reviewTitle;
 		this.reviewContents = reviewContents;
 		this.reviewReadnum = reviewReadnum;
@@ -32,6 +35,30 @@ public class ReviewDTO {
 
 	public void setReviewId(String reviewId) {
 		this.reviewId = reviewId;
+	}
+
+	public String getPartId() {
+		return partId;
+	}
+
+	public void setPartId(String partId) {
+		this.partId = partId;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getResId() {
+		return resId;
+	}
+
+	public void setResId(String resId) {
+		this.resId = resId;
 	}
 
 	public String getReviewTitle() {
