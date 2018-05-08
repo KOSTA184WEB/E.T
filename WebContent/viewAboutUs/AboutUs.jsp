@@ -54,8 +54,8 @@
 								<li><a></a></li>
 								<li><a></a></li>
 								<li><a></a></li>
-								<li role="presentation"><a href="AboutUs.jsp" class="active">About US</a></li>
-								<li role="presentation"><a href="Meet.jsp">Meet</a></li>
+								<li role="presentation"><a href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp" class="active">About US</a></li>
+								<li role="presentation"><a href="${pageContext.request.contextPath}/viewMeeting/Meet.jsp">Meet</a></li>
 								<li role="presentation"><a href="board.jsp">Rate</a></li>
 								<li role="presentation"><a href="portfolio.html">MyPage</a></li>
 							</ul>
