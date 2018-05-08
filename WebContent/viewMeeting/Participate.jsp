@@ -1,22 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/font-awesome.min.css">
-<link rel="stylesheet" href="../css/jquery.bxslider.css">
-<link rel="stylesheet" type="text/css" href="../css/isotope.css" media="screen" />
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="../js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<link href="../css/prettyPhoto.css" rel="stylesheet" />
-<link href="../css/style.css" rel="stylesheet" />
 
+<!-- Bootstrap -->
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.bxslider.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/isotope.css"
+	media="screen" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.css"
+	type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/prettyPhoto.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
 
 </head>
-
+<body>
 
 <header>
 		<nav class="navbar navbar-default navbar-static-top">
@@ -25,18 +29,18 @@
 					<div class="navbar-header">
 						<div class="navbar-brand">
 							<a href="index.html"><h1>
-									<span>M</span>ulti
+									<span>E.T</span>
 								</h1></a>
 						</div>
 					</div>
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span
-								class="glyphicon glyphicon-user"></span> SignUp</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+								SignUp</a></li>
 						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
 								LogIn</a></li>
 					</ul>
-					
+
 
 					<div class="navbar-collapse collapse">
 						<div class="menu">
@@ -51,10 +55,10 @@
 								<li><a></a></li>
 								<li><a></a></li>
 								<li><a></a></li>
-								<li role="presentation"><a href="../viewAboutUs/AboutUs.jsp" class="active">About US</a></li>
-								<li role="presentation"><a href="../viewMeeting/Meet.jsp">Meet</a></li>
-								<li role="presentation"><a href="board.jsp">Rate</a></li>
-								<li role="presentation"><a href="portfolio.html">MyPage</a></li>
+								<li><a href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp" class="active">About US</a></li>
+								<li><a href="${pageContext.request.contextPath}/viewMeeting/Meet.jsp">Meet</a></li>
+								<li><a href="board.jsp">Rate</a></li>
+								<li><a href="portfolio.html">MyPage</a></li>
 							</ul>
 						</div>
 					</div>
@@ -63,42 +67,49 @@
 		</nav>
 	</header>
 
+	<div class="container">ì•„ì´ì½˜ ë“¤ì–´ê°€ëŠ” ë¶€ë¶„</div>
 
 
-	<!-- ÄÁÅ×ÀÌ³Ê·Î ¾º¿ï °æ¿ì : °íÁ¤°ªÀ¸·Î Á¤ÇØÁ® ¹ö¸°´Ù. ¿¬±¸ÇÊ¿ä...... -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
+	<div class="container-fluid">
+		<div class="row">
 
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="../images/carousel/1.jpg" style="width: 100%;">
+			<div class="col-md-8">
+
+				<iframe src="ParticipateBoardInclude.jsp" frameborder=0
+					framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0
+					width="100%" height="720px"> </iframe>
+
 			</div>
 
-			<div class="item">
-				<img src="../images/carousel/2.jpg" style="width: 100%;">
-			</div>
 
-			<div class="item">
-				<img src="../images/carousel/3.jpg" style="width: 100%;">
-			</div>
-		</div>
+			<div class="col-md-4">
+				<div class="col-sm-12 col-sm-pull-2">
+					<div class="map">
+						<iframe
+							src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed">
+						</iframe>
+					</div>
+				</div>
+			 </div>
+			 
+			 
+			 <div class="col-md-4">
+					 <div class="widget search">
+                        <form class="form-inline">
+                            <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                            <input type="button" class="btn btn-primary readmore" value="ê²€ìƒ‰">
+                        </form>
+                    </div><!--/.search-->
+			 </div>
+			 
+			 
+		   </div>
+		  
+		  
+		  
 
-		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		</a> <a class="right carousel-control" href="#myCarousel"
-			data-slide="next"> <span
-			class="glyphicon glyphicon-chevron-right"></span>
-		</a>
+
 	</div>
-
-
 
 
 
@@ -147,7 +158,7 @@
 					data-wow-delay="0.6s">
 					<h3>CEO CONTACT</h3>
 					<ul>
-						<li><i class="fa fa-home fa-2x"></i> ´ëÀü±¤¿ª½Ã ¼­±¸ µÐ»ê2µ¿ µÐ»êºÏ·Î 41</li>
+						<li><i class="fa fa-home fa-2x"></i> ëŒ€ì „ê´‘ì—­ì‹œ ì„œêµ¬ ë‘”ì‚°2ë™ ë‘”ì‚°ë¶ë¡œ 41</li>
 						<hr>
 						<li><i class="fa fa-phone fa-2x"></i> +82 010-2139-7753</li>
 						<hr>
@@ -173,11 +184,11 @@
                     -->
 					<div class="col-md-6">
 						<ul class="pull-right">
-							<li><a href="#">ÀÌ¿ë¾à°ü      |</a></li>
-							<li><a href="#">»ç¾÷ÀÚ Á¤º¸  |</a></li>
-							<li><a href="#">»ç¾÷ÀÚ ¹øÈ£  |</a></li>
-							<li><a href="#">½Å°í   |</a></li>
-							<li><a href="#">¹Î¿ø   |</a></li>
+							<li><a href="#">ì´ìš©ì•½ê´€ |</a></li>
+							<li><a href="#">ì‚¬ì—…ìž ì •ë³´ |</a></li>
+							<li><a href="#">ì‚¬ì—…ìž ë²ˆí˜¸ |</a></li>
+							<li><a href="#">ì‹ ê³  |</a></li>
+							<li><a href="#">ë¯¼ì› |</a></li>
 						</ul>
 					</div>
 				</div>
@@ -191,20 +202,23 @@
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="../js/jquery-2.1.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/wow.min.js"></script>
-	<script src="../js/fancybox/jquery.fancybox.pack.js"></script>
-	<script src="../js/jquery.easing.1.3.js"></script>
-	<script src="../js/jquery.bxslider.min.js"></script>
-	<script src="../js/jquery.prettyPhoto.js"></script>
-	<script src="../js/jquery.isotope.min.js"></script>
-	<script src="../js/functions.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/wow.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.bxslider.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.prettyPhoto.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.isotope.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/functions.js"></script>
 	<script>
 		wow = new WOW({
 
 		}).init();
 	</script>
+	
+	
 
+</body>
 </html>
