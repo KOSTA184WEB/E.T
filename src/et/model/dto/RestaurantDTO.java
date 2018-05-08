@@ -7,11 +7,11 @@ public class RestaurantDTO {
 	String resAddress; //식당 주소
 	String resPhone; //식당 연락처
 	int resRate; //평점
-	int lat; //위도
-	int lng; //경도
+	double lat; //위도
+	double lng; //경도
 	int meetingCount; //모임 진횡 회수
 	public RestaurantDTO() {}
-	public RestaurantDTO(String resId, String resName, String resKind, String resAddress, String resPhone, int resRate, int lat, int lng, int meetingCount) {
+	public RestaurantDTO(String resId, String resName, String resKind, String resAddress, String resPhone, int resRate, double lat, double lng, int meetingCount) {
 		super();
 		this.resId = resId;
 		this.resName = resName;
@@ -59,13 +59,13 @@ public class RestaurantDTO {
 	public void setResRate(int resRate) {
 		this.resRate = resRate;
 	}
-	public int getLat() {
+	public double getLat() {
 		return lat;
 	}
 	public void setLat(int lat) {
 		this.lat = lat;
 	}
-	public int getLng() {
+	public double getLng() {
 		return lng;
 	}
 	public void setLng(int lng) {

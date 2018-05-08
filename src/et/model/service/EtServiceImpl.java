@@ -3,6 +3,10 @@ package et.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import et.model.dao.EtDAO;
+import et.model.dao.EtDAOImpl;
+import et.model.dao.MeetingDAO;
+import et.model.dao.RestaurantDAO;
 import et.model.dto.AdminDTO;
 import et.model.dto.MeetingDTO;
 import et.model.dto.MemberDTO;
@@ -10,7 +14,7 @@ import et.model.dto.RestaurantDTO;
 import et.model.dto.ReviewDTO;
 
 public class EtServiceImpl implements EtService {
-
+	EtDAO etDao = new EtDAOImpl();
 	@Override
 	public int insertMember(MemberDTO memberDto) throws SQLException {
 		// TODO Auto-generated method stub
@@ -61,8 +65,15 @@ public class EtServiceImpl implements EtService {
 
 	@Override
 	public int insertRestaurant(RestaurantDTO restaurantDto) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		int re = 0;
+		//restaurant가 등록되어있는지 판별
+		String resId = RestaurantDAO.isNewRestaurant(restaurantDto.getResAddress());
+		if(resId==null){
+			re = RestaurantDAO.insertRestaurant(restaurantDto);
+		}else {
+			RestaurantDAO.updateMeetingCount(resId);
+		}
+		return re;
 	}
 
 	@Override
@@ -76,7 +87,15 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public String searchResIdByAddr(String addr) throws SQLException {
+		//restaurant가 등록되어있는지 판별
+		String resId = RestaurantDAO.searchResIdByAddr(addr);
 
+		return resId;
+	}
+	
 	@Override
 	public int updateRestaurant(RestaurantDTO restaurantDto) throws SQLException {
 		// TODO Auto-generated method stub
@@ -91,8 +110,13 @@ public class EtServiceImpl implements EtService {
 
 	@Override
 	public int insertMeeting(MeetingDTO meetingDto) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		int re = 0;
+		//meeting Dto insert
+		re = MeetingDAO.insertMeeting(meetingDto);
+		if(re == 0) {
+			throw new SQLException("모임이 생성되지 않았습니다.");
+		}
+		return re;
 	}
 
 	@Override

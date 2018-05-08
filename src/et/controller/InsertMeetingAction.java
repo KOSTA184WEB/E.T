@@ -18,44 +18,41 @@ public class InsertMeetingAction implements Action {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModelAndView mv = new ModelAndView();
 		request.setCharacterEncoding("utf-8");
-		mv.setPath("viewMeeting/meetingIntro.html");
-		mv.setRedirect(true);
+		mv.setPath("viewMeeting/createMeeting.jsp");
 		EtService etService = new EtServiceImpl();
-		//지도에서 레스토랑 정보를 받아와서 등록여부 판단한 후 레스토랑 등록   
-		String meetLoc = request.getParameter("meetLocKeyWord");
+		// 지도에서 레스토랑 정보를 받아와서 서비스로 전달 (service에서 등록여부 판단한 후 레스토랑 등록)
 		String resName = request.getParameter("resName");
+		String resAddr = request.getParameter("resAddr");
+		String resPhone = request.getParameter("resPhone");
+		String resKind = request.getParameter("resKind");
+		String resLat = request.getParameter("resLat");
+		String resLng = request.getParameter("resLng");
+		RestaurantDTO resDto = new RestaurantDTO(null, resName, resKind, resAddr, resPhone, 0, Double.parseDouble(resLat), Double.parseDouble(resLng), 0);
 		
-		
-		RestaurantDTO resDto = new RestaurantDTO();
-		//레스토랑 주소로 레스토랑 등록 여부 검색하는 메소드
-		
-		//RestaurantDTO res = new RestaurantDTO(resId, resName, resKind, resAddress, resPhone, resRate, lat, lng, meetingCount);
-		///////////////////////////////////// 지도 api 이용하여 위도 경도 주소 등 res정보 가져와서 등록
-		/////////////////////////////////////		
-		
-		
+		System.out.println(resName + " | " + resAddr + " | " + resPhone + " | " + resKind + " | " + resLat + " | " + resLng + " | ");
+
 		String maxNum = request.getParameter("maxNum");
 		String genderOption = request.getParameter("genderOption");
 		String meetDate = request.getParameter("meetDate");
 		String meetTime = request.getParameter("meetTime");
 		String meetDescription = request.getParameter("meetDescription");
-		String menu  = request.getParameter("menu");
 		String meetingTitle = request.getParameter("meetingTitle");
 
 		String meetingDate = meetDate + meetTime;
-		
-		MeetingDTO meetingDto = new MeetingDTO(null,null,resDto.getResId(),null,menu,maxNum,meetingDate,null,meetDescription,meetingTitle,genderOption);
-		
-		
-		System.out.println(meetLoc);
-		
+
+		MeetingDTO meetingDto = new MeetingDTO(null, null, resDto.getResId(), 0, resKind, Integer.parseInt(maxNum), meetingDate, null, meetDescription,
+				meetingTitle, genderOption);
+
 		try {
 			etService.insertRestaurant(resDto);
+			String resId = etService.searchResIdByAddr(resDto.getResAddress());
+			meetingDto.setResId(resId);
 			etService.insertMeeting(meetingDto);
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		
+		request.setAttribute("create", "y");
 		return mv;
 	}
 

@@ -28,7 +28,7 @@ public interface EtService {
 	public RestaurantDTO selectRestaurant(String resId) throws SQLException;
 	public int updateRestaurant(RestaurantDTO restaurantDto) throws SQLException;
 	public int deleteRestaurant(String resId) throws SQLException;
-
+	
 	/********************** Meeting CRUD **********************/
 	public int insertMeeting(MeetingDTO meetingDto) throws SQLException;
 	public List<MeetingDTO> selectAllMeeting() throws SQLException;
@@ -67,6 +67,8 @@ public interface EtService {
 	 * @return
 	 */
 	public int searchMeetingByKeyWord(String keyWord) throws SQLException;
+	
+	public String searchResIdByAddr(String addr) throws SQLException;
 	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
 

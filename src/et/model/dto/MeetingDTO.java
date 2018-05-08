@@ -4,9 +4,9 @@ public class MeetingDTO {
 	String meetingId; //모임 primary key
 	String memberId; //주최자 id
 	String resId; //모임장소 id
-	String applyNum; //현재 참가인원
+	int applyNum; //현재 참가인원
 	String menu; //모임에서 먹을 음식
-	String maxNum; //신청 최대 인원
+	int maxNum; //신청 최대 인원
 	String meetingDate; //모임 날짜
 	String deadline; //모임 신청 마감시간
 	String meetingDes; //모임 설명
@@ -14,7 +14,7 @@ public class MeetingDTO {
 	//String meeting_url;
 	String genderOption; //모임 성별 제한 남 녀 무관
 	public MeetingDTO() {}
-	public MeetingDTO(String meetingId, String memberId, String resId, String applyNum, String menu, String maxNum, String meetingDate, String deadline,
+	public MeetingDTO(String meetingId, String memberId, String resId, int applyNum, String menu, int maxNum, String meetingDate, String deadline,
 			String meetingDes, String meetingTitle, String genderOption) {
 		super();
 		this.meetingId = meetingId;
@@ -47,10 +47,10 @@ public class MeetingDTO {
 	public void setResId(String resId) {
 		this.resId = resId;
 	}
-	public String getApplyNum() {
+	public int getApplyNum() {
 		return applyNum;
 	}
-	public void setApplyNum(String applyNum) {
+	public void setApplyNum(int applyNum) {
 		this.applyNum = applyNum;
 	}
 	public String getMenu() {
@@ -59,10 +59,10 @@ public class MeetingDTO {
 	public void setMenu(String menu) {
 		this.menu = menu;
 	}
-	public String getMaxNum() {
+	public int getMaxNum() {
 		return maxNum;
 	}
-	public void setMaxNum(String maxNum) {
+	public void setMaxNum(int maxNum) {
 		this.maxNum = maxNum;
 	}
 	public String getMeetingDate() {
