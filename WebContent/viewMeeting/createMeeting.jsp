@@ -13,16 +13,6 @@
 <link href="../css/prettyPhoto.css" rel="stylesheet" />
 <link href="../css/style.css" rel="stylesheet" />
 </head>
-<%
-	request.setCharacterEncoding("utf-8");
-	String isCreate = (String)request.getAttribute("create");
-	System.out.println(isCreate);
-	if(isCreate != null){
-%>
-	<script type="text/javascript">top.location.href="viewMeeting/meetingIntro.html";</script>
-	<%
-	}
-	%>
 <header>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="navigation">
@@ -107,8 +97,8 @@
 <script src="../js/jquery.isotope.min.js"></script>
 <script src="../js/functions.js"></script>
 <script>
-		wow = new WOW({
+	wow = new WOW({
 
-		}).init();
-	</script>
+	}).init();
+</script>
 </html>

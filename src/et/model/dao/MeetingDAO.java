@@ -24,12 +24,13 @@ public class MeetingDAO {
 			System.out.println(meetingDto.getMemberId() + " | " + meetingDto.getResId() + " | " + meetingDto.getMenu() + " | " + meetingDto.getMaxNum()
 					+ " | " + meetingDto.getMeetingDate() + " | " + meetingDto.getDeadline() + " | " + meetingDto.getMeetingDes() + " | " + meetingDto.getMeetingTitle()
 					+ " | " + meetingDto.getGenderOption() + " | ");
+			long deadLine = Long.parseLong(meetingDto.getMeetingDate())-10000;
 			ps.setString(1, "3");
 			ps.setString(2, meetingDto.getResId());
 			ps.setString(3, meetingDto.getMenu());
 			ps.setInt(4, meetingDto.getMaxNum());
 			ps.setString(5, meetingDto.getMeetingDate());
-			ps.setString(6, meetingDto.getMeetingDate());
+			ps.setString(6, deadLine+"");
 			ps.setString(7, meetingDto.getMeetingDes());
 			ps.setString(8, meetingDto.getMeetingTitle());
 			ps.setString(9, meetingDto.getGenderOption());

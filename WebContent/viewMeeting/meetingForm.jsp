@@ -20,14 +20,14 @@
 .map_wrap {
 	float: right;
 	position: relative;
-	width: 70%;
+	width: 50%;
 	height: 500px;
 }
 
 #form-div {
 	float: left;
 	position: relative;
-	width: 30%;
+	width: 50%;
 	height: 500px;
 }
 
@@ -200,10 +200,105 @@
 	color: #777;
 }
 </style>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<!-- timepicker -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.timepicker.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/jquery.timepicker.css" rel="stylesheet">
+<!-- datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 게시글 작성 폼 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"
+>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
+>
+</script>
+<%
+	request.setCharacterEncoding("utf-8");
+	String isCreate = (String) request.getAttribute("create");
+	System.out.println(isCreate);
+	if (isCreate != null) {
+%>
+<script type="text/javascript">
+	alert("모집완료!");
+	top.location.href = "viewMeeting/meetingIntro.jsp";
+</script>
+<%
+	}
+%>
+<script>
+	$(function() {
+		$("#meetDate").datepicker();
+	});
+
+	$(function() {
+		$('#meetTime').timepicker({
+			useSelect : true,
+			step : 15,
+			'minTime' : '06:00:00',
+			'maxTime' : '21:00:00'
+		});
+	})
+</script>
 </head>
 <body>
-	<div id="form-div">
-		<form action="../ET?command=insertMeeting" method="post">
+	<div class="container" id="form-div">
+		<table class="table table-bordered" height="500">
+			<tbody>
+				<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">
+					<tr>
+						<th>모임 제목:</th>
+						<td colspan=3><input type="text" placeholder="제목을 입력하세요. " name="meetingTitle" id="meetingTitle" class="form-control" /></td>
+					</tr>
+					<tr>
+						<th>음식점이름</th>
+						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr" name="resAddr" />
+							<input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
+								name="resLng"
+							/></td>
+						<th>음식메뉴</th>
+						<td><input type="text" id="resKind" name="resKind"></td>
+					</tr>
+					<tr>
+						<th>참여인원</th>
+						<td><input type="text" id="maxNum" name="maxNum"></td>
+						<th>성별 제한</th>
+						<td><select id="genderOption" name="genderOption">
+								<option>M</option>
+								<option>F</option>
+								<option>M&F</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>약속날짜</th>
+						<td><input type="text" id="meetDate" name="meetDate" readonly="readonly"></td>
+						<th>약속시간</th>
+						<td><input type="text" id="meetTime" name="meetTime" data-time-format="H:i:s" width="10"></td>
+					</tr>
+					<tr>
+						<th>내용:</th>
+						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. " id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" /> <input type="button" value="글 목록으로... " class="pull-right"
+								onclick="javascript:location.href='list.jsp'"
+							/> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+                    <a class="btn btn-default" type="reset"> reset </a>
+                    <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> --></td>
+					</tr>
+				</form>
+			</tbody>
+		</table>
+	</div>
+	<%-- <div id="form-div">
+		<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">
 			모집 글 제목
 			<input type="text" id="meetingTitle" name="meetingTitle">
 			<br>
@@ -227,16 +322,16 @@
 			<input type="text" id="meetDate" name="meetDate">
 			<br>
 			약속시간
-			<input type="text" id="meetTime" name="meetTime">
+			<input type="text" id="meetTime" name="meetTime" data-time-format="H:i:s" width="10">
 			<br>
 			모임 설명
 			<input type="text" id="meetDescription" name="meetDescription">
 			<br>
 			<input type="submit" value="확인">
 		</form>
-	</div>
+	</div> --%>
 	<div class="map_wrap">
-		<div id="map" style="width: 800px; height: 400px; position: relative; overflow: hidden;"></div>
+		<div id="map" style="width: 800px; height: 500px; position: relative; overflow: hidden;"></div>
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<div>
@@ -351,7 +446,7 @@
 					});
 
 					daum.maps.event.addListener(marker, 'click', function() {
-						alert(marker.getPosition().getLng());
+						//alert(marker.getPosition().getLng());
 					});
 
 					itemEl.onclick = function() {
