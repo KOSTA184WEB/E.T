@@ -12,12 +12,12 @@ import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 
 public interface EtService {
-	/********************** Member CRUD **********************/
-	public int insertMember(MemberDTO memberDto) throws SQLException;
-	public List<MemberDTO> selectAllMember() throws SQLException;
-	public MemberDTO selectMember(String memberId) throws SQLException;
-	public int updateMember(MemberDTO memberDto) throws SQLException;
-	public int deleteMember(String memberId) throws SQLException;
+   /********************** Member CRUD **********************/
+   public int insertMember(MemberDTO memberDto) throws SQLException;
+   public List<MemberDTO> selectAllMember() throws SQLException;
+   public MemberDTO selectMember(String memberId) throws SQLException;
+   public int updateMember(MemberDTO memberDto) throws SQLException;
+   public int deleteMember(String memberId) throws SQLException;
 
 	/********************** Participant CRUD 
 	 * @throws SQLException **********************/
@@ -76,6 +76,13 @@ public interface EtService {
 	public String searchResIdByAddr(String addr) throws SQLException;
 	
 	public MemberDTO logIn(String memberId, String memberPw) throws SQLException;
+	
+	/**
+    * 검색어(지역)에 해당하는 지역의 모임횟수가 많은 식당을 List형태로 받아옴
+    * @param keyWord
+    * @return
+    */
+   public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException;
 	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
 

@@ -53,7 +53,7 @@ public class LogInAction implements Action {
 				request.setAttribute("memberDTO", memberDTO);
 				
 				//mv.setRedirect(true);
-				mv.setPath("viewLogin/loginOk.jsp");
+				mv.setPath("index.html");
 			}
 
 /*			}else { // 아니면 메시지 띄우고 뒤로 이동한다.
