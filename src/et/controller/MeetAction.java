@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import et.model.dao.ParticipatingDAO;
 import et.model.dto.ParticipantDTO;
@@ -22,12 +24,14 @@ public class MeetAction implements Action {
 		ParticipantDTO dto = new ParticipantDTO("10", "m1", meetingId, "N",1);
 		System.out.println(id+meetingId);
 		
-		
+		HttpSession session = request.getSession();
+		System.out.println("sessionId="+session.getAttribute("loginId"));
+		String loginId =(String)session.getAttribute("loginId");
 		ModelAndView mv = new ModelAndView();
 		EtService etService = new EtServiceImpl();
 		
 		try {
-			int result = etService.insertParticipant(dto);
+			int result = etService.insertParticipant(dto,loginId);
 			System.out.println("action:"+ result);
 			
 			if(result >0) {

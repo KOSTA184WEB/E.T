@@ -83,10 +83,15 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public int insertParticipant(ParticipantDTO dto) throws SQLException {
+	public int insertParticipant(ParticipantDTO dto,String loginId) throws SQLException {
 		ParticipatingDAO dao = new ParticipatingDAO();
 		//int applyNum = dao.countApplyNum(dto.getMeetingId());
 		MeetResDTO mrDTO = dao.selectById(dto.getMeetingId());
+		int checkResult = dao.meetCheck(dto.getMeetingId(),loginId);
+		System.out.println("checkRe="+checkResult);
+		if(checkResult==1) {
+			throw new SQLException("이미 참여되어있습니다.");
+		}
 		int applyNum = mrDTO.getApplyNum();
 		int maxNum = mrDTO.getMaxNum();
 		int result=0;

@@ -68,7 +68,7 @@ function threeOut(){
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.9s">
-							<a href="participate.jsp"><i id="td2" class="fa fa-sign-in fa-5x" style="background:#FF773A" onmouseover="twoOver()" onmouseout="twoOut()"></i></a>
+							<a href="${pageContext.request.contextPath}/ET?command=selectParticipating"><i id="td2" class="fa fa-sign-in fa-5x" style="background:#FF773A" onmouseover="twoOver()" onmouseout="twoOut()"></i></a>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
 							<h4>참여하기</h4>
