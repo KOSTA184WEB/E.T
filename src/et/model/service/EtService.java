@@ -75,6 +75,13 @@ public interface EtService {
 	
 	public String searchResIdByAddr(String addr) throws SQLException;
 	
+	/**
+	 * 검색어(지역)에 해당하는 지역의 모임횟수가 많은 식당을 List형태로 받아옴
+	 * @param keyWord
+	 * @return
+	 */
+	public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException;
+	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
 
 }

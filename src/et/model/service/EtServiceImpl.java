@@ -5,6 +5,7 @@ import java.util.List;
 
 import et.model.dao.EtDAO;
 import et.model.dao.EtDAOImpl;
+import et.model.dao.HotplaceDAO;
 import et.model.dao.MeetingDAO;
 import et.model.dao.RestaurantDAO;
 import et.model.dao.ParticipatingDAO;
@@ -256,6 +257,19 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException {
+		
+		List<RestaurantDTO> restaurantList = HotplaceDAO.selectByKeyWord(keyWord);
+		if(restaurantList==null) {
+			throw new SQLException("핫 플레이스 정보가 없습니다.");
+		}
+		return restaurantList;
+	}
+	
+	
+	
 
 
 }
