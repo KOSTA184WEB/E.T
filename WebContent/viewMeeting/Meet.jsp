@@ -94,7 +94,7 @@
 					
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.9s">
-							<a href="Participate.jsp"><i class="fa fa-android fa-5x"></i></a>
+							<a href="../ET?command=selectParticipating"><i class="fa fa-android fa-5x"></i></a>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
 							<h4>참여하기</h4>

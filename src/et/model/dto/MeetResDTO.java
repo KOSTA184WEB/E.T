@@ -1,6 +1,6 @@
 package et.model.dto;
 
-public class MeetingDTO {
+public class MeetResDTO {
 	
 	private String meetingId;
 	private String memberId;
@@ -15,24 +15,30 @@ public class MeetingDTO {
 	private String meetingUrl;
 	private String genderOption;
 	
-	public MeetingDTO() {}
-	public MeetingDTO(String meetingId, String memberId, String resId, int applyNum, String menu, int maxNum,
-			String meetingDate, String deadLine, String meetingDescription, String meetingTitle, String meetingUrl,
-			String genderOption) {
-		super();
-		this.meetingId = meetingId;
-		this.memberId = memberId;
-		this.resId = resId;
+	private String resName;
+	private String resKind;
+	private String resAddr;
+	private String resPhone;
+	private String resRate;
+	private double lat;
+	private double lng;
+	private int meetingCount;
+	
+	public MeetResDTO() {}
+	public MeetResDTO(String resAddr,String resName,int applyNum, String genderOptionm, String meetingDate, String meetingDescription,double lat,double lng,String meetingId,int maxNum){
+		this.resAddr = resAddr;
+		this.resName = resName;
 		this.applyNum = applyNum;
-		this.menu = menu;
-		this.maxNum = maxNum;
+		this.genderOption = genderOptionm;
 		this.meetingDate = meetingDate;
-		this.deadLine = deadLine;
-		this.meetingDescription = meetingDescription;
-		this.meetingTitle = meetingTitle;
-		this.meetingUrl = meetingUrl;
-		this.genderOption = genderOption;
+		this.meetingDescription = meetingDescription; 
+		this.lat = lat;
+		this.lng = lng;
+		this.meetingId = meetingId;
+		this.maxNum = maxNum;
+		
 	}
+	
 	public String getMeetingId() {
 		return meetingId;
 	}
@@ -105,9 +111,54 @@ public class MeetingDTO {
 	public void setGenderOption(String genderOption) {
 		this.genderOption = genderOption;
 	}
-	
-	
-	
+	public String getResName() {
+		return resName;
+	}
+	public void setResName(String resName) {
+		this.resName = resName;
+	}
+	public String getResKind() {
+		return resKind;
+	}
+	public void setResKind(String resKind) {
+		this.resKind = resKind;
+	}
+	public String getResAddr() {
+		return resAddr;
+	}
+	public void setResAddr(String resAddr) {
+		this.resAddr = resAddr;
+	}
+	public String getResPhone() {
+		return resPhone;
+	}
+	public void setResPhone(String resPhone) {
+		this.resPhone = resPhone;
+	}
+	public String getResRate() {
+		return resRate;
+	}
+	public void setResRate(String resRate) {
+		this.resRate = resRate;
+	}
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLng() {
+		return lng;
+	}
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+	public int getMeetingCount() {
+		return meetingCount;
+	}
+	public void setMeetingCount(int meetingCount) {
+		this.meetingCount = meetingCount;
+	}
 	
 	
 

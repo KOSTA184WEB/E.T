@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+        
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +22,7 @@
 	type="text/css" media="screen" />
 <link href="${pageContext.request.contextPath}/css/prettyPhoto.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
+
 
 </head>
 <body>
@@ -75,22 +80,69 @@
 
 			<div class="col-md-8">
 
-				<iframe src="ParticipateBoardInclude.jsp" frameborder=0
-					framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0
-					width="100%" height="720px"> </iframe>
+				<h1>참여하기</h1>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>내용</th>
+					<th>작성자</th>
+					<th>모임날짜</th>
+					<th>인원</th>
+					<th>지역</th>
+				</tr>
+  
+    
+    <c:choose>
+    <c:when test="${empty requestScope.list}">
+	   <tr>
+        <td colspan="5">
+            <p align="center"><b><span style="font-size:9pt;">등록된 만남이 없습니다.</span></b></p>
+        </td>
+    </tr>
+    </c:when>
+    <c:otherwise>
+	<c:forEach items="${requestScope.list}" var="meeting">
+		    <tr onmouseover="this.style.background='#eaeaea'"
+		        onmouseout="this.style.background='white'">
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${meeting.memberId }</span></p>
+		        </td>
+		        <td bgcolor="">
+					<p><span style="font-size:9pt;">
+					<a href="ET?command=detailPartView&meetingId=${meeting.meetingId}">
+					  ${meeting.meetingTitle}
+					</a>
+					</span></p>
+		        </td>
+		       
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${meeting.memberId }</span></p>
+		        </td>
+		         
+		         <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${meeting.meetingDate}</span></p>
+		        </td>
+
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${meeting.maxNum }</span></p>
+		        </td>
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${meeting.maxNum }</span></p>
+		        </td>
+		    </tr>
+    </c:forEach>
+	</c:otherwise>
+    </c:choose>
+
+		</table>
 
 			</div>
-
-
-			<div class="col-md-4">
-				<div class="col-sm-12 col-sm-pull-2">
-					<div class="map">
-						<iframe
-							src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed">
-						</iframe>
-					</div>
-				</div>
-			 </div>
 			 
 			 
 			 <div class="col-md-4">
