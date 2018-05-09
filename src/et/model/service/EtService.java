@@ -24,7 +24,7 @@ public interface EtService {
 	public List<MeetingDTO> selectAllPart() throws SQLException;
 	public MeetResDTO selectById(String meetingId,boolean flag) throws SQLException;
 	public boolean isParticipant(String memberId, String meetingId);
-	public int insertParticipant(ParticipantDTO dto) throws SQLException;
+	public int insertParticipant(ParticipantDTO dto, String loginId) throws SQLException;
 	public int deleteParticipant(String memberId, String meetingId);
 
 	/********************** Restaurant CRUD **********************/

@@ -111,5 +111,26 @@ public class ParticipatingDAO {
 			DbUtil.dbClose(con, ps);
 		}
 	}
+	
+	public int meetCheck(String meetingId, String loginId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps =con.prepareStatement("select*from  participant  where member_id=? and meeting_id=?");
+			ps.setString(1, loginId);
+			ps.setString(2, meetingId);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result=1;
+			}
+		}finally{
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return result;
+		
+	}
 
 }
