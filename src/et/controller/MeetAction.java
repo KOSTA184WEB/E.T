@@ -1,6 +1,7 @@
 package et.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -19,14 +20,20 @@ public class MeetAction implements Action {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		response.setContentType("text/html;charset=utf-8");
+		HttpSession session = request.getSession();
+
 		String id = request.getSession().getId();
 		String meetingId = request.getParameter("meetingId");
-		ParticipantDTO dto = new ParticipantDTO("10", "m1", meetingId, "N",1);
+		String loginId =(String)session.getAttribute("loginId");
+		
+		ParticipantDTO dto = new ParticipantDTO(null, id, meetingId, "N");
 		System.out.println(id+meetingId);
 		
-		HttpSession session = request.getSession();
-		System.out.println("sessionId="+session.getAttribute("loginId"));
-		String loginId =(String)session.getAttribute("loginId");
+		PrintWriter out = response.getWriter();
+		
+		
 		ModelAndView mv = new ModelAndView();
 		EtService etService = new EtServiceImpl();
 		

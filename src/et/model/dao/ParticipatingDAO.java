@@ -41,11 +41,11 @@ public class ParticipatingDAO {
 		MeetResDTO dto = null;
 		try {
 			con = DbUtil.getConnection();
-			ps= con.prepareStatement("select RESTAURANT.RES_ADDRESS,RESTAURANT.RES_NAME,MEETING.APPLY_NUM,MEETING.GENDER_OPTION,MEETING.MEETING_DATE,MEETING.MEETING_DESCRIPTION, RESTAURANT.lat, RESTAURANT.lng, Meeting.meeting_id ,Meeting.MAX_NUM from MEETING,RESTAURANT where RESTAURANT.RES_ID=MEETING.RES_ID and meeting.meeting_id=?");
+			ps= con.prepareStatement("select RESTAURANT.RES_ADDRESS,RESTAURANT.RES_NAME,MEETING.APPLY_NUM,MEETING.GENDER_OPTION,MEETING.MEETING_DATE,MEETING.MEETING_DESCRIPTION, RESTAURANT.lat, RESTAURANT.lng, Meeting.meeting_id ,Meeting.MAX_NUM , meeting.member_id from MEETING,RESTAURANT where RESTAURANT.RES_ID=MEETING.RES_ID and meeting.meeting_id=?");
 			ps.setString(1, meetingId);
 			rs=ps.executeQuery();
 			if(rs.next()) {
-				dto= new MeetResDTO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getInt(10));
+				dto= new MeetResDTO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getInt(10),rs.getString(11));
 			}
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -65,12 +65,10 @@ public class ParticipatingDAO {
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into participant values(?,?,?,?,sysdate,?)");
-			ps.setString(1, dto.getParticipantId());
-			ps.setString(2, dto.getMemberId());
-			ps.setString(3, dto.getMeetingId());
-			ps.setString(4, dto.getParticipantCancel());
-			ps.setInt(5, dto.getApplyNum());
+			ps = con.prepareStatement("insert into participant values(part_sequence.nextval,?,?,?,sysdate)");
+			ps.setString(1, dto.getMemberId());
+			ps.setString(2, dto.getMeetingId());
+			ps.setString(3, dto.getParticipantCancel());
 			result=ps.executeUpdate();
 		}finally {
 			DbUtil.dbClose(con, ps);

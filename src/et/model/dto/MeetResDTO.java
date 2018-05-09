@@ -25,7 +25,7 @@ public class MeetResDTO {
 	private int meetingCount;
 	
 	public MeetResDTO() {}
-	public MeetResDTO(String resAddr,String resName,int applyNum, String genderOptionm, String meetingDate, String meetingDescription,double lat,double lng,String meetingId,int maxNum){
+	public MeetResDTO(String resAddr,String resName,int applyNum, String genderOptionm, String meetingDate, String meetingDescription,double lat,double lng,String meetingId,int maxNum,String memberId){
 		this.resAddr = resAddr;
 		this.resName = resName;
 		this.applyNum = applyNum;
@@ -36,6 +36,7 @@ public class MeetResDTO {
 		this.lng = lng;
 		this.meetingId = meetingId;
 		this.maxNum = maxNum;
+		this.memberId = memberId;
 		
 	}
 	

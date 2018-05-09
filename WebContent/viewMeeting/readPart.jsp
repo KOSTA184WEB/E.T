@@ -104,22 +104,39 @@ function sendMeet(){
 		</td>
     </tr>
     
+    <c:choose>
+    <c:when test="${sessionScope.loginId eq dto.memberId}">
     <tr>
         <td height="100" colspan="4" align="center" valign="middle">
 			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 				<input type=hidden name="meetingId" value="${dto.meetingId}">
 				<input type=hidden name="command" value="">
 				<input type=button value="수정하기" onClick="sendUpdate()">
+				<input id="btn" type=button value="삭제하기" onClick="sendMeet()">
+		</td>
+	</tr>
+		</c:when>
+	
+    <c:otherwise>	
+    	<tr>
+        <td height="100" colspan="4" align="center" valign="middle">
+			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
+				<input type=hidden name="meetingId" value="${dto.meetingId}">
+				<input type=hidden name="command" value="">
+				<!-- <input type=button value="수정하기" onClick="sendUpdate()"> -->
 				<input id="btn" type=button value="참여하기" onClick="sendMeet()">
-				
-				
+		
+		</td>
+    </tr>
+	</c:otherwise>
+    </c:choose>	
+    	
     </form>
     
     				
     
 			
-		</td>
-    </tr>
+		
 </table>
 </body>
 <hr>

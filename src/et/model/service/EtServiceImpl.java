@@ -20,256 +20,256 @@ import et.model.dto.ReviewDTO;
 
 
 public class EtServiceImpl implements EtService {
-	EtDAO etDao = new EtDAOImpl();
+   EtDAO etDao = new EtDAOImpl();
 
-	@Override
-	public int insertMember(MemberDTO memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int insertMember(MemberDTO memberDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public List<MemberDTO> selectAllMember() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public List<MemberDTO> selectAllMember() {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public MemberDTO selectMember(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public MemberDTO selectMember(String memberId) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public int updateMember(MemberDTO memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int updateMember(MemberDTO memberDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int deleteMember(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int deleteMember(String memberId) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public List<MeetingDTO> selectAllPart() throws SQLException {
+   @Override
+   public List<MeetingDTO> selectAllPart() throws SQLException {
 
-		ParticipatingDAO dao = new ParticipatingDAO();
-		List<MeetingDTO> list = dao.selectAllPart();
-		return list;
-	}
+      ParticipatingDAO dao = new ParticipatingDAO();
+      List<MeetingDTO> list = dao.selectAllPart();
+      return list;
+   }
 
-	@Override
-	public MeetResDTO selectById(String meetingId, boolean flag) throws SQLException {
-		ParticipatingDAO dao = new ParticipatingDAO();
+   @Override
+   public MeetResDTO selectById(String meetingId, boolean flag) throws SQLException {
+      ParticipatingDAO dao = new ParticipatingDAO();
 /*
-		if (flag) {
-			if (dao.updateByReadNum(meetingId) == 0) {
-				throw new SQLException("조회수 증가 문제");
-			}
-		}
+      if (flag) {
+         if (dao.updateByReadNum(meetingId) == 0) {
+            throw new SQLException("조회수 증가 문제");
+         }
+      }
 */
-		MeetResDTO dto = dao.selectById(meetingId);
-		if (dto == null) {
-			throw new SQLException(meetingId + "에 해당하는 게시물이없습니다.");
-		}
-		return dto;
-	}
+      MeetResDTO dto = dao.selectById(meetingId);
+      if (dto == null) {
+         throw new SQLException(meetingId + "에 해당하는 게시물이없습니다.");
+      }
+      return dto;
+   }
 
-	@Override
-	public boolean isParticipant(String memberId, String meetingId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+   @Override
+   public boolean isParticipant(String memberId, String meetingId) {
+      // TODO Auto-generated method stub
+      return false;
+   }
 
-	@Override
-	public int insertParticipant(ParticipantDTO dto,String loginId) throws SQLException {
-		ParticipatingDAO dao = new ParticipatingDAO();
-		//int applyNum = dao.countApplyNum(dto.getMeetingId());
-		MeetResDTO mrDTO = dao.selectById(dto.getMeetingId());
-		int checkResult = dao.meetCheck(dto.getMeetingId(),loginId);
-		System.out.println("checkRe="+checkResult);
-		if(checkResult==1) {
-			throw new SQLException("이미 참여되어있습니다.");
-		}
-		int applyNum = mrDTO.getApplyNum();
-		int maxNum = mrDTO.getMaxNum();
-		int result=0;
-		if(applyNum <maxNum) {
-			dao.updateApplyNum(dto.getMeetingId());
-			result = dao.insertParticipant(dto);
-		}
-		if(result==0) {
-			throw new SQLException("인원이 가득찼습니다.");
-		}
-		return result;
-	}
+   @Override
+   public int insertParticipant(ParticipantDTO dto,String loginId) throws SQLException {
+      ParticipatingDAO dao = new ParticipatingDAO();
+      //int applyNum = dao.countApplyNum(dto.getMeetingId());
+      MeetResDTO mrDTO = dao.selectById(dto.getMeetingId());
+      int checkResult = dao.meetCheck(dto.getMeetingId(),loginId);
+      System.out.println("checkRe="+checkResult);
+      if(checkResult==1) {
+         throw new SQLException("이미 참여되어있습니다.");
+      }
+      int applyNum = mrDTO.getApplyNum();
+      int maxNum = mrDTO.getMaxNum();
+      int result=0;
+      if(applyNum <maxNum) {
+         dao.updateApplyNum(dto.getMeetingId());
+         result = dao.insertParticipant(dto);
+      }
+      if(result==0) {
+         throw new SQLException("인원이 가득찼습니다.");
+      }
+      return result;
+   }
 
-	@Override
-	public int deleteParticipant(String memberId, String meetingId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int deleteParticipant(String memberId, String meetingId) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 @Override
-	public int insertRestaurant(RestaurantDTO restaurantDto) throws SQLException {
-		int re = 0;
-		//restaurant가 등록되어있는지 판별
-		String resId = RestaurantDAO.isNewRestaurant(restaurantDto.getResAddress());
-		if(resId==null){
-			re = RestaurantDAO.insertRestaurant(restaurantDto);
-		}else {
-			RestaurantDAO.updateMeetingCount(resId);
-		}
-		return re;
-	}
+   public int insertRestaurant(RestaurantDTO restaurantDto) throws SQLException {
+      int re = 0;
+      //restaurant가 등록되어있는지 판별
+      String resId = RestaurantDAO.isNewRestaurant(restaurantDto.getResAddress());
+      if(resId==null){
+         re = RestaurantDAO.insertRestaurant(restaurantDto);
+      }else {
+         RestaurantDAO.updateMeetingCount(resId);
+      }
+      return re;
+   }
 
 
-	@Override
-	public List<RestaurantDTO> selectAllRestaurant() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public List<RestaurantDTO> selectAllRestaurant() {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public RestaurantDTO selectRestaurant(String resId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public String searchResIdByAddr(String addr) throws SQLException {
-		//restaurant가 등록되어있는지 판별
-		String resId = RestaurantDAO.searchResIdByAddr(addr);
+   @Override
+   public RestaurantDTO selectRestaurant(String resId) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+   
+   @Override
+   public String searchResIdByAddr(String addr) throws SQLException {
+      //restaurant가 등록되어있는지 판별
+      String resId = RestaurantDAO.searchResIdByAddr(addr);
 
-		return resId;
-	}
-	
+      return resId;
+   }
+   
 
-	@Override
-	public int updateRestaurant(RestaurantDTO restaurantDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int updateRestaurant(RestaurantDTO restaurantDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int deleteRestaurant(String resId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int insertMeeting(MeetingDTO meetingDto) throws SQLException {
-		int re = 0;
-		//meeting Dto insert
-		re = MeetingDAO.insertMeeting(meetingDto);
-		if(re == 0) {
-			throw new SQLException("모임이 생성되지 않았습니다.");
-		}
-		return re;
-	}
+   @Override
+   public int deleteRestaurant(String resId) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
+   @Override
+   public int insertMeeting(MeetingDTO meetingDto) throws SQLException {
+      int re = 0;
+      //meeting Dto insert
+      re = MeetingDAO.insertMeeting(meetingDto);
+      if(re == 0) {
+         throw new SQLException("모임이 생성되지 않았습니다.");
+      }
+      return re;
+   }
 
-	@Override
-	public List<MeetingDTO> selectAllMeeting() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public List<MeetingDTO> selectAllMeeting() {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public RestaurantDTO selectMeeting(String meetId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public RestaurantDTO selectMeeting(String meetId) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public int updateMeeting(MeetingDTO meetingDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int updateMeeting(MeetingDTO meetingDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int deleteMeeting(String meetId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int deleteMeeting(String meetId) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int insertReview(ReviewDTO reviewDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int insertReview(ReviewDTO reviewDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public List<ReviewDTO> selectAllReview() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public List<ReviewDTO> selectAllReview() {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public RestaurantDTO selectReview(String reviewId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public RestaurantDTO selectReview(String reviewId) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public int updateReview(ReviewDTO reviewDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int updateReview(ReviewDTO reviewDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int deleteReview(String reviewId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int deleteReview(String reviewId) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int insertAdmin(AdminDTO adminDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int insertAdmin(AdminDTO adminDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public RestaurantDTO selectAdmin(String adminId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public RestaurantDTO selectAdmin(String adminId) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
-	@Override
-	public int updateAdmin(AdminDTO adminDto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int updateAdmin(AdminDTO adminDto) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public int deleteAdmin(String adminId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int deleteAdmin(String adminId) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public boolean isMeetingOpener(String meetingId, String memberId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+   @Override
+   public boolean isMeetingOpener(String meetingId, String memberId) {
+      // TODO Auto-generated method stub
+      return false;
+   }
 
-	@Override
-	public int searchMeetingByKeyWord(String keyWord) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+   @Override
+   public int searchMeetingByKeyWord(String keyWord) {
+      // TODO Auto-generated method stub
+      return 0;
+   }
 
-	@Override
-	public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException {
-		
-		List<RestaurantDTO> restaurantList = HotplaceDAO.selectByKeyWord(keyWord);
-		if(restaurantList==null) {
-			throw new SQLException("핫 플레이스 정보가 없습니다.");
-		}
-		return restaurantList;
-	}
-	
-	
-	
+   @Override
+   public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException {
+      
+      List<RestaurantDTO> restaurantList = HotplaceDAO.selectByKeyWord(keyWord);
+      if(restaurantList==null) {
+         throw new SQLException("핫 플레이스 정보가 없습니다.");
+      }
+      return restaurantList;
+   }
+   
+   
+   
 
 
 }
