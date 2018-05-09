@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import et.model.dto.AdminDTO;
+import et.model.dto.MeetResDTO;
 import et.model.dto.MeetingDTO;
 import et.model.dto.ReviewDTO;
 import et.model.dto.MemberDTO;
+import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 
 public interface EtService {
@@ -18,10 +20,13 @@ public interface EtService {
 	public int updateMember(MemberDTO memberDto) throws SQLException;
 	public int deleteMember(String memberId) throws SQLException;
 
-	/********************** Participant CRUD **********************/
-	public boolean isParticipant(String memberId, String meetingId) throws SQLException;
-	public int insertParticipant(String memberId, String meetingId) throws SQLException;
-	public int deleteParticipant(String memberId, String meetingId) throws SQLException;
+	/********************** Participant CRUD 
+	 * @throws SQLException **********************/
+	public List<MeetingDTO> selectAllPart() throws SQLException;
+	public MeetResDTO selectById(String meetingId,boolean flag) throws SQLException;
+	public boolean isParticipant(String memberId, String meetingId);
+	public int insertParticipant(ParticipantDTO dto, String loginId) throws SQLException;
+	public int deleteParticipant(String memberId, String meetingId);
 
 	/********************** Restaurant CRUD **********************/
 	public int insertRestaurant(RestaurantDTO restaurantDto) throws SQLException;
@@ -29,7 +34,7 @@ public interface EtService {
 	public RestaurantDTO selectRestaurant(String resId) throws SQLException;
 	public int updateRestaurant(RestaurantDTO restaurantDto) throws SQLException;
 	public int deleteRestaurant(String resId) throws SQLException;
-
+	
 	/********************** Meeting CRUD **********************/
 	public int insertMeeting(MeetingDTO meetingDto) throws SQLException;
 	public List<MeetingDTO> selectAllMeeting() throws SQLException;
@@ -76,6 +81,8 @@ public interface EtService {
 	 * @return
 	 */
 	public int searchMeetingByKeyWord(String keyWord) throws SQLException;
+	
+	public String searchResIdByAddr(String addr) throws SQLException;
 	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
 

@@ -27,14 +27,6 @@ public interface ReviewDAO {
 	List<ReviewDTO> selectAllReview() throws SQLException;
 	
 	/**
-	 * 음식종류 검색에 해당하는 음식점id검색
-	 * */
-	
-	/**
-	 * 음식점 id에 해당하는 후기 검색
-	 **/
-	
-	/**
 	 * 리뷰번호에 해당하는 레코드 검색
 	 **/
 	ReviewDTO selectReview(String reviewId) throws SQLException;
