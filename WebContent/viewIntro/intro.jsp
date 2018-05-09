@@ -14,40 +14,39 @@
 <link href="${pageContext.request.contextPath}/css/prettyPhoto.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
 <script>
-	function overColor_nav1(){
+	function overColor_nav1() {
 		var element = document.getElementById("nav1");
 		element.style.color = "#4D8923";
-		
+
 	}
-	
-	function outColor_nav1(){
+
+	function outColor_nav1() {
 		var element = document.getElementById("nav1");
 		element.style.color = "#000000";
-		
+
 	}
-	
-	function overColor_nav2(){
+
+	function overColor_nav2() {
 		var element = document.getElementById("nav2");
 		element.style.color = "#4D8923";
-		
+
 	}
-	
-	function outColor_nav2(){
+
+	function outColor_nav2() {
 		var element = document.getElementById("nav2");
 		element.style.color = "#000000";
-		
+
 	}
-	
-	function overColor_nav3(){
+
+	function overColor_nav3() {
 		var element = document.getElementById("nav3");
 		element.style.color = "#4D8923";
 	}
-	
-	function outColor_nav3(){
+
+	function outColor_nav3() {
 		var element = document.getElementById("nav3");
 		element.style.color = "#000000";
 	}
-	
 </script>
 </head>
 <body>

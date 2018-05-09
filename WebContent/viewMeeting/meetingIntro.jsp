@@ -42,7 +42,7 @@ function threeOut(){
 
 function click_img(){
 	alert('로그인 후 이용해주세요.');
-	location.href = '../viewLogin/loginForm.jsp';
+	location.href = '#';
 }
 
 </script>

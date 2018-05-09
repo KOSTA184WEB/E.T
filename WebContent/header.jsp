@@ -50,7 +50,7 @@
 
 	function click_nav() {
 		alert('로그인 후 이용해주세요.');
-		location.href = '../viewLogin/loginForm.jsp';
+		location.href = '#';
 	}
 	function logout() {
 		if (confirm("정말 로그아웃 하시겠습니까?")) {
@@ -58,6 +58,17 @@
 		} else {
 			alert("로그아웃 취소하셨습니다.");
 		}
+	}
+
+	function loginOpen() {
+		var popupX = (window.screen.width/2) - (500/2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height/2) - (300/2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+		window.open("${pageContext.request.contextPath}/viewLogin/loginForm.jsp", "win", 'status=no, height=300, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		
 	}
 </script>
 </head>
@@ -78,14 +89,14 @@
 				</div>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="${pageContext.request.contextPath}/viewSignUp/signUpIntro.jsp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
-					<li><a href="${pageContext.request.contextPath}/viewLogin/loginForm.jsp"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+					<li><a href="#" onclick="loginOpen()"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
 				</ul>
 				<div class="navbar-collapse collapse">
 					<div class="menu">
 						<ul class="nav nav-tabs navbar-right">
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
 							<li><a></a></li>
 							<li><a></a></li>
 							<li><a></a></li>
@@ -97,8 +108,8 @@
 							<li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()"
 								onmouseout="outColor_nav1()"
 							>Meet</a></li>
-							<li role="presentation"><a id="nav2" onclick="click_nav()" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
-							<li role="presentation"><a id="nav3" onclick="click_nav()" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
+							<li role="presentation"><a href="#" id="nav2" onclick="click_nav()" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
+							<li role="presentation"><a href="#" id="nav3" onclick="click_nav()" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
 						</ul>
 					</div>
 				</div>
@@ -121,14 +132,14 @@
 				</div>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a><span class="glyphicon glyphicon-user">&nbsp;</span><%=session.getAttribute("loginId")%> 님 즐거운 식사 되세요!</a></li>
-					<li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 				</ul>
 				<div class="navbar-collapse collapse">
 					<div class="menu">
 						<ul class="nav nav-tabs navbar-right">
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
 							<li><a></a></li>
 							<li><a></a></li>
 							<li><a></a></li>
@@ -140,8 +151,8 @@
 							<li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()"
 								onmouseout="outColor_nav1()"
 							>Meet</a></li>
-							<li role="presentation"><a id="nav2" href="board.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
-							<li role="presentation"><a id="nav3" href="portfolio.html" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
+							<li role="presentation"><a href="#" id="nav2" href="board.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
+							<li role="presentation"><a href="#" id="nav3" href="portfolio.html" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
 						</ul>
 					</div>
 				</div>
