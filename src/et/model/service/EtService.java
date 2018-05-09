@@ -4,19 +4,25 @@ import java.sql.SQLException;
 import java.util.List;
 
 import et.model.dto.AdminDTO;
+import et.model.dto.DepositDTO;
 import et.model.dto.MeetResDTO;
+import et.model.dto.MeetResPartDTO;
 import et.model.dto.MeetingDTO;
-import et.model.dto.ReviewDTO;
 import et.model.dto.MemberDTO;
 import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
+import et.model.dto.ReviewDTO;
 
 public interface EtService {
+	
+   /********************** LogIn **********************/
+	public MemberDTO logIn(String memberId, String memberPw) throws SQLException;
+	
    /********************** Member CRUD **********************/
    public int insertMember(MemberDTO memberDto) throws SQLException;
    public List<MemberDTO> selectAllMember() throws SQLException;
-   public MemberDTO selectMember(String memberId) throws SQLException;
-   public int updateMember(MemberDTO memberDto) throws SQLException;
+   public MemberDTO selectMemberInfo(String memberId) throws SQLException;
+   public int updateMemberInfo(MemberDTO memberDTO) throws SQLException;
    public int deleteMember(String memberId) throws SQLException;
 
    /********************** Participant CRUD 
@@ -54,6 +60,13 @@ public interface EtService {
    public int updateAdmin(AdminDTO adminDto) throws SQLException;
    public int deleteAdmin(String adminId) throws SQLException;
    
+   /********************** my page **********************/
+   public List<MeetResPartDTO> selectUpcomingMeeting(String memberId) throws SQLException;
+   public List<MeetResPartDTO> selectPastMeeting(String memberId) throws SQLException;
+   public int cancelMeeting(String memberId, String participantId) throws SQLException;
+   public List<DepositDTO> selectDepositList(String memberId) throws SQLException;
+   public int addDepoist(DepositDTO depositDTO) throws SQLException;
+   public int cutDepoist(DepositDTO depositDTO) throws SQLException;
    
    
    /********************** 추가되는 Service method **********************/
@@ -83,5 +96,9 @@ public interface EtService {
    public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException;
    
    //추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
+   
+   
+
+   
 
 }

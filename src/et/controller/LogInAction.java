@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import et.model.dto.MemberDTO;
-import et.model.service.MyPageService;
+import et.model.service.EtService;
+import et.model.service.EtServiceImpl;
 
 public class LogInAction implements Action {
 //
@@ -33,7 +34,7 @@ public class LogInAction implements Action {
 				
 		System.out.println(inputId);
 		
-		MyPageService service = new MyPageService();
+		EtService service = new EtServiceImpl();
 		
 		try {
 			MemberDTO memberDTO = service.logIn(inputId, inputPw);
