@@ -13,6 +13,35 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
 <link href="${pageContext.request.contextPath}/css/prettyPhoto.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
+
+
+<script>
+function oneOver(){
+	document.getElementById("td1").className = 'fa fa-user fa-spin fa-5x';
+}
+
+function oneOut(){
+	document.getElementById("td1").className = 'fa fa-user fa-5x';
+}
+
+function twoOver(){
+	document.getElementById("td2").className = 'fa fa-sign-in fa-spin fa-5x';
+}
+
+function twoOut(){
+	document.getElementById("td2").className = 'fa fa-sign-in fa-5x';
+}
+
+function threeOver(){
+	document.getElementById("td3").className = 'fa fa-magic fa-spin fa-5x';
+}
+
+function threeOut(){
+	document.getElementById("td3").className = 'fa fa-magic fa-5x';
+}
+
+</script>
+
 </head>
 <body>
 	<header>
@@ -66,7 +95,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="createMeeting.jsp"><i class="fa fa-female fa-5x"></i></a>
+							<a href="createMeeting.jsp"><i id="td1" class="fa fa-user fa-5x" style="background:#51E87A" onmouseover="oneOver()" onmouseout="oneOut()"></i></a>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 							<h4>모집하기</h4>
@@ -75,7 +104,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.9s">
-							<a href="Participate.jsp"><i class="fa fa-android fa-5x"></i></a>
+							<a href="Participate.jsp"><i id="td2" class="fa fa-sign-in fa-5x" style="background:#FF773A" onmouseover="twoOver()" onmouseout="twoOut()"></i></a>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
 							<h4>참여하기</h4>
@@ -84,7 +113,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="1.5s">
-							<a href="meetView/hotPlaceListView.jsp"><i class="fa fa-eye fa-5x"></i></a>
+							<a href="meetView/hotPlaceListView.jsp"><i id="td3" class="fa fa-magic fa-5x" style="background:#79ACFF" onmouseover="threeOver()" onmouseout="threeOut()"></i></a>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.5s">
 							<h4>핫플레이스</h4>
