@@ -112,19 +112,8 @@
                         </form>
                     </div><!--/.search-->
 			 </div>
-			 
-			 
 		   </div>
-		  
-		  
-		  
-
-
 	</div>
-
-
-
-
 
 	<footer>
 		<%@ include file="../footer.jsp" %>
@@ -147,8 +136,6 @@
 
 		}).init();
 	</script>
-	
-	
 
 </body>
 </html>

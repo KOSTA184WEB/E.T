@@ -75,6 +75,8 @@ public interface EtService {
 	
 	public String searchResIdByAddr(String addr) throws SQLException;
 	
+	public MemberDTO logIn(String memberId, String memberPw) throws SQLException;
+	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import et.model.dao.EtDAO;
 import et.model.dao.EtDAOImpl;
 import et.model.dao.MeetingDAO;
+import et.model.dao.MemberDAO;
 import et.model.dao.RestaurantDAO;
 import et.model.dao.ParticipatingDAO;
 import et.model.dto.AdminDTO;
@@ -16,37 +17,48 @@ import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 import et.model.dto.ReviewDTO;
 
-
-
 public class EtServiceImpl implements EtService {
-	EtDAO etDao = new EtDAOImpl();
-
 	@Override
-	public int insertMember(MemberDTO memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertMember(MemberDTO memberDto) throws SQLException {
+		int re = MemberDAO.insert(memberDto);
+
+		if (re == 0) {
+			throw new SQLException("가입이 되지 않았습니다.");
+		}
+		return re;
 	}
 
 	@Override
-	public List<MemberDTO> selectAllMember() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MemberDTO selectMember(String memberId) {
+	public List<MemberDTO> selectAllMember() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int updateMember(MemberDTO memberDto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public MemberDTO selectMember(String memberId) throws SQLException {
+		MemberDTO memberDTO = new MemberDTO();
+
+		memberDTO = MemberDAO.selectMember(memberId); // 회원 정보 담기
+
+		if (memberDTO == null) {
+			throw new SQLException("회원 정보 불러올 수 없습니다.");
+		}
+
+		return memberDTO;
 	}
 
 	@Override
-	public int deleteMember(String memberId) {
+	public int updateMember(MemberDTO memberDto) throws SQLException {
+		int result = MemberDAO.updateMember(memberDto);
+		if (result == 0) {
+			throw new SQLException("회원 정보 수정 실패");
+		}
+
+		return result;
+	}
+
+	@Override
+	public int deleteMember(String memberId) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -62,13 +74,9 @@ public class EtServiceImpl implements EtService {
 	@Override
 	public MeetResDTO selectById(String meetingId, boolean flag) throws SQLException {
 		ParticipatingDAO dao = new ParticipatingDAO();
-/*
-		if (flag) {
-			if (dao.updateByReadNum(meetingId) == 0) {
-				throw new SQLException("조회수 증가 문제");
-			}
-		}
-*/
+		/*
+		 * if (flag) { if (dao.updateByReadNum(meetingId) == 0) { throw new SQLException("조회수 증가 문제"); } }
+		 */
 		MeetResDTO dto = dao.selectById(meetingId);
 		if (dto == null) {
 			throw new SQLException(meetingId + "에 해당하는 게시물이없습니다.");
@@ -83,23 +91,23 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public int insertParticipant(ParticipantDTO dto,String loginId) throws SQLException {
+	public int insertParticipant(ParticipantDTO dto, String loginId) throws SQLException {
 		ParticipatingDAO dao = new ParticipatingDAO();
-		//int applyNum = dao.countApplyNum(dto.getMeetingId());
+		// int applyNum = dao.countApplyNum(dto.getMeetingId());
 		MeetResDTO mrDTO = dao.selectById(dto.getMeetingId());
-		int checkResult = dao.meetCheck(dto.getMeetingId(),loginId);
-		System.out.println("checkRe="+checkResult);
-		if(checkResult==1) {
+		int checkResult = dao.meetCheck(dto.getMeetingId(), loginId);
+		System.out.println("checkRe=" + checkResult);
+		if (checkResult == 1) {
 			throw new SQLException("이미 참여되어있습니다.");
 		}
 		int applyNum = mrDTO.getApplyNum();
 		int maxNum = mrDTO.getMaxNum();
-		int result=0;
-		if(applyNum <maxNum) {
+		int result = 0;
+		if (applyNum < maxNum) {
 			dao.updateApplyNum(dto.getMeetingId());
 			result = dao.insertParticipant(dto);
 		}
-		if(result==0) {
+		if (result == 0) {
 			throw new SQLException("인원이 가득찼습니다.");
 		}
 		return result;
@@ -110,19 +118,19 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-@Override
+
+	@Override
 	public int insertRestaurant(RestaurantDTO restaurantDto) throws SQLException {
 		int re = 0;
-		//restaurant가 등록되어있는지 판별
+		// restaurant가 등록되어있는지 판별
 		String resId = RestaurantDAO.isNewRestaurant(restaurantDto.getResAddress());
-		if(resId==null){
+		if (resId == null) {
 			re = RestaurantDAO.insertRestaurant(restaurantDto);
-		}else {
+		} else {
 			RestaurantDAO.updateMeetingCount(resId);
 		}
 		return re;
 	}
-
 
 	@Override
 	public List<RestaurantDTO> selectAllRestaurant() {
@@ -135,15 +143,14 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public String searchResIdByAddr(String addr) throws SQLException {
-		//restaurant가 등록되어있는지 판별
+		// restaurant가 등록되어있는지 판별
 		String resId = RestaurantDAO.searchResIdByAddr(addr);
 
 		return resId;
 	}
-	
 
 	@Override
 	public int updateRestaurant(RestaurantDTO restaurantDto) {
@@ -156,12 +163,13 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@Override
 	public int insertMeeting(MeetingDTO meetingDto) throws SQLException {
 		int re = 0;
-		//meeting Dto insert
+		// meeting Dto insert
 		re = MeetingDAO.insertMeeting(meetingDto);
-		if(re == 0) {
+		if (re == 0) {
 			throw new SQLException("모임이 생성되지 않았습니다.");
 		}
 		return re;
@@ -257,5 +265,19 @@ public class EtServiceImpl implements EtService {
 		return 0;
 	}
 
+	@Override
+	public MemberDTO logIn(String memberId, String memberPw) throws SQLException {
+		MemberDTO memberDTO = new MemberDTO();
+
+		int result = MemberDAO.loginCheck(memberId, memberPw); // 로그인 확인
+
+		if (result == 1) { // 아이디 존재할 때
+			memberDTO = MemberDAO.selectMember(memberId); // 회원 정보 담기
+		} else {
+			throw new SQLException("로그인 할 수 없습니다.");
+		}
+
+		return memberDTO;
+	}
 
 }

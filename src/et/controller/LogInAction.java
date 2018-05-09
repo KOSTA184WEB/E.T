@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import et.model.dto.MemberDTO;
+import et.model.service.EtService;
+import et.model.service.EtServiceImpl;
 import et.model.service.MyPageService;
 
 public class LogInAction implements Action {
@@ -33,7 +35,7 @@ public class LogInAction implements Action {
 				
 		System.out.println(inputId);
 		
-		MyPageService service = new MyPageService();
+		EtService service = new EtServiceImpl();
 		
 		try {
 			MemberDTO memberDTO = service.logIn(inputId, inputPw);
@@ -46,7 +48,6 @@ public class LogInAction implements Action {
 				// loginOk.jsp 로 이동하기 전에 세션영역에 이름과 접속시간을 저장
 				HttpSession session = request.getSession();
 				session.setAttribute("loginId", inputId);
-				session.setAttribute("loginPw", inputPw);
 				session.setAttribute("loginTime",new Date().toLocaleString());
 				
 				request.setAttribute("memberDTO", memberDTO);
