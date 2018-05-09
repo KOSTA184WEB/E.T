@@ -1,24 +1,21 @@
 package et.model.dto;
 
 public class MeetingDTO {
-	
-	private String meetingId;
-	private String memberId;
-	private String resId;
-	private int applyNum;
-	private String menu;
-	private int maxNum;
-	private String meetingDate;
-	private String deadLine;
-	private String meetingDescription;
-	private String meetingTitle;
-	private String meetingUrl;
-	private String genderOption;
-	
+	String meetingId; //모임 primary key
+	String memberId; //주최자 id
+	String resId; //모임장소 id
+	int applyNum; //현재 참가인원
+	String menu; //모임에서 먹을 음식
+	int maxNum; //신청 최대 인원
+	String meetingDate; //모임 날짜
+	String deadline; //모임 신청 마감시간
+	String meetingDes; //모임 설명
+	String meetingTitle; //모임 제목
+	//String meeting_url;
+	String genderOption; //모임 성별 제한 남 녀 무관
 	public MeetingDTO() {}
-	public MeetingDTO(String meetingId, String memberId, String resId, int applyNum, String menu, int maxNum,
-			String meetingDate, String deadLine, String meetingDescription, String meetingTitle, String meetingUrl,
-			String genderOption) {
+	public MeetingDTO(String meetingId, String memberId, String resId, int applyNum, String menu, int maxNum, String meetingDate, String deadline,
+			String meetingDes, String meetingTitle, String genderOption) {
 		super();
 		this.meetingId = meetingId;
 		this.memberId = memberId;
@@ -27,10 +24,9 @@ public class MeetingDTO {
 		this.menu = menu;
 		this.maxNum = maxNum;
 		this.meetingDate = meetingDate;
-		this.deadLine = deadLine;
-		this.meetingDescription = meetingDescription;
+		this.deadline = deadline;
+		this.meetingDes = meetingDes;
 		this.meetingTitle = meetingTitle;
-		this.meetingUrl = meetingUrl;
 		this.genderOption = genderOption;
 	}
 	public String getMeetingId() {
@@ -75,29 +71,23 @@ public class MeetingDTO {
 	public void setMeetingDate(String meetingDate) {
 		this.meetingDate = meetingDate;
 	}
-	public String getDeadLine() {
-		return deadLine;
+	public String getDeadline() {
+		return deadline;
 	}
-	public void setDeadLine(String deadLine) {
-		this.deadLine = deadLine;
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
 	}
-	public String getMeetingDescription() {
-		return meetingDescription;
+	public String getMeetingDes() {
+		return meetingDes;
 	}
-	public void setMeetingDescription(String meetingDescription) {
-		this.meetingDescription = meetingDescription;
+	public void setMeetingDes(String meetingDes) {
+		this.meetingDes = meetingDes;
 	}
 	public String getMeetingTitle() {
 		return meetingTitle;
 	}
 	public void setMeetingTitle(String meetingTitle) {
 		this.meetingTitle = meetingTitle;
-	}
-	public String getMeetingUrl() {
-		return meetingUrl;
-	}
-	public void setMeetingUrl(String meetingUrl) {
-		this.meetingUrl = meetingUrl;
 	}
 	public String getGenderOption() {
 		return genderOption;
@@ -107,8 +97,4 @@ public class MeetingDTO {
 	}
 	
 	
-	
-	
-	
-
 }
