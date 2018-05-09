@@ -77,7 +77,7 @@ function threeOut(){
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="1.5s">
-							<a href="meetView/hotPlaceListView.jsp"><i id="td3" class="fa fa-magic fa-5x" style="background:#79ACFF" onmouseover="threeOver()" onmouseout="threeOut()"></i></a>
+							<a href="${pageContext.request.contextPath}/viewHotplace/hotPlaceListView.jsp"><i id="td3" class="fa fa-magic fa-5x" style="background:#79ACFF" onmouseover="threeOver()" onmouseout="threeOut()"></i></a>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.5s">
 							<h4>핫플레이스</h4>

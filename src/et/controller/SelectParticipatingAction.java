@@ -25,7 +25,6 @@ public class SelectParticipatingAction implements Action {
 		List<MeetingDTO> list;
 		try {
 			list = etService.selectAllPart();
-			System.out.println(list.get(0).getApplyNum());
 			request.setAttribute("list", list);
 			mv.setPath("/viewMeeting/participate.jsp");
 		}catch(Exception e) {
