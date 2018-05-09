@@ -1,6 +1,7 @@
 package et.model.service;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import et.model.dto.AdminDTO;
@@ -39,9 +40,17 @@ public interface EtService {
 	/********************** Review CRUD **********************/
 	public int insertReview(ReviewDTO reviewDto) throws SQLException;
 	public List<ReviewDTO> selectAllReview() throws SQLException;
-	public RestaurantDTO selectReview(String reviewId) throws SQLException;
+	public ReviewDTO selectReview(String reviewId, boolean state) throws SQLException;
 	public int updateReview(ReviewDTO reviewDto) throws SQLException;
-	public int deleteReview(String reviewId) throws SQLException;
+	public int deleteReview(String reviewId, String reviewPw) throws SQLException;
+	public List<String> selectMeetingsById(String memberId) throws SQLException;
+	public String selectMeetingTitle(String meetingId) throws SQLException;
+	public String selectRestaurantId(String meetingId) throws SQLException;
+	public String selectMeetingDate(String meetingId) throws SQLException;
+	public int insertResturantRate(int resRate, String resId) throws SQLException;
+	public int selectRestaurantRate(String resId) throws SQLException;
+	public String selectRestaurantKind(String resId) throws SQLException;
+	public List<ReviewDTO> searchBykeyWord(String keyField, String keyWord) throws SQLException;
 	
 	/********************** admin CRUD **********************/
 	public int insertAdmin(AdminDTO adminDto) throws SQLException;
