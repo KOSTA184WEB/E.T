@@ -63,8 +63,8 @@
 			<div class="container">
 				<div class="navbar-header">
 					<div class="navbar-brand">
-						<a href="viewIntro/intro.html">
-								<img src="../images/ET_Logo.png" width="125px" height="100px">
+						<a href="${pageContext.request.contextPath}/viewIntro/intro.html">
+								<img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px" height="100px">
 							</a>
 					</div>
 				</div>

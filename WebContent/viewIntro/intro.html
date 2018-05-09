@@ -12,6 +12,43 @@
 <link rel="stylesheet" href="../js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
 <link href="../css/prettyPhoto.css" rel="stylesheet" />
 <link href="../css/style.css" rel="stylesheet" />
+
+<script>
+	function overColor_nav1(){
+		var element = document.getElementById("nav1");
+		element.style.color = "#4D8923";
+		
+	}
+	
+	function outColor_nav1(){
+		var element = document.getElementById("nav1");
+		element.style.color = "#000000";
+		
+	}
+	
+	function overColor_nav2(){
+		var element = document.getElementById("nav2");
+		element.style.color = "#4D8923";
+		
+	}
+	
+	function outColor_nav2(){
+		var element = document.getElementById("nav2");
+		element.style.color = "#000000";
+		
+	}
+	
+	function overColor_nav3(){
+		var element = document.getElementById("nav3");
+		element.style.color = "#4D8923";
+	}
+	
+	function outColor_nav3(){
+		var element = document.getElementById("nav3");
+		element.style.color = "#000000";
+	}
+	
+</script>
 </head>
 <header>
 	<nav class="navbar navbar-default navbar-static-top">
@@ -42,9 +79,9 @@
 							<li><a></a></li>
 							<li><a></a></li>
 							<li role="presentation"><a href="../viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
-							<li role="presentation"><a href="../viewMeeting/meetingIntro.jsp">Meet</a></li>
-							<li role="presentation"><a href="board.jsp">Rate</a></li>
-							<li role="presentation"><a href="portfolio.html">MyPage</a></li>
+							<li role="presentation"><a id="nav1" href="../viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
+							<li role="presentation"><a id="nav2" href="board.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
+							<li role="presentation"><a id="nav3" href="portfolio.html" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
 						</ul>
 					</div>
 				</div>
