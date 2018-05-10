@@ -35,10 +35,12 @@ public class ShowUserInfoAction implements Action {
 				MemberDTO memberDTO = service.selectMember(loginId);
 				request.setAttribute("memberDTO", memberDTO);
 				//System.out.println("action에서 memberName : " + memberDTO.getMemberName());
+				request.setAttribute("memberPw", memberDTO.getMemberPw());
 				request.setAttribute("memberName", memberDTO.getMemberName());
 				request.setAttribute("memberBirth", memberDTO.getMemberBirth());
 				request.setAttribute("memberGender", memberDTO.getMemberGender());
 				request.setAttribute("memberPhone", memberDTO.getMemberPhone());
+				System.out.println("회원정보보여주기getMemberPhone : " + memberDTO.getMemberPhone());
 				request.setAttribute("memberEmail", memberDTO.getMemberEmail());
 				request.setAttribute("memberQuestion", memberDTO.getMemberQuestion());
 				request.setAttribute("memberAnswer", memberDTO.getMemberAnswer());
