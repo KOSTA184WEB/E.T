@@ -5,21 +5,27 @@ import java.util.Date;
 import java.util.List;
 
 import et.model.dto.AdminDTO;
+import et.model.dto.DepositDTO;
 import et.model.dto.MeetResDTO;
+import et.model.dto.MeetResPartDTO;
 import et.model.dto.MeetingDTO;
-import et.model.dto.ReviewDTO;
 import et.model.dto.MemberDTO;
 import et.model.dto.NoticeDTO;
 import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
+import et.model.dto.ReviewDTO;
 
 public interface EtService {
-	/********************** Member CRUD **********************/
-	public int insertMember(MemberDTO memberDto) throws SQLException;
-	public List<MemberDTO> selectAllMember() throws SQLException;
-	public MemberDTO selectMember(String memberId) throws SQLException;
-	public int updateMember(MemberDTO memberDto) throws SQLException;
-	public int deleteMember(String memberId) throws SQLException;
+	
+   /********************** LogIn **********************/
+	public MemberDTO logIn(String memberId, String memberPw) throws SQLException;
+	
+   /********************** Member CRUD **********************/
+   public int insertMember(MemberDTO memberDto) throws SQLException;
+   public List<MemberDTO> selectAllMember() throws SQLException;
+   public MemberDTO selectMember(String memberId) throws SQLException;
+   public int updateMember(MemberDTO memberDTO) throws SQLException;
+   public int deleteMember(String memberId) throws SQLException;
 
 	/********************** Participant CRUD 
 	 * @throws SQLException **********************/
@@ -58,15 +64,26 @@ public interface EtService {
 	public String selectRestaurantKind(String resId) throws SQLException;
 	public List<ReviewDTO> searchBykeyWord(String keyField, String keyWord) throws SQLException;
 	public int AdminDeleteReview(String reviewId) throws SQLException;
+	
 	/********************** admin CRUD **********************/
 	public int insertAdmin(AdminDTO adminDto) throws SQLException;
 	public RestaurantDTO selectAdmin(String adminId) throws SQLException;
 	public int updateAdmin(AdminDTO adminDto) throws SQLException;
 	public int deleteAdmin(String adminId) throws SQLException;
+	
 	/********************** adminBoard CRUD **********************/
 	public List<NoticeDTO> selectNoticeAll() throws SQLException;
 	public NoticeDTO selectNotice(String noticeId, boolean state) throws SQLException;
 	public int updateNotice(NoticeDTO noticeDTO) throws SQLException;
+	
+	/********************** my page **********************/
+   public List<MeetResPartDTO> selectUpcomingMeeting(String memberId) throws SQLException;
+   public List<MeetResPartDTO> selectPastMeeting(String memberId) throws SQLException;
+   public int cancelMeeting(String memberId, String participantId) throws SQLException;
+   public List<DepositDTO> selectDepositList(String memberId) throws SQLException;
+   public int addDepoist(DepositDTO depositDTO) throws SQLException;
+   public int cutDepoist(DepositDTO depositDTO) throws SQLException;
+   
 	
 	/********************** 추가되는 Service method **********************/
 	

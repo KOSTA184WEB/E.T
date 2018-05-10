@@ -34,7 +34,7 @@
 
 				<div class="widget search">
 					<form class="form-inline" method="post"
-						action="<%=request.getContextPath()%>/hotPlaceServlet">
+						action="<%=request.getContextPath()%>/ET?command=hotplace">
 						<input type="text" name="keyWord" class="form-control search_box"
 							placeholder="Search Here"> <input type="submit"
 							class="btn btn-primary readmore" value="검색">

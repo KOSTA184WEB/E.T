@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import et.model.dto.MemberDTO;
-import et.model.service.MyPageService;
+import et.model.service.EtService;
+import et.model.service.EtServiceImpl;
 
 public class LogInAction implements Action {
 //
@@ -20,7 +21,7 @@ public class LogInAction implements Action {
 			throws ServletException, IOException {
 	
 		ModelAndView mv = new ModelAndView();
-		
+		mv.setPath("index.html");
 		// post 방식 한글 인코딩 설정
 		request.setCharacterEncoding("UTF-8");
 						
@@ -33,7 +34,7 @@ public class LogInAction implements Action {
 				
 		System.out.println(inputId);
 		
-		MyPageService service = new MyPageService();
+		EtService service = new EtServiceImpl();
 		
 		try {
 			MemberDTO memberDTO = service.logIn(inputId, inputPw);
@@ -46,13 +47,10 @@ public class LogInAction implements Action {
 				// loginOk.jsp 로 이동하기 전에 세션영역에 이름과 접속시간을 저장
 				HttpSession session = request.getSession();
 				session.setAttribute("loginId", inputId);
-				session.setAttribute("loginPw", inputPw);
 				session.setAttribute("loginTime",new Date().toLocaleString());
 				
 				request.setAttribute("memberDTO", memberDTO);
-				
-				//mv.setRedirect(true);
-				mv.setPath("viewLogin/loginOk.jsp");
+				request.setAttribute("loginMsg", "success");
 			}
 
 /*			}else { // 아니면 메시지 띄우고 뒤로 이동한다.

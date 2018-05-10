@@ -118,3 +118,21 @@ select * from meeting;
 select * from member;
 select *from PARTICIPANT
 select*from  participant  where member_id='et' and meeting_id='m-1'
+
+/* deposit */
+
+drop table deposit;
+
+Create table deposit(
+deposit_id varchar2(100) primary key, 
+member_id varchar2(20) references member(member_id),
+deposit_description varchar2(20),
+plus_deposit number,
+minus_deposit number,
+current_deposit number not null,
+deposit_update_date date not null
+);
+create sequence d_seq;
+commit;
+insert into deposit values(1,'et','ÃæÀü',0,null,0,'2018-01-01');
+commit;

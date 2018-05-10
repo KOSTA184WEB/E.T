@@ -21,7 +21,7 @@ public class LogOutAction implements Action {
 		System.out.println("로그아웃 세션지우기 완료");
 		
 		mv.setRedirect(true);
-		mv.setPath("viewLogin/loginForm.jsp");
+		mv.setPath("viewIntro/intro.jsp");
 		
 		return mv;		
 	}

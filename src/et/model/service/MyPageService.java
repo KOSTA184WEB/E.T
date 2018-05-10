@@ -61,16 +61,15 @@ public class MyPageService {
 	/**
 	 * 로그인
 	 */
-	private MemberDAO memberDAO = new MemberDAO();
 	
-	public MemberDTO logIn(String memberId, String memberPw) throws SQLException {
+	/*public MemberDTO logIn(String memberId, String memberPw) throws SQLException {
 		
 		MemberDTO memberDTO = new MemberDTO();
 		
-		int result = memberDAO.loginCheck(memberId, memberPw); // 로그인 확인
+		int result = MemberDAO.loginCheck(memberId, memberPw); // 로그인 확인
 		
 		if(result==1){ // 아이디 존재할 때
-			memberDTO = memberDAO.selectMember(memberId); // 회원 정보 담기
+			memberDTO = MemberDAO.selectMember(memberId); // 회원 정보 담기
 		}else{
 			throw new SQLException("로그인 할 수 없습니다.");
 		}
@@ -78,14 +77,14 @@ public class MyPageService {
 		return memberDTO;
 	}
 	
-	/**
+	*//**
 	 * 회원 정보만 가져오기
-	 */
+	 *//*
 	public MemberDTO selectMemberInfo(String memberId) throws SQLException {
 		
 		MemberDTO memberDTO = new MemberDTO();
 		
-		memberDTO = memberDAO.selectMember(memberId); // 회원 정보 담기
+		memberDTO = MemberDAO.selectMember(memberId); // 회원 정보 담기
 		
 		if(memberDTO==null){
 			throw new SQLException("회원 정보 불러올 수 없습니다.");
@@ -94,17 +93,17 @@ public class MyPageService {
 		return memberDTO;
 	}
 
-	/**
+	*//**
 	 * 회원 정보 수정
-	 */
+	 *//*
 	public int updateMemberInfo(MemberDTO memberDTO) throws SQLException{
 		
-		int result = memberDAO.updateMember(memberDTO);
+		int result = MemberDAO.updateMember(memberDTO);
 		if(result==0) {
 			throw new SQLException("회원 정보 수정 실패");
 		}
 		
 		return result;
 	}
-	
+	*/
 }

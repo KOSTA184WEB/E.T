@@ -287,9 +287,8 @@
 						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. " id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" /> <input type="button" value="글 목록으로... " class="pull-right"
-								onclick="javascript:location.href='list.jsp'"
-							/> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" />
+					<!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
                     <a class="btn btn-default" type="reset"> reset </a>
                     <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> --></td>
 					</tr>

@@ -23,6 +23,13 @@ public class ParticipantDTO {
 		this(participantId,memberId,meetingId,participantCancel,applyNum);
 		this.participantDate = participantDate;
 	}
+	public ParticipantDTO(String participantId, String memberId, String meetingId, String participantCancel) {
+		super();
+		this.participantId= participantId;
+		this.memberId = memberId;
+		this.meetingId= meetingId;
+		this.participantCancel = participantCancel;	
+	}
 	public String getParticipantId() {
 		return participantId;
 	}
