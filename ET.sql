@@ -21,7 +21,7 @@ CREATE TABLE member (
 );
 
 
-
+ALTER TABLE restaurant MODIFY(res_name varchar2(60));
 
 /* meeting */
 CREATE TABLE meeting (
