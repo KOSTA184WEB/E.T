@@ -19,18 +19,23 @@ function map_value(){
 	document.map.location='<%=request.getContextPath()%>/viewMeeting/meetingPartMap.jsp?lat=${dto.lat}&lng=${dto.lng}&name=${dto.resName}';
 }
 function sendUpdate(){
-	document.requestForm.command.value ="updateMeetingForm";
-	document.requestForm.submit();
+	//document.requestForm.command.value ="updateMeetingForm";
+	location.href="viewMeeting/createMeeting.jsp"
+	//document.requestForm.submit();
 }
 
 function sendMeet(){
 	if(confirm("이 모임에 참여하시겠습니까?")==true){
-		console.log("로그")
+		alert("할래");
 		document.requestForm.command.value ="meet";
 		document.requestForm.submit();
 	}else{
 		return;	
 	}
+}
+
+function deleteMeet(){
+	alert("관리자에게 문의해주세요");
 }
 </script>
 
@@ -92,18 +97,6 @@ function sendMeet(){
         <span style="font-size:9pt;"><b><pre>${dto.meetingDescription}</pre></b></span></td>
     </tr>
     
-
-    <tr>
-    <td width="100" height="20">
-           <p align="right"><b><span style="font-size:9pt;">비밀번호</span></b></p>
-        </td>
-        
-        <form name="requestForm" method=post action="${pageContext.request.contextPath}/ET">
-        <td height="20" colspan="3" align="left" valign="middle">
-				<input type=password name="password" value="">		
-		</td>
-    </tr>
-    
     <c:choose>
     <c:when test="${sessionScope.loginId eq dto.memberId}">
     <tr>
@@ -112,7 +105,7 @@ function sendMeet(){
 				<input type=hidden name="meetingId" value="${dto.meetingId}">
 				<input type=hidden name="command" value="">
 				<input type=button value="수정하기" onClick="sendUpdate()">
-				<input id="btn" type=button value="삭제하기" onClick="sendMeet()">
+				<input id="btn" type=button value="삭제하기" onClick="deleteMeet()">
 		</td>
 	</tr>
 		</c:when>
@@ -123,7 +116,6 @@ function sendMeet(){
 			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 				<input type=hidden name="meetingId" value="${dto.meetingId}">
 				<input type=hidden name="command" value="">
-				<!-- <input type=button value="수정하기" onClick="sendUpdate()"> -->
 				<input id="btn" type=button value="참여하기" onClick="sendMeet()">
 		
 		</td>
