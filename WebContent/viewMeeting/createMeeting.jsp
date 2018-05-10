@@ -21,7 +21,7 @@
 	<iframe src="createMeetingTop.html" width="100%" height="250"></iframe>
 </div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-	<iframe src="meetingForm.jsp" width="100%" height="500px" scrolling="no"></iframe>
+	<iframe src="${pageContext.request.contextPath}/viewMeeting/meetingForm.jsp?meetingId=<%=request.getParameter("meetingId") %>" width="100%" height="500px" scrolling="no"></iframe>
 </div>
 <footer>
 	<%@ include file="../footer.jsp"%>

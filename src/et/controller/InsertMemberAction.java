@@ -31,7 +31,7 @@ public class InsertMemberAction implements Action {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
-			String age = request.getParameter("birth");
+			String age = request.getParameter("age");
 			String birth = request.getParameter("birth");
 			String gender = request.getParameter("gender");
 			String phone = request.getParameter("phone");

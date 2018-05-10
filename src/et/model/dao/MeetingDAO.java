@@ -20,7 +20,7 @@ public class MeetingDAO {
 
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into meeting values(meet_seq.nextval,?,?,0,?,?,TO_DATE(?, 'yyyyMMddhh24miss'),TO_DATE(?, 'yyyyMMddhh24miss'),?,?,'default',?)");
+			ps = con.prepareStatement("insert into meeting values(meet_seq.nextval,?,?,1,?,?,TO_DATE(?, 'yyyyMMddhh24miss'),TO_DATE(?, 'yyyyMMddhh24miss'),?,?,?)");
 			//ps = con.prepareStatement("insert into meeting values(meet_seq.nextval,?,?,0,?,?,sysdate,sysdate,?,?,'default',?)");
 
 			System.out.println(meetingDto.getMemberId() + " | " + meetingDto.getResId() + " | " + meetingDto.getMenu() + " | " + meetingDto.getMaxNum()

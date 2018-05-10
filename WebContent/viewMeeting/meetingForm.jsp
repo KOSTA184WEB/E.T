@@ -233,7 +233,6 @@
 <%
 	}
 %>
-
 <%
 	request.setCharacterEncoding("utf-8");
 	String isUpdate = (String) request.getAttribute("update");
@@ -247,16 +246,15 @@
 <%
 	}
 %>
-
 <script>
 
 
 function sendData(){
-	if(this.value=="등록"){
-		document.requestForm.command.value="insertMeeting"
-		doucment.requestFrom.submit();
+	if($('#enroll').val()=="등록"){
+		document.requestForm.command.value="insertMeeting";
+		document.requestForm.submit();
 	}else{
-		document.requestForm.command.value="updateMeeting"
+		document.requestForm.command.value="updateMeeting";
 		document.requestForm.submit();
 	}
 }
@@ -275,12 +273,12 @@ var meetingId = "<%=request.getParameter("meetingId")%>";
 						$('#resName').val(item.resName);
 						var meetDate = item.meetingDate;
 						var meetDateArr = meetDate.split(" ");
-						meetDate =meetDateArr[0];
+						meetDate = meetDateArr[0];
 						var meetTime = meetDateArr[1];
 						var meetDate = meetDate.split("-");
-						
+
 						$('#meetingId').val(meetingId);
-						$('#meetDate').val(meetDate[1]+"/"+meetDate[2]+"/"+meetDate[0]);
+						$('#meetDate').val(meetDate[1] + "/" + meetDate[2] + "/" + meetDate[0]);
 						$('#meetTime').val(meetTime);
 						$('#resKind').val(item.resKind);
 						$('#maxNum').val(item.maxNum);
@@ -308,8 +306,6 @@ var meetingId = "<%=request.getParameter("meetingId")%>";
 
 	})
 </script>
-
-
 <script>
 	$(function() {
 		$("#meetDate").datepicker();
@@ -327,25 +323,20 @@ var meetingId = "<%=request.getParameter("meetingId")%>";
 </head>
 <body>
 	<div class="container" id="form-div">
-		<form name="requestForm"
-			action="${pageContext.request.contextPath}/ET" method="post">
+		<form name="requestForm" action="${pageContext.request.contextPath}/ET" method="post">
 			<table class="table table-bordered" height="500">
 				<tbody>
 					<tr>
 						<th>모임 제목:</th>
-						<td colspan=3><input type="text" placeholder="제목을 입력하세요. "
-							name="meetingTitle" id="meetingTitle" class="form-control" /></td>
+						<td colspan=3><input type="text" placeholder="제목을 입력하세요. " name="meetingTitle" id="meetingTitle" class="form-control" /></td>
 					</tr>
 					<tr>
 						<th>음식점이름</th>
-						<td><input type="text" id="resName" name="resName"
-							readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input
-							type="hidden" id="resAddr" name="resAddr" /> <input
-							type="hidden" id="resPhone" name="resPhone" /> <input
-							type="hidden" id="resLat" name="resLat" /> <input type="hidden"
-							id="resLng" name="resLng" /> <input type="hidden" name="command"
-							> <input id="meetingId" type="hidden" name="meetingId"
-							></td>
+						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr"
+								name="resAddr"
+							/> <input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
+								name="resLng"
+							/> <input type="hidden" name="command"> <input id="meetingId" type="hidden" name="meetingId"></td>
 						<th>음식메뉴</th>
 						<td><input type="text" id="resKind" name="resKind"></td>
 					</tr>
@@ -370,14 +361,13 @@ var meetingId = "<%=request.getParameter("meetingId")%>";
 						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. " id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan=4><input id="enroll" type="button" value="등록"
-							onclick="sendData()" class="pull-right" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+						<td colspan=4><input id="enroll" type="button" value="등록" onclick="sendData()" class="pull-right" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
                     <a class="btn btn-default" type="reset"> reset </a>
                     <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> --></td>
 					</tr>
-				</form>
-			</tbody>
-		</table>
+					</form>
+				</tbody>
+			</table>
 	</div>
 	<%-- <div id="form-div">
 		<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">

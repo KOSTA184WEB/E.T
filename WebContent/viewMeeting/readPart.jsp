@@ -7,21 +7,11 @@
 <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
 
 <SCRIPT language=javascript>
-
-/* $("#btn").click(function){
-	var urlAddr ="meet";
-	if(${session.memberId}==${dto.memberId}){
-		urlAddr ="cancel";
-		$(this).val("모임탈퇴");
-	}
-} */
 function map_value(){
 	document.map.location='<%=request.getContextPath()%>/viewMeeting/meetingPartMap.jsp?lat=${dto.lat}&lng=${dto.lng}&name=${dto.resName}';
 }
 function sendUpdate(){
 	location.href="<%=request.getContextPath()%>/viewMeeting/createMeeting.jsp?meetingId="+document.requestForm.meetingId.value;
-	/* document.requestForm.command.value ="selectUpdate";
-	document.requestForm.submit(); */
 }
 
 function sendMeet(){

@@ -41,6 +41,33 @@ public class HotplaceDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		
+		
 		return restaurantList;
 	}
+
+	public static RestaurantDTO selectAllByResName(String resName) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		RestaurantDTO dto = new RestaurantDTO();
+		String sql = "select * from restaurant where res_name = ?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, resName);
+			rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				dto = new RestaurantDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+						rs.getString(5),rs.getInt(6),rs.getDouble(7),rs.getDouble(8),rs.getInt(9));	
+			}
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return dto;
+	}
+	
 }

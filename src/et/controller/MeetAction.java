@@ -44,7 +44,7 @@ public class MeetAction implements Action {
 			System.out.println("action:"+ result);
 			
 			if(result >0) {
-				mv.setPath("ET");
+				mv.setPath("ET?command=selectParticipating");
 				mv.setRedirect(true);
 			}
 			

@@ -161,3 +161,6 @@ CREATE TABLE admin_board (
 	isPublic VARCHAR2(5) NOT NULL /* public */
 );
 commit;
+
+select * from MEETING
+select * from MEETING,RESTAURANT where RESTAURANT.RES_ID=MEETING.RES_ID and meeting.meeting_id='4'

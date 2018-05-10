@@ -118,6 +118,8 @@ public interface EtService {
 	public void updateResCount(String resId, boolean state) throws SQLException;
 
 	public String searchResIdByMeetingId(String meetingId) throws SQLException;
+	
+	public RestaurantDTO selectAllByResName(String resName) throws SQLException;
 
 	MeetResDTO selectById(String meetingId, boolean flag, String loginId) throws SQLException;
 

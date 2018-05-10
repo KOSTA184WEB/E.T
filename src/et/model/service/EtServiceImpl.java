@@ -541,6 +541,16 @@ public class EtServiceImpl implements EtService {
 	public int updateNotice(NoticeDTO noticeDTO) throws SQLException {
 		return 0;
 	}
+	
+	
+@Override
+	public RestaurantDTO selectAllByResName(String resName) throws SQLException {
+		RestaurantDTO dto = HotplaceDAO.selectAllByResName(resName);
+		if(dto == null) {
+			throw new SQLException("dto 가져오기 실패");
+		}
+		return dto;
+	} 
 
 	@Override
 	public MeetResDTO selectById(String meetingId, boolean flag) throws SQLException {
