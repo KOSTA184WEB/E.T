@@ -25,7 +25,6 @@ import et.model.dto.ReviewDTO;
 
 
 public class EtServiceImpl implements EtService {
-   EtDAO etDao = new EtDAOImpl();
 
 
 	private MemberDAO memberDAO = new MemberDAO();
@@ -47,7 +46,7 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public MemberDTO selectMemberInfo(String memberId) throws SQLException {
+	public MemberDTO selectMember(String memberId) throws SQLException {
 		
 		MemberDTO memberDTO = new MemberDTO();
 		
@@ -61,7 +60,7 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public int updateMemberInfo(MemberDTO memberDTO) throws SQLException{
+	public int updateMember(MemberDTO memberDTO) throws SQLException{
 		
 		int result = memberDAO.updateMember(memberDTO);
 		if(result==0) {
@@ -73,8 +72,12 @@ public class EtServiceImpl implements EtService {
 	   
    @Override
    public int insertMember(MemberDTO memberDto) throws SQLException{
-      // TODO Auto-generated method stub
-      return 0;
+     int re = MemberDAO.insert(memberDto);
+
+		if (re == 0) {
+			throw new SQLException("가입이 되지 않았습니다.");
+		}
+		return re;
    }
 
    @Override
@@ -336,7 +339,7 @@ public class EtServiceImpl implements EtService {
 		int result = myPageDAO.cancelMeeting(memberId, participantId);
 		
 		if(result==0) {
-			throw new SQLException("취소sql 실패");
+			throw new SQLException("취소 실패");
 		}
 		
 		return result;

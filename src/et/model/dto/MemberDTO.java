@@ -11,6 +11,7 @@ public class MemberDTO {
 	private String memberEmail;
 	private String memberQuestion;
 	private String memberAnswer;
+	private int reportCount;
 	
 	public MemberDTO(){}
 	

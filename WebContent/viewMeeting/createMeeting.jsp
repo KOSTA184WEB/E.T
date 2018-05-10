@@ -17,7 +17,7 @@
 	<%@ include file="../header.jsp" %>
 </header>
 <!-- 컨테이너로 씌울 경우 : 고정값으로 정해져 버린다. 연구필요...... -->
-<span><iframe src="createMeetingTop.html" width="100%"></iframe></span>
+<div style="width: 100%;height:250px"><iframe src="createMeetingTop.html" width="100%" height="250"></iframe></div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<iframe src="meetingForm.jsp" width="100%" height="500px" scrolling="no"></iframe>
 </div>

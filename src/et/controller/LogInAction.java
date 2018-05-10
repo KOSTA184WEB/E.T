@@ -21,7 +21,7 @@ public class LogInAction implements Action {
 			throws ServletException, IOException {
 	
 		ModelAndView mv = new ModelAndView();
-		
+		mv.setPath("viewLogin/loginSuccess.jsp");
 		// post 방식 한글 인코딩 설정
 		request.setCharacterEncoding("UTF-8");
 						
@@ -47,13 +47,10 @@ public class LogInAction implements Action {
 				// loginOk.jsp 로 이동하기 전에 세션영역에 이름과 접속시간을 저장
 				HttpSession session = request.getSession();
 				session.setAttribute("loginId", inputId);
-				session.setAttribute("loginPw", inputPw);
 				session.setAttribute("loginTime",new Date().toLocaleString());
 				
 				request.setAttribute("memberDTO", memberDTO);
-				
-				//mv.setRedirect(true);
-				mv.setPath("index.html");
+				request.setAttribute("loginMsg", "success");
 			}
 
 /*			}else { // 아니면 메시지 띄우고 뒤로 이동한다.

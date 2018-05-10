@@ -12,9 +12,8 @@
 <div class="footer">
 			<div class="container">
 				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.2s">
-					<h2>Multi</h2>
-					<p>In a elit in lorem congue varius. Sed nec arcu. Etiam sit amet augue. Fusce fermen tum neque a rutrum varius odio pede ullamcorp-er tellus ut
-						dignissim nisi risus non tortor. Aliquam mollis neque.</p>
+					<h2>E T</h2>
+					<p>Let's Eat Together bros!! Don't be alone</p>
 					<ul class="social-network">
 						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook fa-1x"></i></a></li>
 						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter fa-1x"></i></a></li>

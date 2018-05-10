@@ -14,70 +14,38 @@
 <link href="${pageContext.request.contextPath}/css/prettyPhoto.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
 <script>
-	function overColor_nav1() {
-		var element = document.getElementById("nav1");
-		element.style.color = "#4D8923";
+function oneOver(){
+	document.getElementById("td1").className = 'fa fa-user fa-spin fa-5x';
+}
 
-	}
+function oneOut(){
+	document.getElementById("td1").className = 'fa fa-user fa-5x';
+}
 
-	function outColor_nav1() {
-		var element = document.getElementById("nav1");
-		element.style.color = "#000000";
+function twoOver(){
+	document.getElementById("td2").className = 'fa fa-sign-in fa-spin fa-5x';
+}
 
-	}
+function twoOut(){
+	document.getElementById("td2").className = 'fa fa-sign-in fa-5x';
+}
 
-	function overColor_nav2() {
-		var element = document.getElementById("nav2");
-		element.style.color = "#4D8923";
+function threeOver(){
+	document.getElementById("td3").className = 'fa fa-magic fa-spin fa-5x';
+}
 
-	}
+function threeOut(){
+	document.getElementById("td3").className = 'fa fa-magic fa-5x';
+}
 
-	function outColor_nav2() {
-		var element = document.getElementById("nav2");
-		element.style.color = "#000000";
-
-	}
-
-	function overColor_nav3() {
-		var element = document.getElementById("nav3");
-		element.style.color = "#4D8923";
-	}
-
-	function outColor_nav3() {
-		var element = document.getElementById("nav3");
-		element.style.color = "#000000";
-	}
 </script>
 </head>
 <body>
 	<header>
 		<%@ include file="../header.jsp"%>
 	</header>
-	<!-- 컨테이너로 씌울 경우 : 고정값으로 정해져 버린다. 연구필요...... -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="../images/carousel/1.jpg" style="width: 100%;">
-			</div>
-			<div class="item">
-				<img src="../images/carousel/2.jpg" style="width: 100%;">
-			</div>
-			<div class="item">
-				<img src="../images/carousel/3.jpg" style="width: 100%;">
-			</div>
-		</div>
-		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-		</a> <a class="right carousel-control" href="#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
-	</div>
+	<%@ include file="signUpForm.jsp"%>
+	
 	<footer>
 		<%@ include file="../footer.jsp"%>
 	</footer>
