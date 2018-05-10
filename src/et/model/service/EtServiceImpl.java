@@ -376,8 +376,17 @@ public class EtServiceImpl implements EtService {
 			throw new SQLException("디파짓 차감 실패");
 		}
 		return result;
+	}
+
+	@Override
+	public RestaurantDTO selectAllByResName(String resName) throws SQLException {
+		RestaurantDTO dto = HotplaceDAO.selectAllByResName(resName);
+		if(dto == null) {
+			throw new SQLException("dto 가져오기 실패");
+		}
+		return dto;
 	} 
    
-
+	
 
 }

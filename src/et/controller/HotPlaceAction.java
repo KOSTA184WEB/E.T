@@ -43,9 +43,15 @@ public class HotPlaceAction implements Action {
 				JSONArray jArray = new JSONArray();
 				for(int i = 0; i<restaurantList.size(); i++) {
 					JSONObject sObject = new JSONObject();
+					sObject.put("resId", restaurantList.get(i).getResId());
 					sObject.put("resName", restaurantList.get(i).getResName());
+					sObject.put("resKind", restaurantList.get(i).getResKind());
+					sObject.put("resAddress", restaurantList.get(i).getResAddress());
+					sObject.put("resPhone", restaurantList.get(i).getResPhone());
+					sObject.put("resRate", restaurantList.get(i).getResRate());
 					sObject.put("lat", restaurantList.get(i).getLat());
 					sObject.put("lng", restaurantList.get(i).getLng());
+					sObject.put("meetingCount", restaurantList.get(i).getMeetingCount());
 					jArray.add(sObject);
 				}
 				
@@ -57,6 +63,7 @@ public class HotPlaceAction implements Action {
 			}
 			
 			String objString = obj.toString();
+			
 			request.setAttribute("obj", objString);
 			mv.setPath("/viewHotplace/hotPlaceListView.jsp");
 			//request.getRequestDispatcher("meetView/hotPlaceListView.jsp").forward(request,response);

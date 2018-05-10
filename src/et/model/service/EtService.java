@@ -96,6 +96,8 @@ public interface EtService {
     */
    public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException;
 
+public RestaurantDTO selectAllByResName(String resName) throws SQLException;
+
    
 
 }

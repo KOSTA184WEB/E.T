@@ -60,16 +60,7 @@
 		}
 	}
 
-	function loginOpen() {
-		var popupX = (window.screen.width/2) - (500/2);
-		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
-		var popupY= (window.screen.height/2) - (300/2);
-		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-		window.open("${pageContext.request.contextPath}/viewLogin/loginForm.jsp", "win", 'status=no, height=300, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-		
-	}
 </script>
 
 
@@ -168,7 +159,7 @@
 					</div>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="${pageContext.request.contextPath}/viewSignUp/signUpIntro.jsp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
+					<li><a href="${pageContext.request.contextPath}/viewSignUp/register.jsp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
 					<li><a href="#myModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
 				</ul>
 				<div class="navbar-collapse collapse">
@@ -215,7 +206,7 @@
                    		 로그인</button>
                 	</form>
            			</div>
-           				 <a href="${pageContext.request.contextPath}/" class="text-center new-account">같이 드시고 싶으셨쎄여?_(회원가입)</a>
+           				 <a href="${pageContext.request.contextPath}/viewSignUp/register.jsp" class="text-center new-account">같이 드시고 싶으셨쎄여?_(회원가입)</a>
        			 	</div>
     			</div>
 			</div>
