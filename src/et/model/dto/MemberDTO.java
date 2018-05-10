@@ -16,10 +16,11 @@ public class MemberDTO {
 	public MemberDTO(){}
 	
 	// ¼öÁ¤¿ë
-	public MemberDTO(String memberId, String memberPw, String memberPhone, String memberEmail, String memberAnswer) {
+	public MemberDTO(String memberId, String memberPw, String memberGender, String memberPhone, String memberEmail, String memberAnswer) {
 		super();
 		this.memberId = memberId;
 		this.memberPw = memberPw;
+		this.memberGender = memberGender;
 		this.memberPhone = memberPhone;
 		this.memberEmail = memberEmail;
 		this.memberAnswer = memberAnswer;
