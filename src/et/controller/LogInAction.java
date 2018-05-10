@@ -21,7 +21,7 @@ public class LogInAction implements Action {
 			throws ServletException, IOException {
 	
 		ModelAndView mv = new ModelAndView();
-		mv.setPath("viewLogin/loginSuccess.jsp");
+		mv.setPath("index.html");
 		// post 방식 한글 인코딩 설정
 		request.setCharacterEncoding("UTF-8");
 						

@@ -40,10 +40,7 @@ function threeOut(){
 	document.getElementById("td3").className = 'fa fa-magic fa-5x';
 }
 
-function click_img(){
-	alert('로그인 후 이용해주세요.');
-	location.href = '#';
-}
+
 
 </script>
 
@@ -71,7 +68,7 @@ function click_img(){
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-							<i onclick="click_img()" id="td1" class="fa fa-user fa-5x" style="background:#51E87A" onmouseover="oneOver()" onmouseout="oneOut()"></i>
+							<i href="#myModal" data-toggle="modal" id="td1" class="fa fa-user fa-5x" style="background:#51E87A" onmouseover="oneOver()" onmouseout="oneOut()"></i>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 							<h4>모집하기</h4>
@@ -80,7 +77,7 @@ function click_img(){
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.9s">
-							<i onclick="click_img()" id="td2" class="fa fa-sign-in fa-5x" style="background:#FF773A" onmouseover="twoOver()" onmouseout="twoOut()"></i>
+							<i href="#myModal" data-toggle="modal" id="td2" class="fa fa-sign-in fa-5x" style="background:#FF773A" onmouseover="twoOver()" onmouseout="twoOut()"></i>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
 							<h4>참여하기</h4>
@@ -89,7 +86,7 @@ function click_img(){
 					</div>
 					<div class="col-md-4">
 						<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="1.5s">
-							<i onclick="click_img()" id="td3" class="fa fa-magic fa-5x" style="background:#79ACFF" onmouseover="threeOver()" onmouseout="threeOut()"></i>
+							<i href="#myModal" data-toggle="modal" id="td3" class="fa fa-magic fa-5x" style="background:#79ACFF" onmouseover="threeOver()" onmouseout="threeOut()"></i>
 						</div>
 						<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.5s">
 							<h4>핫플레이스</h4>
@@ -99,6 +96,45 @@ function click_img(){
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 		 <div class="modal-dialog">
+    		<div class="modal-content">
+      			
+      		<div class="modal-body">
+      			<div class="container">
+   					 <div class="row">
+        				<div class="col-sm-6">
+            					<div class="account-wall">
+                					<center><img src="${pageContext.request.contextPath}/images/ET_Logo.png" style="width:150px;height:100px;"></center>
+                	<form class="form-signin" method="post" action="${pageContext.request.contextPath}/ET?command=login">
+                		<input type="text" name="memberId" class="form-control" placeholder="ID" required autofocus>
+                		<input type="password" name="memberPw" class="form-control" placeholder="Password" required>
+                		<button class="btn btn-lg btn-success btn-block" type="submit">
+                   		 로그인</button>
+                	</form>
+           			</div>
+           				 <a href="${pageContext.request.contextPath}/" class="text-center new-account">같이 드시고 싶으셨쎄여?_(회원가입)</a>
+       			 	</div>
+    			</div>
+			</div>
+      		
+      		
+      		
+      		
+     		 </div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+      		</div>
+    		</div> <!-- 모달 콘텐츠 -->
+  		</div> <!-- 모달 다이얼로그 -->
+	</div> <!-- 모달 전체 윈도우 -->
+		
+		
 		
 		<%
 		}else{
