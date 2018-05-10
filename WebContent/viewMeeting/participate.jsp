@@ -106,8 +106,8 @@
 			 
 			 <div class="col-md-4">
 					 <div class="widget search">
-                        <form class="form-inline" >
-                            <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here" name="keyWord">
+                        <form class="form-inline">
+                            <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
                             <input type="button" class="btn btn-primary readmore" value="검색">
                         </form>
                     </div><!--/.search-->
