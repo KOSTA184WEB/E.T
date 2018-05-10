@@ -2,6 +2,7 @@ alter table member drop column deposit
 insert into member values('et','1234','이티',19910109,20,'여','0101111111','etet@gmail.com','이름뭐야','et','c',0);
 insert into member values('et2','1234','이티2',19981223,20,'여','0101111111','etet1@gmail.com','이름뭐야','et','c',0);
 select *from member
+select *from participant
 /* member */
 CREATE TABLE member (
 	member_id VARCHAR2(20) PRIMARY KEY, 

@@ -150,8 +150,8 @@
 </head>
 <body>
 	<%
-      if (session.getAttribute("loginId") == null) {
-   %>
+		if (session.getAttribute("loginId") == null) {
+	%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="navigation">
 			<div class="container">
@@ -185,9 +185,7 @@
 								onmouseout="outColor_nav1()"
 							>Meet</a></li>
 							<li role="presentation"><a id="nav2" href="#" onclick="click_nav()" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
-							<li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewLogin/loginForm.jsp" onmouseover="overColor_nav3()"
-								onmouseout="outColor_nav3()"
-							>MyPage</a></li>
+							<li role="presentation"><a id="nav3" href="#" onclick="click_nav()" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
 						</ul>
 					</div>
 				</div>
@@ -227,8 +225,8 @@
 	</div>
 	<!-- 모달 전체 윈도우 -->
 	<%
-      } else {
-   %>
+		} else {
+	%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="navigation">
 			<div class="container">
@@ -274,7 +272,7 @@
 		</div>
 	</nav>
 	<%
-      }
-   %>
+		}
+	%>
 </body>
 </html>
