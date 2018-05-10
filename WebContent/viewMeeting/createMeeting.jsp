@@ -14,16 +14,17 @@
 <link href="../css/style.css" rel="stylesheet" />
 </head>
 <header>
-	<%@ include file="../header.jsp" %>
+	<%@ include file="../header.jsp"%>
 </header>
 <!-- 컨테이너로 씌울 경우 : 고정값으로 정해져 버린다. 연구필요...... -->
-<div style="width: 100%;height:250px"><iframe src="createMeetingTop.html" width="100%" height="250"></iframe></div>
+<div style="width: 100%; height: 250px">
+	<iframe src="createMeetingTop.html" width="100%" height="250"></iframe>
+</div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<iframe src="meetingForm.jsp" width="100%" height="500px" scrolling="no"></iframe>
 </div>
-
 <footer>
-	<%@ include file="../footer.jsp" %>
+	<%@ include file="../footer.jsp"%>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="../js/jquery-2.1.1.min.js"></script>

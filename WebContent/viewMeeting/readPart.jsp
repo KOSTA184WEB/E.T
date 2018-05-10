@@ -26,7 +26,6 @@ function sendUpdate(){
 
 function sendMeet(){
 	if(confirm("이 모임에 참여하시겠습니까?")==true){
-		alert("할래");
 		document.requestForm.command.value ="meet";
 		document.requestForm.submit();
 	}else{

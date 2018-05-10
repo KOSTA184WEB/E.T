@@ -22,8 +22,6 @@ public class ReadPartAction implements Action {
 		boolean state = false;
 		if(flag==null) state=true;
 		
-		System.out.println("read="+meetingId);
-		
 		EtService etService = new EtServiceImpl();
 		ModelAndView mv = new ModelAndView();
 		

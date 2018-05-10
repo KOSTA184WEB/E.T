@@ -103,6 +103,8 @@ public interface EtService {
 	public int searchMeetingByKeyWord(String keyWord) throws SQLException;
 	
 	public String searchResIdByAddr(String addr) throws SQLException;
+
+	List<RestaurantDTO> selectRestaurantsByKeyWord(String keyWord) throws SQLException;
 	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
 

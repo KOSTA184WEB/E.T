@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import et.model.dto.MeetingDTO;
+import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 import et.util.DbUtil;
 
@@ -25,7 +26,7 @@ public class MeetingDAO {
 					+ " | " + meetingDto.getMeetingDate() + " | " + meetingDto.getDeadline() + " | " + meetingDto.getMeetingDes() + " | " + meetingDto.getMeetingTitle()
 					+ " | " + meetingDto.getGenderOption() + " | ");
 			long deadLine = Long.parseLong(meetingDto.getMeetingDate())-10000;
-			ps.setString(1, "3");
+			ps.setString(1, meetingDto.getMemberId());
 			ps.setString(2, meetingDto.getResId());
 			ps.setString(3, meetingDto.getMenu());
 			ps.setInt(4, meetingDto.getMaxNum());
@@ -60,5 +61,23 @@ public class MeetingDAO {
 	public static int deleteMeeting(String meetId) throws SQLException {
 		return 0;
 
+	}
+
+	public static int insertParticipant(ParticipantDTO partDto) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("insert into participant values(part_seq.nextval,?,meet_seq.currval,?,sysdate)");
+
+			ps.setString(1, partDto.getMemberId());
+			ps.setString(2, partDto.getParticipantCancel());
+			
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
 	}
 }

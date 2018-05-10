@@ -35,7 +35,7 @@ public class HotPlaceAction implements Action {
 		List<RestaurantDTO> restaurantList = null;
 		
 		try {
-			restaurantList = etService.selectByKeyWord(keyWord);
+			restaurantList = etService.selectRestaurantsByKeyWord(keyWord);
 					
 			JSONObject obj = new JSONObject();	
 			

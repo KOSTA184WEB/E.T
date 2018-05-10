@@ -259,8 +259,9 @@
 					</tr>
 					<tr>
 						<th>음식점이름</th>
-						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr" name="resAddr" />
-							<input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
+						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr"
+								name="resAddr"
+							/> <input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
 								name="resLng"
 							/></td>
 						<th>음식메뉴</th>
@@ -287,8 +288,7 @@
 						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. " id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" />
-					<!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
                     <a class="btn btn-default" type="reset"> reset </a>
                     <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> --></td>
 					</tr>

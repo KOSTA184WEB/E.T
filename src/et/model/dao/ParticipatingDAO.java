@@ -18,7 +18,6 @@ public class ParticipatingDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MeetingDTO> list = new ArrayList<>();
-		System.out.println("dao¾È³ç");
 		try {
 			con=DbUtil.getConnection();
 			ps = con.prepareStatement("select * from meeting ");
@@ -65,7 +64,7 @@ public class ParticipatingDAO {
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into participant values(part_sequence.nextval,?,?,?,sysdate)");
+			ps = con.prepareStatement("insert into participant values(part_seq.nextval,?,?,?,sysdate)");
 			ps.setString(1, dto.getMemberId());
 			ps.setString(2, dto.getMeetingId());
 			ps.setString(3, dto.getParticipantCancel());

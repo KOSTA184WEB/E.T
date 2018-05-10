@@ -5,7 +5,6 @@
 
 <c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
 <link rel="stylesheet" href="${path}/css/style.css">
-<% session.setAttribute("loginId","etadmin");%>
 <!DOCTYPE html>
 <html>
 <head>
