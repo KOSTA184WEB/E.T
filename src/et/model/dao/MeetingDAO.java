@@ -2,6 +2,7 @@ package et.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -53,12 +54,64 @@ public class MeetingDAO {
 	}
 
 	public static int updateMeeting(MeetingDTO meetingDto) throws SQLException {
-		return 0;
+		Connection con =null;
+		PreparedStatement ps = null;
+		int result=0;
+		try {
+			System.out.println(meetingDto.getResId());
+			System.out.println(meetingDto.getMenu());
+			System.out.println(meetingDto.getMaxNum());
+			System.out.println(meetingDto.getMeetingDate());
+			System.out.println(meetingDto.getDeadline());
+			System.out.println(meetingDto.getMeetingDes());
+			System.out.println(meetingDto.getMeetingTitle());
+			System.out.println(meetingDto.getGenderOption());
+			System.out.println(meetingDto.getMeetingId());
 
+			con =DbUtil.getConnection();
+			ps=con.prepareStatement("update meeting set res_id=?,menu=?,max_num=?,meeting_date=to_date(?,'yyyyMMddhh24miss'),deadline=to_date(?,'yyyyMMddhh24miss'),meeting_description=?,meeting_title=?,gender_option=? where meeting_id=? ");
+			long deadline = Long.parseLong(meetingDto.getMeetingDate())-10000;
+			ps.setString(1, meetingDto.getResId());
+			ps.setString(2, meetingDto.getMenu());
+			ps.setInt(3, meetingDto.getMaxNum());
+			ps.setString(4, meetingDto.getMeetingDate());
+			ps.setString(5, deadline+"");
+			ps.setString(6, meetingDto.getMeetingDes());
+			ps.setString(7, meetingDto.getMeetingTitle());
+			ps.setString(8, meetingDto.getGenderOption());
+			ps.setString(9, meetingDto.getMeetingId());
+			result= ps.executeUpdate();
+			
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
 	}
+	
 
 	public static int deleteMeeting(String meetId) throws SQLException {
 		return 0;
 
+	}
+
+	public static String searchResIdByMeetingId(String meetingId) throws SQLException {
+		Connection con =null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String dbResId = null;
+		try {
+			con =DbUtil.getConnection();
+			ps=con.prepareStatement("select res_id from meeting where meeting_id =?");
+			ps.setString(1, meetingId);
+			rs= ps.executeQuery();
+			
+			if(rs.next()) {
+				dbResId = rs.getString(1);
+				System.out.println(dbResId);
+			}
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return dbResId;
 	}
 }

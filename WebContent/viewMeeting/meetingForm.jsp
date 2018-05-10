@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,25 +201,36 @@
 	color: #777;
 }
 </style>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <!-- timepicker -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.timepicker.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/jquery.timepicker.css" rel="stylesheet">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery.timepicker.min.js"></script>
+<link
+	href="${pageContext.request.contextPath}/css/jquery.timepicker.css"
+	rel="stylesheet">
 <!-- datepicker -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- 게시글 작성 폼 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"
->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous">
+
+
+
 </script>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -233,6 +245,83 @@
 <%
 	}
 %>
+
+<%
+	request.setCharacterEncoding("utf-8");
+	String isUpdate = (String) request.getAttribute("update");
+	System.out.println(isUpdate);
+	if (isUpdate != null) {
+%>
+<script type="text/javascript">
+	alert("수정완료!");
+	top.location.href = "viewMeeting/meetingIntro.jsp";
+</script>
+<%
+	}
+%>
+
+<script>
+
+
+function sendData(){
+	if(this.value=="등록"){
+		document.requestForm.command.value="insertMeeting"
+		doucment.requestFrom.submit();
+	}else{
+		document.requestForm.command.value="updateMeeting"
+		document.requestForm.submit();
+	}
+}
+var meetingId = "<%=request.getParameter("meetingId")%>";
+	$(function() {
+		function selectAll() {
+			$.ajax({
+				type : "post", //전송방식
+				url : "../updateMeetingServlet", //서버주소
+				data : "meetingId=" + meetingId,//서버에게 보낼 parameter 정보
+				dataType : "json", //서버가 front로 보내주는 데이터 타입 (text ,html, xml, json)
+				success : function(result) {
+					$.each(result, function(index, item) {
+						$('#enroll').val("수정")
+						$('#meetingTitle').val(item.meetingTitle);
+						$('#resName').val(item.resName);
+						var meetDate = item.meetingDate;
+						var meetDateArr = meetDate.split(" ");
+						meetDate =meetDateArr[0];
+						var meetTime = meetDateArr[1];
+						var meetDate = meetDate.split("-");
+						
+						$('#meetingId').val(meetingId);
+						$('#meetDate').val(meetDate[1]+"/"+meetDate[2]+"/"+meetDate[0]);
+						$('#meetTime').val(meetTime);
+						$('#resKind').val(item.resKind);
+						$('#maxNum').val(item.maxNum);
+						$('#meetDescription').val(item.meetingDescription);
+						$('#resLat').val(item.lat);
+						$('#resLng').val(item.lng);
+						$('#resAddr').val(item.resAddr);
+						$('#resPhone').val(item.resPhone);
+						alert(meetingId);
+						alert(item.resAddr);
+						alert(item.resPhone)
+						alert(item.lat)
+						alert(item.lng)
+						alert(item.genderOption)
+
+					})
+
+				},
+				error : function(err) {
+					console.log(err)
+				}
+			});
+		}
+		selectAll();
+
+	})
+</script>
+
+
 <script>
 	$(function() {
 		$("#meetDate").datepicker();
@@ -250,19 +339,25 @@
 </head>
 <body>
 	<div class="container" id="form-div">
-		<table class="table table-bordered" height="500">
-			<tbody>
-				<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">
+		<form name="requestForm"
+			action="${pageContext.request.contextPath}/ET" method="post">
+			<table class="table table-bordered" height="500">
+				<tbody>
 					<tr>
 						<th>모임 제목:</th>
-						<td colspan=3><input type="text" placeholder="제목을 입력하세요. " name="meetingTitle" id="meetingTitle" class="form-control" /></td>
+						<td colspan=3><input type="text" placeholder="제목을 입력하세요. "
+							name="meetingTitle" id="meetingTitle" class="form-control" /></td>
 					</tr>
 					<tr>
 						<th>음식점이름</th>
-						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr" name="resAddr" />
-							<input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
-								name="resLng"
-							/></td>
+						<td><input type="text" id="resName" name="resName"
+							readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input
+							type="hidden" id="resAddr" name="resAddr" /> <input
+							type="hidden" id="resPhone" name="resPhone" /> <input
+							type="hidden" id="resLat" name="resLat" /> <input type="hidden"
+							id="resLng" name="resLng" /> <input type="hidden" name="command"
+							> <input id="meetingId" type="hidden" name="meetingId"
+							></td>
 						<th>음식메뉴</th>
 						<td><input type="text" id="resKind" name="resKind"></td>
 					</tr>
@@ -278,23 +373,26 @@
 					</tr>
 					<tr>
 						<th>약속날짜</th>
-						<td><input type="text" id="meetDate" name="meetDate" readonly="readonly"></td>
+						<td><input type="text" id="meetDate" name="meetDate"
+							readonly="readonly"></td>
 						<th>약속시간</th>
-						<td><input type="text" id="meetTime" name="meetTime" data-time-format="H:i:s" width="10"></td>
+						<td><input type="text" id="meetTime" name="meetTime"
+							data-time-format="H:i:s" width="10"></td>
 					</tr>
 					<tr>
 						<th>내용:</th>
-						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. " id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
+						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. "
+								id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" />
-					<!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+						<td colspan=4><input id="enroll" type="button" value="등록"
+							onclick="sendData()" class="pull-right" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
                     <a class="btn btn-default" type="reset"> reset </a>
                     <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> --></td>
 					</tr>
-				</form>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</form>
 	</div>
 	<%-- <div id="form-div">
 		<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">
@@ -330,13 +428,13 @@
 		</form>
 	</div> --%>
 	<div class="map_wrap">
-		<div id="map" style="width: 800px; height: 500px; position: relative; overflow: hidden;"></div>
+		<div id="map"
+			style="width: 800px; height: 500px; position: relative; overflow: hidden;"></div>
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 :
-						<input type="text" value="광교 교촌" id="keyword" size="15">
+						키워드 : <input type="text" value="광교 교촌" id="keyword" size="15">
 						<button type="submit">검색하기</button>
 					</form>
 				</div>
@@ -346,7 +444,8 @@
 			<div id="pagination"></div>
 		</div>
 	</div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdd7a2e11f2f104074c37d4f5a8bba84&libraries=services"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdd7a2e11f2f104074c37d4f5a8bba84&libraries=services"></script>
 	<script>
 		// 마커를 담을 배열입니다
 		var markers = [];
@@ -413,7 +512,8 @@
 		// 검색 결과 목록과 마커를 표출하는 함수입니다
 		function displayPlaces(places) {
 
-			var listEl = document.getElementById('placesList'), menuEl = document.getElementById('menu_wrap'), fragment = document
+			var listEl = document.getElementById('placesList'), menuEl = document
+					.getElementById('menu_wrap'), fragment = document
 					.createDocumentFragment(), bounds = new daum.maps.LatLngBounds(), listStr = '';
 
 			// 검색 결과 목록에 추가된 항목들을 제거합니다
@@ -425,7 +525,8 @@
 			for (var i = 0; i < places.length; i++) {
 
 				// 마커를 생성하고 지도에 표시합니다
-				var placePosition = new daum.maps.LatLng(places[i].y, places[i].x), marker = addMarker(placePosition, i), itemEl = getListItem(
+				var placePosition = new daum.maps.LatLng(places[i].y,
+						places[i].x), marker = addMarker(placePosition, i), itemEl = getListItem(
 						i, places[i]); // 검색 결과 항목 Element를 생성합니다
 
 				// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -436,9 +537,10 @@
 				// 해당 장소에 인포윈도우에 장소명을 표시합니다
 				// mouseout 했을 때는 인포윈도우를 닫습니다
 				(function(marker, title) {
-					daum.maps.event.addListener(marker, 'mouseover', function() {
-						displayInfowindow(marker, title);
-					});
+					daum.maps.event.addListener(marker, 'mouseover',
+							function() {
+								displayInfowindow(marker, title);
+							});
 
 					daum.maps.event.addListener(marker, 'mouseout', function() {
 						infowindow.close();
@@ -451,9 +553,12 @@
 					itemEl.onclick = function() {
 						//var itemDivEle = this.childNodes[1];
 						var itemDivEle = this.getElementsByClassName("info");
-						var itemNameEle = itemDivEle[0].getElementsByTagName("h5")[0];
-						var itemAddr = itemDivEle[0].getElementsByTagName("span")[0];
-						var itemPhone = itemDivEle[0].getElementsByTagName("span")[2];
+						var itemNameEle = itemDivEle[0]
+								.getElementsByTagName("h5")[0];
+						var itemAddr = itemDivEle[0]
+								.getElementsByTagName("span")[0];
+						var itemPhone = itemDivEle[0]
+								.getElementsByTagName("span")[2];
 						var itemLat = marker.getPosition().getLat()
 						var itemLng = marker.getPosition().getLng();
 						//alert(resAddr.innerText);
@@ -497,17 +602,22 @@
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
 
-			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_' + (index + 1)
-					+ '"></span>' + '<div class="info">' + '   <h5>' + places.place_name + '</h5>';
+			var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
+					+ (index + 1)
+					+ '"></span>'
+					+ '<div class="info">'
+					+ '   <h5>' + places.place_name + '</h5>';
 
 			if (places.road_address_name) {
-				itemStr += '    <span>' + places.road_address_name + '</span>' + '   <span class="jibun gray">'
-						+ places.address_name + '</span>';
+				itemStr += '    <span>' + places.road_address_name + '</span>'
+						+ '   <span class="jibun gray">' + places.address_name
+						+ '</span>';
 			} else {
 				itemStr += '    <span>' + places.address_name + '</span>';
 			}
 
-			itemStr += '  <span class="tel">' + places.phone + '</span>' + '</div>';
+			itemStr += '  <span class="tel">' + places.phone + '</span>'
+					+ '</div>';
 
 			el.innerHTML = itemStr;
 			el.className = 'item';
@@ -524,11 +634,11 @@
 				spriteOrigin : new daum.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
 				offset : new daum.maps.Point(13, 37)
 			// 마커 좌표에 일치시킬 이미지 내에서의 좌표
-			}, markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions), marker = new daum.maps.Marker(
-					{
-						position : position, // 마커의 위치
-						image : markerImage
-					});
+			}, markerImage = new daum.maps.MarkerImage(imageSrc, imageSize,
+					imgOptions), marker = new daum.maps.Marker({
+				position : position, // 마커의 위치
+				image : markerImage
+			});
 
 			marker.setMap(map); // 지도 위에 마커를 표출합니다
 			markers.push(marker); // 배열에 생성된 마커를 추가합니다
@@ -546,7 +656,8 @@
 
 		// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 		function displayPagination(pagination) {
-			var paginationEl = document.getElementById('pagination'), fragment = document.createDocumentFragment(), i;
+			var paginationEl = document.getElementById('pagination'), fragment = document
+					.createDocumentFragment(), i;
 
 			// 기존에 추가된 페이지번호를 삭제합니다
 			while (paginationEl.hasChildNodes()) {
@@ -576,7 +687,8 @@
 		// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 		// 인포윈도우에 장소명을 표시합니다
 		function displayInfowindow(marker, title) {
-			var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+			var content = '<div style="padding:5px;z-index:1;">' + title
+					+ '</div>';
 
 			infowindow.setContent(content);
 			infowindow.open(map, marker);
