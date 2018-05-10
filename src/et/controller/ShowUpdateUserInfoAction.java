@@ -30,7 +30,7 @@ public class ShowUpdateUserInfoAction implements Action {
 		
 		try {
 			
-			MemberDTO memberDTO = service.selectMemberInfo(loginId);
+			MemberDTO memberDTO = service.selectMember(loginId);
 			request.setAttribute("memberDTO", memberDTO);
 			//System.out.println("action¿¡¼­ memberName : " + memberDTO.getMemberName());
 			request.setAttribute("memberName", memberDTO.getMemberName());

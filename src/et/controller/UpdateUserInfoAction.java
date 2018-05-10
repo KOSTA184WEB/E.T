@@ -33,7 +33,7 @@ public class UpdateUserInfoAction implements Action {
 		
 		try {
 			EtService service = new EtServiceImpl();
-			service.updateMemberInfo(memberDTO);
+			service.updateMember(memberDTO);
 			mv.setPath("ET?command=showUserInfo");
 			
 		}catch(SQLException e) {
