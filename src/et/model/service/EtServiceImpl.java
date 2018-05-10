@@ -2,29 +2,32 @@ package et.model.service;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import org.apache.jasper.xmlparser.SymbolTable;
-
 import et.model.dao.EtDAO;
 import et.model.dao.EtDAOImpl;
 import et.model.dao.HotplaceDAO;
 import et.model.dao.MeetingDAO;
+import et.model.dao.NoticeDAO;
 import et.model.dao.MemberDAO;
 import et.model.dao.MyPageDAO;
 import et.model.dao.MyPageDAOImpl;
 import et.model.dao.ParticipatingDAO;
 import et.model.dao.RestaurantDAO;
+import et.model.dao.ReviewDAO;
+import et.model.dao.ParticipatingDAO;
 import et.model.dto.AdminDTO;
 import et.model.dto.DepositDTO;
 import et.model.dto.MeetResDTO;
 import et.model.dto.MeetResPartDTO;
 import et.model.dto.MeetingDTO;
 import et.model.dto.MemberDTO;
+import et.model.dto.NoticeDTO;
 import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 import et.model.dto.ReviewDTO;
+import et.model.dao.ReviewDAOImpl;
 
-public class EtServiceImpl implements EtService {
+public class EtServiceImpl implements EtService {	
 
 	private MemberDAO memberDAO = new MemberDAO();
 
@@ -90,6 +93,8 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 	@Override
 	public List<MeetingDTO> selectAllPart() throws SQLException {
@@ -159,7 +164,7 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public int deleteParticipant(String memberId, String meetingId) {
+	public int deleteParticipant(String memberId, String meetingId) throws SQLException{
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -184,7 +189,7 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public RestaurantDTO selectRestaurant(String resId) {
+	public RestaurantDTO selectRestaurant(String resId)throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -198,13 +203,13 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public int updateRestaurant(RestaurantDTO restaurantDto) {
+	public int updateRestaurant(RestaurantDTO restaurantDto) throws SQLException{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int deleteRestaurant(String resId) {
+	public int deleteRestaurant(String resId) throws SQLException{
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -247,35 +252,113 @@ public class EtServiceImpl implements EtService {
 		return 0;
 	}
 
+ReviewDAO reviewDAO = new ReviewDAOImpl();
 	@Override
-	public int insertReview(ReviewDTO reviewDto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertReview(ReviewDTO reviewDto) throws SQLException {
+		int result = reviewDAO.insertReview(reviewDto);
+		if(result==0) throw new SQLException("등록되지 않았습니다");
+		return result;
 	}
 
 	@Override
-	public List<ReviewDTO> selectAllReview() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReviewDTO> selectAllReview() throws SQLException {
+		List<ReviewDTO> list = reviewDAO.selectAllReview();
+		//System.out.println("서비스:"+list);
+		return list;
 	}
 
 	@Override
-	public RestaurantDTO selectReview(String reviewId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ReviewDTO selectReview(String reviewId, boolean state) throws SQLException {
+		//조회수 증가
+		if(state) {
+			if(reviewDAO.addReviewReadNum(reviewId)==0) {
+				throw new SQLException("조회수를 증가시킬 수 없습니다");
+			}
+		}
+		//상세보기
+		ReviewDTO reviewDto = reviewDAO.selectReview(reviewId);
+		if(reviewDto==null) throw new SQLException(reviewId+"에 해당하는 후기가 없습니다");
+		return reviewDto;
 	}
 
 	@Override
-	public int updateReview(ReviewDTO reviewDto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateReview(ReviewDTO reviewDto) throws SQLException {
+		int result=reviewDAO.updateReview(reviewDto);
+		if(result==0) throw new SQLException("수정되지 않았습니다");
+		return result;
 	}
 
 	@Override
-	public int deleteReview(String reviewId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteReview(String reviewId,String reviewPw) throws SQLException {
+		int result=reviewDAO.deleteReview(reviewId, reviewPw);
+		if(result==0) throw new SQLException("삭제되지 않았습니다");
+		return result;
 	}
+	
+		
+	@Override
+	public List<String> selectMeetingsById(String memberId) throws SQLException{
+		List<String> list=reviewDAO.selectMeetingsById(memberId);
+		if(list==null) throw new SQLException("해당되는 모집ID가 없습니다");
+		return list;
+	}
+	
+	@Override 
+	public String selectMeetingTitle(String meetingId) throws SQLException{
+		String meetingTitle =reviewDAO.selectMeetingTitle(meetingId);
+		if(meetingTitle==null) throw new SQLException("해당되는 글이 없습니다");
+		return meetingTitle;
+	}
+	
+	@Override
+	public String selectRestaurantId(String meetingId) throws SQLException{
+		String resId =reviewDAO.selectRestaurantId(meetingId);
+		if(resId==null) throw new SQLException("해당되는 음식점이 없습니다");
+		return resId;
+	}
+	
+	@Override
+	public String selectMeetingDate(String meetingId) throws SQLException{
+		String meetingDate = reviewDAO.selectMeetingDate(meetingId);
+		if(meetingDate==null) throw new SQLException("해당되는 모임날짜가 없습니다");
+		return meetingDate;
+	}
+	
+	@Override
+	public int insertResturantRate(int resRate, String resId) throws SQLException{
+		int result = reviewDAO.insertResturantRate(resRate, resId);
+		if(result==0) throw new SQLException("평점을 추가하지 못했습니다");
+		return result;
+	}
+	
+	@Override
+	public int selectRestaurantRate(String resId) throws SQLException{
+		int result = reviewDAO.selectRestaurantRate(resId);
+		if(result==0) throw new SQLException("해당되는 평점이 없습니다");
+		return result;
+	}
+	
+	@Override
+	public String selectRestaurantKind(String resId) throws SQLException{
+		String resKind=reviewDAO.selectRestaurantKind(resId);
+		if(resKind==null) throw new SQLException("해당되는 음식종류가 없습니다");
+		return resKind;
+	}
+	
+	@Override
+	public List<ReviewDTO> searchBykeyWord(String keyField, String keyWord) throws SQLException{
+		List<ReviewDTO> list = reviewDAO.searchBykeyWord(keyField, keyWord);
+		if(list==null) throw new SQLException("해당되는 후기가 없습니다");
+		return list;
+	}
+	
+	@Override
+	public int AdminDeleteReview(String reviewId) throws SQLException{
+		int result=reviewDAO.AdminDeleteReview(reviewId);
+		if(result==0) throw new SQLException("삭제되지 않았습니다");
+		return result;
+	}
+	
 
 	@Override
 	public int insertAdmin(AdminDTO adminDto) {
@@ -302,13 +385,13 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public boolean isMeetingOpener(String meetingId, String memberId) {
+	public boolean isMeetingOpener(String meetingId, String memberId)throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public int searchMeetingByKeyWord(String keyWord) {
+	public int searchMeetingByKeyWord(String keyWord) throws SQLException{
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -414,6 +497,24 @@ public class EtServiceImpl implements EtService {
 			throw new SQLException("해당 meeting의 식당정보가 없습니다.");
 		}
 		return dbResId;
+	}
+
+	@Override
+	public List<NoticeDTO> selectNoticeAll() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NoticeDTO selectNotice(String noticeId, boolean state) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateNotice(NoticeDTO noticeDTO) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

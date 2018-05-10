@@ -50,7 +50,7 @@ $(function(){
 		%>
 		<script>
 			//alert("로그인 해주세요.");
-			location.href="../viewLogin/loginForm.jsp";
+			location.href="${path}/viewLogin/loginForm.jsp";
 		</script>
 		<%
 	}else{

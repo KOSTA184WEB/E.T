@@ -19,12 +19,13 @@
 		<%@ include file="../header.jsp" %>
 	</header>
 	
-	
-	
-	<div class="container">
-		<h1>헤더와 푸터사이 본문내용을 넣는 곳 입니다. 화면에 보이지는 않음!!!!!</h1>
+	<div class="aboutintro" style="margin-left:50px;">
+	<p><img src="../images/aboutUs/bigInfo.png" style="max-width:90%; height:auto;margin-top:60"/></p>
 	</div>
 	
+	<div class="aboutintro" style="margin-left:50px; margin-top:50px; height:800px;">
+	<p><img src="../images/aboutUs/bigMenu.png" style="max-width:90%; height:auto;margin-top:60"/></p>
+	</div>
 	
 	
 	<footer>
