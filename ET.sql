@@ -120,8 +120,11 @@ select * from member;
 select *from PARTICIPANT
 select*from  participant  where member_id='et' and meeting_id='m-1'
 
-/* deposit */
 
+
+/***************************** 여기부터 실행!!!!!!**************************************/
+
+/************************ deposit ************************/
 drop table deposit;
 
 Create table deposit(
@@ -136,4 +139,25 @@ deposit_update_date date not null
 create sequence d_seq;
 commit;
 insert into deposit values(1,'et','충전',0,null,0,'2018-01-01');
+commit;
+
+/************************ admin ************************/
+drop table admin_board;
+drop table admin;
+CREATE TABLE admin (
+	member_id VARCHAR2(20) PRIMARY KEY REFERENCES MEMBER(MEMBER_ID)
+);
+
+/************************ admin_board ************************/
+CREATE TABLE admin_board (
+	admin_board_id VARCHAR2(100) PRIMARY KEY, /* admin_board_id */
+	member_id VARCHAR2(20) REFERENCES admin(member_id), /* member_id */
+	admin_title VARCHAR2(100) NOT NULL, /* title */
+	admin_contents VARCHAR2(4000) NOT NULL, /* contents */
+	admin_writeday DATE NOT NULL, /* writeday */
+	admin_readnum NUMBER NOT NULL, /* readnum */
+	file_name VARCHAR2(50), /* file_name */
+	file_size NUMBER, /* file_size */
+	isPublic VARCHAR2(5) NOT NULL /* public */
+);
 commit;

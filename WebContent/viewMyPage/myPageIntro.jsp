@@ -62,9 +62,11 @@
 	</header>
 
 	
-	<%-- <c:set var="path" value="${pageContext.request.contextPath}" scope="application"/> --%>	
-	<iframe src="${pageContext.request.contextPath}/ET?command=myPageMain" width=100% height="400px" frameborder="no" >	
-	</iframe>
+	<div class="container-fluid">
+   <iframe src="${pageContext.request.contextPath}/ET?command=myPageMain" width="100%" height="850px" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+   </div> 
+	
+	
 	
 
 	<footer>

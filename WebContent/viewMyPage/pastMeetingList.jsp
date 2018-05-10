@@ -30,7 +30,7 @@
 		%>
 		<script>
 			//alert("로그인 해주세요.");
-			location.href="../viewMyPage/loginForm.jsp";
+			location.href="${path}/viewMyPage/loginForm.jsp";
 		</script>
 		<%
 	}else{
@@ -54,7 +54,7 @@
 	    <c:when test="${empty requestScope.pastMeetingList}"> 
 		<tr>
 	        <td colspan="4">
-	            <p align="center"><b><span style="font-size:9pt;">신청 내역 없을때 뜸</span></b></p>
+	            <p align="center"><b><span style="font-size:9pt;">참여 내역이 없습니다.</span></b></p>
 	        </td>
 	    </tr>	   
 	    </c:when>

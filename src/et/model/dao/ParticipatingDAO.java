@@ -33,18 +33,41 @@ public class ParticipatingDAO {
 		return list;
 	}
 	
-	public MeetResDTO selectById(String meetingId) throws SQLException{
+	public MeetResDTO meetingCheck(String meetingId, String loginId) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		MeetResDTO dto = null;
 		try {
 			con = DbUtil.getConnection();
-			ps= con.prepareStatement("select RESTAURANT.RES_ADDRESS,RESTAURANT.RES_NAME,MEETING.APPLY_NUM,MEETING.GENDER_OPTION,MEETING.MEETING_DATE,MEETING.MEETING_DESCRIPTION, RESTAURANT.lat, RESTAURANT.lng, Meeting.meeting_id ,Meeting.MAX_NUM , meeting.member_id from MEETING,RESTAURANT where RESTAURANT.RES_ID=MEETING.RES_ID and meeting.meeting_id=?");
+			ps= con.prepareStatement("select RESTAURANT.RES_ADDRESS,RESTAURANT.RES_NAME,MEETING.APPLY_NUM,MEETING.GENDER_OPTION,MEETING.MEETING_DATE,MEETING.MEETING_DESCRIPTION, RESTAURANT.lat, RESTAURANT.lng, Meeting.meeting_id ,Meeting.MAX_NUM , meeting.member_id ,participant.member_id from MEETING,RESTAURANT,PARTICIPANT where RESTAURANT.RES_ID=MEETING.RES_ID and meeting.meeting_id=? AND PARTICIPANT.MEMBER_ID=?");
+			ps.setString(1, meetingId);
+			ps.setString(2, loginId);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				dto= new MeetResDTO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getInt(10),rs.getString(11),rs.getString(12));
+			}
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return dto;
+	}
+	
+	
+	public MeetResDTO selectById(String meetingId, String loginId) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		MeetResDTO dto = null;
+		try {
+			//RESTAURANT.RES_ADDRESS,RESTAURANT.RES_NAME,MEETING.MEETING_TITLE,MEETING.APPLY_NUM,MEETING.GENDER_OPTION,MEETING.MEETING_DATE,MEETING.MEETING_DESCRIPTION, RESTAURANT.lat, RESTAURANT.lng, Meeting.meeting_id ,Meeting.MAX_NUM , meeting.member_id
+			con = DbUtil.getConnection();
+			ps= con.prepareStatement("select * from MEETING,RESTAURANT where RESTAURANT.RES_ID=MEETING.RES_ID and meeting.meeting_id=?");
 			ps.setString(1, meetingId);
 			rs=ps.executeQuery();
 			if(rs.next()) {
-				dto= new MeetResDTO(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getInt(10),rs.getString(11));
+				dto= new MeetResDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getInt(17),rs.getDouble(18),rs.getDouble(19),rs.getInt(20));
 			}
 		}finally {
 			DbUtil.dbClose(con, ps, rs);

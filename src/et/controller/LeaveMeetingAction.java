@@ -23,7 +23,8 @@ public class LeaveMeetingAction implements Action {
 		String loginId = (String)session.getAttribute("loginId");
 		
 		String participantId = request.getParameter("participantId");
-				
+		System.out.println("participantId : " + participantId);
+		
 		EtService service = new EtServiceImpl();
 	
 		ModelAndView mv = new ModelAndView();

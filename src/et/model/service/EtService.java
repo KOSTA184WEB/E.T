@@ -33,7 +33,7 @@ public interface EtService {
 	public MeetResDTO selectById(String meetingId,boolean flag) throws SQLException;
 	public boolean isParticipant(String memberId, String meetingId);
 	public int insertParticipant(ParticipantDTO dto, String loginId) throws SQLException;
-	public int deleteParticipant(String memberId, String meetingId);
+	public int deleteParticipant(String memberId, String meetingId) throws SQLException;
 
 	/********************** Restaurant CRUD **********************/
 	public int insertRestaurant(RestaurantDTO restaurantDto) throws SQLException;
@@ -104,8 +104,21 @@ public interface EtService {
 	
 	public String searchResIdByAddr(String addr) throws SQLException;
 
-	List<RestaurantDTO> selectRestaurantsByKeyWord(String keyWord) throws SQLException;
-	
 	//추가적인 method는 interface함수를 추가하고 impl 클래스에서 구현하여 사용하도록함.
+
+	/**
+	 * 
+	 * 검색어(지역)에 해당하는 지역의 모임횟수가 많은 식당을 List형태로 받아옴
+	 * 
+	 * @param keyWord
+	 * @return
+	 */
+	public List<RestaurantDTO> selectRestaurantsByKeyWord(String keyWord) throws SQLException;
+
+	public void updateResCount(String resId, boolean state) throws SQLException;
+
+	public String searchResIdByMeetingId(String meetingId) throws SQLException;
+
+	MeetResDTO selectById(String meetingId, boolean flag, String loginId) throws SQLException;
 
 }

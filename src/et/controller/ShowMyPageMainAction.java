@@ -11,8 +11,7 @@ public class ShowMyPageMainAction implements Action {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+				
 		ModelAndView mv = new ModelAndView();
 		mv.setPath("viewMyPage/myPageMainView.jsp");
 		

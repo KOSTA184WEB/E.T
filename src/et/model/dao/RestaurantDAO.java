@@ -117,4 +117,20 @@ public class RestaurantDAO {
 		}
 		return result;
 	}
+
+	public static int updateDecMeetingCount(String resId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("update restaurant set meeting_count=meeting_count-1 where res_id = ?");
+			ps.setString(1, resId);
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
+	}
 }
