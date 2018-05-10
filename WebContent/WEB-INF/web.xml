@@ -4,10 +4,8 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  <!-- listener 에서 사용하게 될 파일의 이름을 init으로 전달한다.
-  		ResourceBundle 객체를 이용할 것이므로 확장자는 생략, 경로는 classes 폴더 기준 -->
   <context-param>
-  	<param-name>fileName</param-name>
-  	<param-value>et/util/actionMapping</param-value>
+    <param-name>fileName</param-name>
+    <param-value>et/util/actionMapping</param-value>
   </context-param>
 </web-app>

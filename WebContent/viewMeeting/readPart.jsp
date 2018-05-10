@@ -19,14 +19,13 @@ function map_value(){
 	document.map.location='<%=request.getContextPath()%>/viewMeeting/meetingPartMap.jsp?lat=${dto.lat}&lng=${dto.lng}&name=${dto.resName}';
 }
 function sendUpdate(){
-	//document.requestForm.command.value ="updateMeetingForm";
-	location.href="viewMeeting/createMeeting.jsp"
-	//document.requestForm.submit();
+	location.href="<%=request.getContextPath()%>/viewMeeting/createMeeting.jsp?meetingId="+document.requestForm.meetingId.value;
+	/* document.requestForm.command.value ="selectUpdate";
+	document.requestForm.submit(); */
 }
 
 function sendMeet(){
 	if(confirm("이 모임에 참여하시겠습니까?")==true){
-		alert("할래");
 		document.requestForm.command.value ="meet";
 		document.requestForm.submit();
 	}else{
@@ -97,7 +96,26 @@ function deleteMeet(){
         <span style="font-size:9pt;"><b><pre>${dto.meetingDescription}</pre></b></span></td>
     </tr>
     
+     <tr>
+   
+        
+        <form name="requestForm" method=post action="${pageContext.request.contextPath}/ET">
+      
+    </tr>
+    
+    
     <c:choose>
+  <%--    <c:when test="${requestScope.check == 1}">
+    <tr>
+        <td height="100" colspan="4" align="center" valign="middle">
+			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
+				<input type=hidden name="meetingId" value="${dto.meetingId}">
+				<input type=hidden name="command" value="">
+				<input type=button value="모임나오기" onClick="">
+		
+		</td>
+	</tr>
+		</c:when> --%>
     <c:when test="${sessionScope.loginId eq dto.memberId}">
     <tr>
         <td height="100" colspan="4" align="center" valign="middle">
@@ -106,9 +124,11 @@ function deleteMeet(){
 				<input type=hidden name="command" value="">
 				<input type=button value="수정하기" onClick="sendUpdate()">
 				<input id="btn" type=button value="삭제하기" onClick="deleteMeet()">
+			
 		</td>
 	</tr>
 		</c:when>
+		
 	
     <c:otherwise>	
     	<tr>
