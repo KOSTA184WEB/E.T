@@ -32,25 +32,27 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8">
-				<h1>참여하기</h1>
+			<div class="col-md-10">
+				<a><h1>참여하기</h1></a>
 				<table class="table table-hover">
 					<thead>
+					
 						<tr>
-							<th>번호</th>
-							<th>내용</th>
-							<th>작성자</th>
-							<th>모임날짜</th>
-							<th>인원</th>
-							<th>지역</th>
+							<th><a>번호</a></th>
+							<th><a>내용</a></th>
+							<th><a>작성자</a></th>
+							<th><a>모임날짜</a></th>
+							<th><a>인원</a></th>
+							<th><a>지역</a></th>
 						</tr>
-
+					</thead>
+					<tbody>
 						<c:choose>
 							<c:when test="${empty requestScope.list}">
 								<tr>
 									<td colspan="5">
 										<p align="center">
-											<b><span style="font-size: 9pt;">등록된 만남이 없습니다.</span></b>
+											<a><b><span style="font-size: 9pt;">등록된 만남이 없습니다.</span></b></a>
 										</p>
 									</td>
 								</tr>
@@ -60,9 +62,9 @@
 									<tr onmouseover="this.style.background='#eaeaea'"
 										onmouseout="this.style.background='white'">
 										<td bgcolor="">
-											<p align="center">
-												<span style="font-size: 9pt;"> ${meeting.memberId }</span>
-											</p>
+											
+												<a><span style="font-size: 9pt;"> ${meeting.memberId }</span></a>
+											
 										</td>
 										<td bgcolor="">
 											<p>
@@ -74,36 +76,38 @@
 										</td>
 
 										<td bgcolor="">
-											<p align="center">
-												<span style="font-size: 9pt;"> ${meeting.memberId }</span>
-											</p>
+											
+												<span style="font-size: 9pt;"><a>${meeting.memberId }</a></span>
+											
 										</td>
 
 										<td bgcolor="">
-											<p align="center">
-												<span style="font-size: 9pt;"> ${meeting.meetingDate}</span>
-											</p>
+											
+												<span style="font-size: 9pt;"><a> ${meeting.meetingDate}</a></span>
+											
 										</td>
 
 										<td bgcolor="">
-											<p align="center">
-												<span style="font-size: 9pt;"> ${meeting.maxNum }</span>
-											</p>
+											
+												<span style="font-size: 9pt;"><a> ${meeting.maxNum }</a></span>
+											
 										</td>
 										<td bgcolor="">
-											<p align="center">
-												<span style="font-size: 9pt;"> ${meeting.maxNum }</span>
-											</p>
+											
+												<span style="font-size: 9pt;"><a> ${meeting.maxNum }</a></span>
+											
 										</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
+						</tbody>
 				</table>
 
 			</div>
+		</div>
 
-
+		<div class="row">
 			<div class="col-md-4">
 				<div class="widget search">
 					<form class="form-inline">
@@ -114,9 +118,10 @@
 				</div>
 				<!--/.search-->
 			</div>
-
-
 		</div>
+
+
+		
 
 
 
