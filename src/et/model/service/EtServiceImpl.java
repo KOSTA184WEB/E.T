@@ -6,12 +6,15 @@ import java.util.List;
 import et.model.dao.EtDAO;
 import et.model.dao.EtDAOImpl;
 import et.model.dao.MeetingDAO;
+import et.model.dao.NoticeDAO;
 import et.model.dao.RestaurantDAO;
+import et.model.dao.ReviewDAO;
 import et.model.dao.ParticipatingDAO;
 import et.model.dto.AdminDTO;
 import et.model.dto.MeetResDTO;
 import et.model.dto.MeetingDTO;
 import et.model.dto.MemberDTO;
+import et.model.dto.NoticeDTO;
 import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 import et.model.dto.ReviewDTO;
@@ -76,7 +79,7 @@ public class EtServiceImpl implements EtService {
 	}
 	
 	@Override
-	public boolean isParticipant(String memberId, String meetingId) throws SQLException {
+	public boolean isParticipant(String memberId, String meetingId){
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -105,7 +108,7 @@ public class EtServiceImpl implements EtService {
 	}
 
 	@Override
-	public int deleteParticipant(String memberId, String meetingId) throws SQLException {
+	public int deleteParticipant(String memberId, String meetingId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -288,6 +291,13 @@ public class EtServiceImpl implements EtService {
 		if(list==null) throw new SQLException("해당되는 후기가 없습니다");
 		return list;
 	}
+	
+	@Override
+	public int AdminDeleteReview(String reviewId) throws SQLException{
+		int result=reviewDAO.AdminDeleteReview(reviewId);
+		if(result==0) throw new SQLException("삭제되지 않았습니다");
+		return result;
+	}
 ///////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public int insertAdmin(AdminDTO adminDto) throws SQLException {
@@ -324,5 +334,31 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	NoticeDAO noticeDAO = new NoticeDAO();
+	@Override
+	public List<NoticeDTO> selectNoticeAll() throws SQLException{
+		List<NoticeDTO> list =noticeDAO.selectNoticeAll();
+		return list;
+	}
+	
+	@Override
+	public NoticeDTO selectNotice(String noticeId, boolean state) throws SQLException{
+		//조회수 증가
+				if(state) {
+					if(noticeDAO.addNoticeReadNum(noticeId)==0) {
+						throw new SQLException("조회수를 증가시킬 수 없습니다");
+					}
+				}
+				//상세보기
+				NoticeDTO noticeDTO = noticeDAO.selectNotice(noticeId);
+				if(noticeDTO==null) throw new SQLException(noticeId+"에 해당하는 공지가 없습니다");
+				return noticeDTO;
+	}
+	
+	@Override
+	public int updateNotice(NoticeDTO noticeDTO) throws SQLException{
+		return 0;
+	}
 }

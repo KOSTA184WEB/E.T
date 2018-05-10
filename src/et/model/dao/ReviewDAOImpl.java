@@ -377,4 +377,23 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return list;
 	}
 	
+	@Override
+	public int AdminDeleteReview(String reviewId) throws SQLException{
+		Connection con= null;
+		PreparedStatement ps=null;
+		int i=0;
+		
+		try {
+			con=DbUtil.getConnection();
+			ps=con.prepareStatement("delete from review where review_id=?");
+			ps.setString(1, reviewId);
+			i=ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return i;
+	}
+	
 }

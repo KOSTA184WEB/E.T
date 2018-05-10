@@ -9,6 +9,7 @@ import et.model.dto.MeetResDTO;
 import et.model.dto.MeetingDTO;
 import et.model.dto.ReviewDTO;
 import et.model.dto.MemberDTO;
+import et.model.dto.NoticeDTO;
 import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 
@@ -56,14 +57,16 @@ public interface EtService {
 	public int selectRestaurantRate(String resId) throws SQLException;
 	public String selectRestaurantKind(String resId) throws SQLException;
 	public List<ReviewDTO> searchBykeyWord(String keyField, String keyWord) throws SQLException;
-	
+	public int AdminDeleteReview(String reviewId) throws SQLException;
 	/********************** admin CRUD **********************/
 	public int insertAdmin(AdminDTO adminDto) throws SQLException;
 	public RestaurantDTO selectAdmin(String adminId) throws SQLException;
 	public int updateAdmin(AdminDTO adminDto) throws SQLException;
 	public int deleteAdmin(String adminId) throws SQLException;
-	
-	
+	/********************** adminBoard CRUD **********************/
+	public List<NoticeDTO> selectNoticeAll() throws SQLException;
+	public NoticeDTO selectNotice(String noticeId, boolean state) throws SQLException;
+	public int updateNotice(NoticeDTO noticeDTO) throws SQLException;
 	
 	/********************** 추가되는 Service method **********************/
 	

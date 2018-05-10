@@ -75,4 +75,9 @@ public interface ReviewDAO {
 	 * keyword에 해당하는 레코드 검색
 	 **/
 	List<ReviewDTO> searchBykeyWord(String keyField, String keyWord) throws SQLException;
+	
+	/**
+	 * 관리자: 후기id에 해당하는 레코드 삭제
+	 **/
+	int AdminDeleteReview(String reviewId) throws SQLException;
 }

@@ -29,7 +29,7 @@ public class ReadReviewAction implements Action {
 		String meetingId=request.getParameter("meetingId");
 		
 		String reviewID=request.getParameter("reviewId");
-		System.out.println("read meetingId :"+meetingId);
+		//System.out.println("read meetingId :"+meetingId);
 		try {
 			EtService etService = new EtServiceImpl();
 			
