@@ -29,7 +29,6 @@ public class ParticipatingDAO {
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		System.out.println(list);
 		return list;
 	}
 	

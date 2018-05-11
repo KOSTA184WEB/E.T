@@ -31,11 +31,6 @@ public class ReadPartAction implements Action {
 		
 		try {
 			MeetResDTO dto = etService.selectById(meetingId,state,loginId);
-			/*int check = etService.meetingCheck(meetingId, loginId);
-			if(check==1) {
-				request.setAttribute("check", check);
-			}
-*/
 			
 			if(dto!=null) {
 				request.setAttribute("dto", dto);
