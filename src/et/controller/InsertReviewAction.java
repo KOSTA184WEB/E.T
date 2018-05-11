@@ -53,16 +53,13 @@ public class InsertReviewAction implements Action {
 				request.setAttribute("memberId", memberId);
 				request.setAttribute("meetList", meetList);
 				
-				/////////////////////////
-				/*request.setAttribute("memberId", memberId); //누가
-				request.setAttribute("MeetingId", list);//누가의 모임 정보
-				request.setAttribute("titleList", titleList);//모임정보의 제목
-*/				
 				mv.setPath("viewReview/createReviewView.jsp");
 			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 		return mv;
 	}

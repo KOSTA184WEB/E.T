@@ -69,6 +69,8 @@ public class UpdateFormReviewAction implements Action {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 		return mv;
 	}

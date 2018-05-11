@@ -27,9 +27,6 @@ public class UpdateFormNoticeAction implements Action {
 		EtService etService = new EtServiceImpl();
 		
 		try {
-			if(noticeId==null) {
-				throw new SQLException("해당공지가 없습니다");
-			}
 			NoticeDTO noticeDTO = etService.selectNotice(noticeId, false);
 			if(noticeDTO==null) {
 				throw new SQLException("해당공지가 없습니다");
@@ -39,6 +36,8 @@ public class UpdateFormNoticeAction implements Action {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 		return mv;
 	}

@@ -173,7 +173,7 @@
                      <li><a></a></li>
                      <li role="presentation"><a id="nav" href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
                      <li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp"  onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
-                     <li role="presentation"><a id="nav2" href="${pageContext.request.contextPath}/viewReview/boardIntro.jsp" onclick="click_nav()"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Notice & Rate</a></li>
+                     <li role="presentation"><a id="nav2" href="#" onclick="click_nav()"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Notice & Rate</a></li>
                      <li role="presentation"><a id="nav3" href="#"onclick="click_nav()" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
                   </ul>
                </div>

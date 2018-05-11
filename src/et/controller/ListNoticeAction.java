@@ -27,6 +27,8 @@ public class ListNoticeAction implements Action {
 			mv.setPath("viewNotice/mainNoticeView.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 		return mv;
 	}

@@ -35,6 +35,8 @@ public class SelectReviewAction implements Action {
 		     mv.setPath("viewReview/mainReviewView.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 	      
 		return mv;

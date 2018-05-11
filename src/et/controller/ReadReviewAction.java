@@ -16,7 +16,7 @@ public class ReadReviewAction implements Action {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("무슨일이야");
+
 		ModelAndView mv = new ModelAndView();
 		
 		String flag = request.getParameter("flag"); //수정이 완료된후 전달된다
@@ -51,6 +51,8 @@ public class ReadReviewAction implements Action {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 		return mv;
 	}

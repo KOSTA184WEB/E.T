@@ -63,6 +63,8 @@ public class CreateNoticeAction implements Action {
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		} 
 		return mv;
 	}
