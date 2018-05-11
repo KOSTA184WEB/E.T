@@ -52,10 +52,13 @@ public class UpdateReviewAction implements Action {
 				
 				mv.setPath("ET?command=detailReview&flag=1&reviewId="+reviewId+"&meetingId="+meetingId);
 			}else {//비밀번호 오류
-				throw new SQLException("비밀번호를 다시 확인해주세요");
+				request.setAttribute("errorMsg", "비밀번호 오류입니다");;
+				mv.setPath("viewError/error.jsp");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());;
+			mv.setPath("viewError/error.jsp");
 		}
 		return mv;
 	}

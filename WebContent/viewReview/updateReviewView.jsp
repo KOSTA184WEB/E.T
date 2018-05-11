@@ -6,7 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script> 
 <SCRIPT >
@@ -34,7 +39,7 @@ function checkValid() {
 </head>
 <body>
 
-<form name=updateFormReview method=post action="ET" onSubmit="return checkValid()">
+<form name=updateFormReview method=post action="${path}/ET" onSubmit="return checkValid()">
     <input type="hidden" name="command" value="updateReview" >
     <input type='hidden' name=reviewId value="${reviewDto.reviewId}">
 	<table align="center" cellpadding="5" cellspacing="1" width="600" border="1">

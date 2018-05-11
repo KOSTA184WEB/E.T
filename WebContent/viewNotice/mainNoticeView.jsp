@@ -4,22 +4,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-<link rel="stylesheet" href="${path}/css/style.css">
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
 <body>
-<header>
-	<%@ include file="../header.jsp" %>
-</header>
 
 <table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" heigth="500" bordercolordark="white" bordercolorlight="black">
-<caption>공지 LIST</caption>
+<caption>Notice LIST</caption>
 	<colgroup>
 		<col width="5%"/>
 		<col width="30%"/>
@@ -81,11 +79,11 @@
 		        </td>
 		         <td bgcolor="">
 		            <p align="center"><font color="black"><span style="font-size:9pt;">
-		            ${noticeDTO.fName}</span></p>
+		            ${noticeDTO.fileName}</span></p>
 		        </td>
 		         <td bgcolor="">
 		            <p align="center"><font color="black"><span style="font-size:9pt;">
-		            <fmt:formatNumber value="${noticeDTO.fSize}"/> byte</span></p>
+		            <fmt:formatNumber value="${noticeDTO.fileSize}"/> byte</span></p>
 		        </td>
 		        <td bgcolor="">
 		            <p align="center"><font color="black"><span style="font-size:9pt;">
@@ -97,29 +95,13 @@
     </c:choose>
 </table>
 <hr>
-<div align=right>
-<c:if test="${sessionScope.loginId=='admin'}">
-<span style="font-size:9pt;">&lt;<a href="${path}/ET?command=insertReview&memberId=<%=session.getAttribute("loginId")%>">글쓰기</a>&gt;</span>
-</c:if>
-<span style="font-size:9pt;">&lt;<a href="${path}/ET?command=listNotice">리스트로 돌아가기</a>&gt;</span></div>
-<footer>
-			<%@ include file="../footer.jsp" %>
-		</footer>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/wow.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.pack.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.bxslider.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.prettyPhoto.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.isotope.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/functions.js"></script>
-		<script>
-		wow = new WOW({
 
-		}).init();
-		</script>
+<div align=right>
+<c:if test="${sessionScope.loginId=='etadmin'}">
+<span style="font-size:9pt;">&lt;<a href="${path}/viewNotice/createNoticeView.jsp">글쓰기</a>&gt;</span>
+</c:if>
+<span style="font-size:9pt;">&lt;<a href="${path}/ET?command=listNotice">리스트로 돌아가기</a>&gt;</span>
+</div>
+
 </body>
 </html>

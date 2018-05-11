@@ -7,38 +7,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import et.model.dto.NoticeDTO;
 import et.model.service.EtService;
 import et.model.service.EtServiceImpl;
 
-public class ReadNoticeAction implements Action {
+public class DeleteNoticeAction implements Action {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String noticeId = request.getParameter("noticeId");
+		System.out.println("delete도착!!!!!!!!!!!");
 		ModelAndView mv = new ModelAndView();
 		EtService etService = new EtServiceImpl();
-		
-		String noticeId = request.getParameter("noticeId");
-		String flag = request.getParameter("flag"); //수정이 완료된후 전달된다
-		
-		boolean state=false;
-		if(flag==null) {//전달안됨
-			state=true; //list에서 제목을 클릭했을때 상황
-		}
-		
 		try {
-			NoticeDTO noticeDTO = etService.selectNotice(noticeId, state);
+			if(noticeId==null) {
+				throw new SQLException("정보가 정확하지않습니다");
+			}
 			
-			request.setAttribute("noticeDTO", noticeDTO);
+			int re=etService.deleteNotice(noticeId);
 			
-			mv.setPath("viewNotice/detailNoticeView.jsp");
-		} catch (SQLException e) {
+			if(re>0) {
+				mv.setPath("ET?command=listNotice");
+				mv.setRedirect(true);
+			}
+		}catch(Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());;
 			mv.setPath("viewError/error.jsp");
 		}
-		
 		return mv;
 	}
 
