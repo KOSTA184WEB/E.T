@@ -9,6 +9,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
 <SCRIPT language=javascript>
@@ -17,13 +21,18 @@ function sendUpdate(){//수정하기
 	document.requestForm.submit();
 }
 
+function sendDelete(){//삭제하기
+	if(confirm("정말 삭제하시겠습니까?")==true){
+		document.requestForm.command.value ="deleteNotice";
+		document.requestForm.submit();
+	}
+	
+}
+
 </script>
 </head>
 <body>
 <body>
-<header>
-	<%@ include file="../header.jsp" %>
-</header>
 <table align="center" cellpadding="5" cellspacing="2" width="600" border='1'>
 
     <tr>
@@ -69,17 +78,17 @@ function sendUpdate(){//수정하기
         <font color="black"><span style="font-size:9pt;"><b><pre>${requestScope.noticeDTO.noticeContents}</pre></b></span></td>
     </tr>
     
-      <c:if test="${noticeDTO.fName!=null}"> <!-- 파일이 첨부가 되었다면 -->
+      <c:if test="${noticeDTO.fileName!=null}"> <!-- 파일이 첨부가 되었다면 -->
        <tr>
         <td width="100" height="20">
             <p align="right"><b><font color="black"><span style="font-size:9pt;">다운로드</span></b></p>
         </td>
         <td width="450" height="20" colspan="3">
         	<span style="font-size:9pt;"><b>
-        	<a href='downLoad?fName=${noticeDTO.fName}'>
-    			${noticeDTO.fName} 
+        	<a href='downLoad?fileName=${noticeDTO.fileName}'>
+    			${noticeDTO.fileName} 
       		</a>
-      		  ( <fmt:formatNumber value="${noticeDTO.fSize}"/> byte) <!-- 숫자 3자리씩 ,찍어주는거 -->
+      		  ( <fmt:formatNumber value="${noticeDTO.fileSize}"/> byte) <!-- 숫자 3자리씩 ,찍어주는거 -->
         </b></span>
         </td> 
     </tr>
@@ -90,9 +99,9 @@ function sendUpdate(){//수정하기
    <!--#${sessionScope.loginId}/${reviewDto.memberId}#<br>-->
     <c:if test="${sessionScope.loginId=='etadmin'}">
     <tr>
-        <td height="20" colspan="4" align="center" valign="middle">
+        <td height="20" colspan="4" align="center" valign="middle"><span style="font-size:9pt;">
 			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
-				<input type=hidden name="reviewId" value="${noticeDTO.noticeId}">
+				<input type=hidden name="noticeId" value="${noticeDTO.noticeId}">
 				<input type=hidden name="command" value="">
 				<input type=button style="color:black" value="수정하기" onClick="sendUpdate()">
 				<input type=button style="color:black" value="삭제하기" onClick="sendDelete()">
@@ -105,24 +114,6 @@ function sendUpdate(){//수정하기
 
 <hr>
 <div align=right><span style="font-size:9pt;">&lt;<a href="${path}/ET?command=listNotice">리스트로 돌아가기</a>&gt;</span></div>
-<footer>
-			<%@ include file="../footer.jsp" %>
-		</footer>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/wow.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.pack.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.bxslider.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.prettyPhoto.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.isotope.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/functions.js"></script>
-		<script>
-		wow = new WOW({
 
-		}).init();
-		</script>
 </body>
 </html>

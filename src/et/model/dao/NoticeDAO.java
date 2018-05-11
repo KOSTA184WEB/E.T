@@ -42,6 +42,34 @@ public class NoticeDAO {
 	}
 	
 	/**
+	 * 공지 작성하기
+	 */
+	public int insertNotice(NoticeDTO noticeDTO) throws SQLException{
+		Connection con=null;
+		PreparedStatement ps=null;
+		String sql = "insert into admin_board values(admin_board_seq.nextval,?,?,?,sysdate,0,?,?,?)";
+		int result = 0;
+		
+		try {
+			con=DbUtil.getConnection();
+			ps=con.prepareStatement(sql);
+			ps.setString(1,noticeDTO.getAdminId());
+			ps.setString(2,noticeDTO.getNoticeTitle());
+			ps.setString(3,noticeDTO.getNoticeContents());
+			ps.setString(4,noticeDTO.getfileName());
+			ps.setInt(5,noticeDTO.getfileSize());
+			ps.setString(6,noticeDTO.getIsPublic());
+			
+			result = ps.executeUpdate();
+			
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
+		return result;		
+	}
+	
+	/**
 	 * 공지 자세히보기
 	 **/
 	public NoticeDTO selectNotice(String noticeId) throws SQLException{
@@ -101,11 +129,33 @@ public class NoticeDAO {
 
 		try {
 			con=DbUtil.getConnection();
-			ps=con.prepareStatement("update admin_board set admin_title=?, admin_contents=? where admin_board_id=?");
+			ps=con.prepareStatement("update admin_board set admin_title=?, admin_contents=?, isPublic=? where admin_board_id=?");
 			ps.setString(1,noticeDTO.getNoticeTitle());
 			ps.setString(2, noticeDTO.getNoticeContents());
-			ps.setString(3, noticeDTO.getNoticeId());
+			ps.setString(3, noticeDTO.getIsPublic());
+			ps.setString(4, noticeDTO.getNoticeId());
 			
+			i=ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return i;
+	}
+	
+	/**
+	 * 삭제하기
+	 **/
+	public int deleteNotice(String noticeId) throws SQLException{
+		Connection con= null;
+		PreparedStatement ps=null;
+		int i=0;
+		
+		try {
+			con=DbUtil.getConnection();
+			ps=con.prepareStatement("delete from admin_board where admin_board_id=?");
+			ps.setString(1, noticeId);
 			i=ps.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();

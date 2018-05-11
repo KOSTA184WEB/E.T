@@ -73,8 +73,10 @@ public interface EtService {
 	
 	/********************** adminBoard CRUD **********************/
 	public List<NoticeDTO> selectNoticeAll() throws SQLException;
+	public int insertNotice(NoticeDTO noticeDTO) throws SQLException;
 	public NoticeDTO selectNotice(String noticeId, boolean state) throws SQLException;
 	public int updateNotice(NoticeDTO noticeDTO) throws SQLException;
+	public int deleteNotice(String noticeId) throws SQLException;
 	
 	/********************** my page **********************/
    public List<MeetResPartDTO> selectUpcomingMeeting(String memberId) throws SQLException;

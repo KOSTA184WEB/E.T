@@ -9,6 +9,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
 <SCRIPT language=javascript>
@@ -110,7 +114,8 @@ function sendDelete(){//삭제하기
         </td>
 		<!-- 브라우저에 글 내용을 뿌려줄 때는 개행문자(\n)가 <br>태그로 변환된 문자열을 보여줘야 한다. -->
         <td width="450" height="200" valign="top" colspan="3">
-        <font color="black"><span style="font-size:9pt;"><b><pre>${requestScope.reviewDto.reviewContents}</pre></b></span></td>
+        <font color="black"><span style="font-size:9pt;"><b><pre>${requestScope.reviewDto.reviewContents}</pre></b></span>
+        </td>
     </tr>
     
       <c:if test="${reviewDto.fileName!=null}"> <!-- 파일이 첨부가 되었다면 -->
@@ -142,7 +147,7 @@ function sendDelete(){//삭제하기
    <!--#${sessionScope.loginId}/${reviewDto.memberId}#<br>-->
     <c:if test="${sessionScope.loginId==reviewDto.memberId}">
     <tr>
-        <td height="20" colspan="4" align="center" valign="middle">
+        <td height="20" colspan="4" align="center" valign="middle"><span style="font-size:9pt;">
 			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 				<input type=hidden name="reviewId" value="${reviewDto.reviewId}">
 				<input type=hidden name="command" value="">

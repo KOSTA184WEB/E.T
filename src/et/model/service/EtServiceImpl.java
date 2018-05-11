@@ -48,7 +48,8 @@ public class EtServiceImpl implements EtService {
 		
 		return memberDTO;
 
-
+	}	
+	
 	@Override
 	public MemberDTO selectMember(String memberId) throws SQLException {
 		
@@ -235,7 +236,8 @@ public class EtServiceImpl implements EtService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-///////////////////////////////////////////////////////////////////////
+	
+	/////////////////////////////// 후기 ////////////////////////////////////////
 	ReviewDAO reviewDAO = new ReviewDAOImpl();
 	@Override
 	public int insertReview(ReviewDTO reviewDto) throws SQLException {
@@ -341,7 +343,8 @@ public class EtServiceImpl implements EtService {
 		if(result==0) throw new SQLException("삭제되지 않았습니다");
 		return result;
 	}
-///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	
 	@Override
 	public int insertAdmin(AdminDTO adminDto) throws SQLException {
 		// TODO Auto-generated method stub
@@ -378,8 +381,15 @@ public class EtServiceImpl implements EtService {
 		return 0;
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////공지 쓰기 ////////////////////////////////////////////////////////
 	NoticeDAO noticeDAO = new NoticeDAO();
+	@Override
+	public int insertNotice(NoticeDTO noticeDTO) throws SQLException{
+		int result = noticeDAO.insertNotice(noticeDTO);
+		if(result==0) throw new SQLException("등록되지 않았습니다");
+		return result;
+	}
+	
 	@Override
 	public List<NoticeDTO> selectNoticeAll() throws SQLException{
 		List<NoticeDTO> list =noticeDAO.selectNoticeAll();
@@ -402,9 +412,20 @@ public class EtServiceImpl implements EtService {
 	
 	@Override
 	public int updateNotice(NoticeDTO noticeDTO) throws SQLException{
-		return 0;
+		int result = noticeDAO.updateNotice(noticeDTO);
+		if(result==0) throw new SQLException("수정되지 않았습니다");
+		return result;
 	}
-	/////////////////////////////////////////////////////////
+	
+	@Override
+	public int deleteNotice(String noticeId) throws SQLException{
+		int result = noticeDAO.deleteNotice(noticeId);
+		if(result==0) throw new SQLException("삭제되지 않았습니다");
+		return result;
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	@Override
    public List<RestaurantDTO> selectByKeyWord(String keyWord) throws SQLException {
       

@@ -7,24 +7,28 @@ public class NoticeDTO {
 	private String noticeContents; //내용
 	private String noticeWriteday; //작성일
 	private int noticeReadnum; //조회수
-	private String fName; //파일이름
-	private int fSize; //파일크기
+	private String fileName; //파일이름
+	private int fileSize; //파일크기
 	private String isPublic; //공개여부
 	
 	public NoticeDTO() {}
 
-	public NoticeDTO(String noticeId, String adminId, String noticeTitle, String noticeContents, String noticeWriteday,
-			int noticeReadnum, String fName, int fSize, String isPublic) {
+	public NoticeDTO(String noticeId,String adminId, String noticeTitle, String noticeContents, String isPublic) {
 		super();
 		this.noticeId = noticeId;
 		this.adminId = adminId;
 		this.noticeTitle = noticeTitle;
 		this.noticeContents = noticeContents;
+		this.isPublic = isPublic;
+	}
+	
+	public NoticeDTO(String noticeId, String adminId, String noticeTitle, String noticeContents, String noticeWriteday,
+			int noticeReadnum, String fileName, int fileSize, String isPublic) {
+		this(noticeId, adminId, noticeTitle, noticeContents, isPublic);
 		this.noticeWriteday = noticeWriteday;
 		this.noticeReadnum = noticeReadnum;
-		this.fName = fName;
-		this.fSize = fSize;
-		this.isPublic = isPublic;
+		this.fileName = fileName;
+		this.fileSize = fileSize;
 	}
 
 	public String getNoticeId() {
@@ -75,20 +79,20 @@ public class NoticeDTO {
 		this.noticeReadnum = noticeReadnum;
 	}
 
-	public String getfName() {
-		return fName;
+	public String getfileName() {
+		return fileName;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setfileName(String fileName) {
+		this.fileName = fileName;
 	}
 
-	public int getfSize() {
-		return fSize;
+	public int getfileSize() {
+		return fileSize;
 	}
 
-	public void setfSize(int fSize) {
-		this.fSize = fSize;
+	public void setfileSize(int fileSize) {
+		this.fileSize = fileSize;
 	}
 
 	public String getIsPublic() {

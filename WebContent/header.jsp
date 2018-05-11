@@ -186,7 +186,7 @@
                      <li><a></a></li>
                      <li role="presentation"><a id="nav" href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
                      <li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp"  onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
-                     <li role="presentation"><a id="nav2" onclick="click_nav()"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
+                     <li role="presentation"><a id="nav2" href="${pageContext.request.contextPath}/viewReview/boardIntro.jsp"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Notice & Rate</a></li>
                      <li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewLogin/loginForm.jsp" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
                   </ul>
                </div>
@@ -239,9 +239,9 @@
          <div class="container">
             <div class="navbar-header">
                <div class="navbar-brand">
-                  <a href="${pageContext.request.contextPath}/viewIntro/intro.jsp"> <img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px"
-                     height="100px"
-                  >
+                  <a href="${pageContext.request.contextPath}/viewIntro/intro.jsp">
+                   <img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px"
+                     height="100px" >
                   </a>
                </div>
             </div>
@@ -264,9 +264,8 @@
                      <li><a></a></li>
                      <li role="presentation"><a href="../viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
                      <li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
-                     <li role="presentation"><a id="nav2" href="board.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
+                     <li role="presentation"><a id="nav2" href="${pageContext.request.contextPath}/viewReview/boardIntro.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Notice & Rate</a></li>
                      <li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewMyPage/myPageIntro.jsp" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
-                     
                      
                   </ul>
                </div>

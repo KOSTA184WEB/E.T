@@ -348,7 +348,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		try {
 			con=DbUtil.getConnection();
-			if(keyField.equals("memberId")) {
+			if(keyField.equals("id")) {
 				sql = "select * from review where member_id like ?";
 				
 			}else if(keyField.equals("reviewTitle")) {

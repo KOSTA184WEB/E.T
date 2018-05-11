@@ -18,12 +18,13 @@ public class SelectReviewAction implements Action {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("버튼 도착");
 	     EtService etService= new EtServiceImpl();
 		 //값 받아오기
 	     String keyField = request.getParameter("keyField");
 	     String keyWord = request.getParameter("keyWord");
-	      
+	     System.out.println(keyField); 
+	     System.out.println(keyWord); 
 	     ModelAndView mv = new ModelAndView();
 		
 	     List<ReviewDTO> list;
