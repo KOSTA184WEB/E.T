@@ -32,7 +32,6 @@
 							<th><a>작성자</a></th>
 							<th><a>모임날짜</a></th>
 							<th><a>인원</a></th>
-							<th><a>지역</a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,15 +46,14 @@
 							<c:otherwise>
 								<c:forEach items="${requestScope.list}" var="meeting">
 									<tr onmouseover="this.style.background='#eaeaea'" onmouseout="this.style.background='white'">
-										<td bgcolor=""><a><span style="font-size: 9pt;"> ${meeting.memberId }</span></a></td>
+										<td bgcolor=""><a><span style="font-size: 9pt;"> ${meeting.meetingId }</span></a></td>
 										<td bgcolor="">
 											<p><span style="font-size: 9pt;"> <a href="ET?command=detailPartView&meetingId=${meeting.meetingId}"> ${meeting.meetingTitle} </a>
 											</span></p>
 										</td>
 										<td bgcolor=""><span style="font-size: 9pt;"><a>${meeting.memberId }</a></span></td>
 										<td bgcolor=""><span style="font-size: 9pt;"><a> ${meeting.meetingDate}</a></span></td>
-										<td bgcolor=""><span style="font-size: 9pt;"><a> ${meeting.maxNum }</a></span></td>
-										<td bgcolor=""><span style="font-size: 9pt;"><a> ${meeting.maxNum }</a></span></td>
+										<td bgcolor=""><span style="font-size: 9pt;"><a>${meeting.applyNum } / ${meeting.maxNum }</a></span></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
