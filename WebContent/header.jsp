@@ -13,60 +13,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
 <link href="${pageContext.request.contextPath}/css/prettyPhoto.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
-<<<<<<< HEAD
-=======
-<script>
-	function overColor_nav1() {
-		var element = document.getElementById("nav1");
-		element.style.color = "#4D8923";
-
-	}
-
-	function outColor_nav1() {
-		var element = document.getElementById("nav1");
-		element.style.color = "#000000";
-
-	}
-
-	function overColor_nav2() {
-		var element = document.getElementById("nav2");
-		element.style.color = "#4D8923";
-
-	}
-
-	function outColor_nav2() {
-		var element = document.getElementById("nav2");
-		element.style.color = "#000000";
-
-	}
-
-	function overColor_nav3() {
-		var element = document.getElementById("nav3");
-		element.style.color = "#4D8923";
-	}
-
-	function outColor_nav3() {
-		var element = document.getElementById("nav3");
-		element.style.color = "#000000";
-	}
-
-	function click_nav() {
-		alert('로그인 후 이용해주세요.');
-		location.href = '#';
-	}
-	function logout() {
-		if (confirm("정말 로그아웃 하시겠습니까?")) {
-			location.href = "../ET?command=logout";
-		} else {
-			alert("로그아웃 취소하셨습니다.");
-		}
-	}
-
-
-</script>
-
-
->>>>>>> branch 'master' of https://github.com/KOSTA184WEB/E.T.git
 <style>
 .form-signin {
 	max-width: 330px;
@@ -144,100 +90,56 @@
 }
 </style>
 <script>
-   function overColor_nav1() {
-      var element = document.getElementById("nav1");
-      element.style.color = "#4D8923";
+	function overColor_nav1() {
+		var element = document.getElementById("nav1");
+		element.style.color = "#4D8923";
 
-   }
+	}
 
-   function outColor_nav1() {
-      var element = document.getElementById("nav1");
-      element.style.color = "#000000";
+	function outColor_nav1() {
+		var element = document.getElementById("nav1");
+		element.style.color = "#000000";
 
-   }
+	}
 
-   function overColor_nav2() {
-      var element = document.getElementById("nav2");
-      element.style.color = "#4D8923";
+	function overColor_nav2() {
+		var element = document.getElementById("nav2");
+		element.style.color = "#4D8923";
 
-   }
+	}
 
-   function outColor_nav2() {
-      var element = document.getElementById("nav2");
-      element.style.color = "#000000";
+	function outColor_nav2() {
+		var element = document.getElementById("nav2");
+		element.style.color = "#000000";
 
-   }
+	}
 
-   function overColor_nav3() {
-      var element = document.getElementById("nav3");
-      element.style.color = "#4D8923";
-   }
+	function overColor_nav3() {
+		var element = document.getElementById("nav3");
+		element.style.color = "#4D8923";
+	}
 
-   function outColor_nav3() {
-      var element = document.getElementById("nav3");
-      element.style.color = "#000000";
-   }
+	function outColor_nav3() {
+		var element = document.getElementById("nav3");
+		element.style.color = "#000000";
+	}
 
-   function click_nav() {
-      alert('로그인 후 이용해주세요.');
-      location.href = '#';
-   }
-   function logout() {
-      if (confirm("정말 로그아웃 하시겠습니까?")) {
-         location.href = "${pageContext.request.contextPath}/ET?command=logout";
-      } else {
-         alert("로그아웃 취소하셨습니다.");
-      }
-   }
+	function click_nav() {
+		alert('로그인 후 이용해주세요.');
+		location.href = '#';
+	}
+	function logout() {
+		if (confirm("정말 로그아웃 하시겠습니까?")) {
+			location.href = "${pageContext.request.contextPath}/ET?command=logout";
+		} else {
+			alert("로그아웃 취소하셨습니다.");
+		}
+	}
 
-   function loginOpen() {
-      var popupX = (window.screen.width/2) - (500/2);
-      // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
-      var popupY= (window.screen.height/2) - (300/2);
-      // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-      window.open("${pageContext.request.contextPath}/viewLogin/loginForm.jsp", "win", 'status=no, height=300, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-      
-   }
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-	<%
-		if (session.getAttribute("loginId") == null) {
-	%>
-	<nav class="navbar navbar-default navbar-static-top">
-		<div class="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<div class="navbar-brand">
-						<a href="${pageContext.request.contextPath}/viewIntro/intro.jsp"> <img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px"
-							height="100px"
-						>
-						</a>
-					</div>
-				</div>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="${pageContext.request.contextPath}/viewSignUp/signUpIntro.jsp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
-					<li><a href="#myModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
-				</ul>
-				<div class="navbar-collapse collapse">
-					<div class="menu">
-						<ul class="nav nav-tabs navbar-right">
-							<li><div></div></li>
-							<li><div></div></li>
-							<li><div></div></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li role="presentation"><a id="nav" href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
-=======
-<<<<<<< HEAD
 	<%
 		if (session.getAttribute("loginId") == null) {
 	%>
@@ -271,8 +173,8 @@
 							<li><a></a></li>
 							<li role="presentation"><a id="nav" href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
 							<li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp"  onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
-							<li role="presentation"><a id="nav2" onclick="click_nav()"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
-							<li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewLogin/loginForm.jsp" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
+							<li role="presentation"><a id="nav2" href="#" onclick="click_nav()"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
+							<li role="presentation"><a id="nav3" href="#"onclick="click_nav()" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
 						</ul>
 					</div>
 				</div>
@@ -304,9 +206,6 @@
        			 	</div>
     			</div>
 			</div>
-      		
-      		
-      		
       		
      		 </div>
       		<div class="modal-footer">
@@ -347,7 +246,7 @@
 							<li><a></a></li>
 							<li><a></a></li>
 							<li><a></a></li>
-							<li role="presentation"><a href="../viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
+							<li role="presentation"><a href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
 							<li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
 							<li role="presentation"><a id="nav2" href="board.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
 							<li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewMyPage/myPageIntro.jsp" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
@@ -362,224 +261,5 @@
 	<%
 		}
 	%>
-=======
-
-   <%
-      if (session.getAttribute("loginId") == null) {
-   %>
-   <nav class="navbar navbar-default navbar-static-top">
-      <div class="navigation">
-         <div class="container">
-            <div class="navbar-header">
-               <div class="navbar-brand">
-                  <a href="${pageContext.request.contextPath}/viewIntro/intro.jsp"> <img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px"
-                     height="100px"
-                  >
-                  </a>
-               </div>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-               <li><a href="${pageContext.request.contextPath}/viewSignUp/signUpIntro.jsp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
-               <li><a href="#myModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
-            </ul>
-            <div class="navbar-collapse collapse">
-               <div class="menu">
-                  <ul class="nav nav-tabs navbar-right">
-                     <li><div></div></li>
-                     <li><div></div></li>
-                     <li><div></div></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li role="presentation"><a id="nav" href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
->>>>>>> branch 'master' of https://github.com/KOSTA184WEB/E.T.git
-                     <li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp"  onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
-                     <li role="presentation"><a id="nav2" href="#" onclick="click_nav()"  onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
-                     <li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewLogin/loginForm.jsp" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
-<<<<<<< HEAD
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="account-wall">
-									<center>
-										<img src="${pageContext.request.contextPath}/images/ET_Logo.png" style="width: 150px; height: 100px;">
-									</center>
-									<form class="form-signin" method="post" action="${pageContext.request.contextPath}/ET?command=login">
-										<input type="text" name="memberId" class="form-control" placeholder="ID" required autofocus>
-										<input type="password" name="memberPw" class="form-control" placeholder="Password" required>
-										<button class="btn btn-lg btn-success btn-block" type="submit">로그인</button>
-									</form>
-								</div>
-								<a href="${pageContext.request.contextPath}/" class="text-center new-account">같이 드시고 싶으셨쎄여?_(회원가입)</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
-				</div>
-			</div>
-			<!-- 모달 콘텐츠 -->
-		</div>
-		<!-- 모달 다이얼로그 -->
-	</div>
-	<!-- 모달 전체 윈도우 -->
-	<%
-		} else {
-	%>
-	<nav class="navbar navbar-default navbar-static-top">
-		<div class="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<div class="navbar-brand">
-						<a href="${pageContext.request.contextPath}/viewIntro/intro.jsp"> <img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px"
-							height="100px"
-						>
-						</a>
-					</div>
-				</div>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a><span class="glyphicon glyphicon-user">&nbsp;</span><%=session.getAttribute("loginId")%> 님 즐거운 식사 되세요!</a></li>
-					<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-				</ul>
-				<div class="navbar-collapse collapse">
-					<div class="menu">
-						<ul class="nav nav-tabs navbar-right">
-							<li><div></div></li>
-							<li><div></div></li>
-							<li><div></div></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li><a></a></li>
-							<li role="presentation"><a href="${pageContext.request.contextPath}/viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
-							<li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()"
-								onmouseout="outColor_nav1()"
-							>Meet</a></li>
-							<li role="presentation"><a id="nav2" href="${pageContext.request.contextPath}/viewReview/mainReviewView.jsp" onmouseover="overColor_nav2()"
-								onmouseout="outColor_nav2()"
-							>Rate</a></li>
-							<li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewMyPage/myPageIntro.jsp" onmouseover="overColor_nav3()"
-								onmouseout="outColor_nav3()"
-							>MyPage</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-	<%
-		}
-	%>
-=======
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </nav>
-   
-   
-   
-   <!-- Modal -->
-   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-               
-            <div class="modal-body">
-               <div class="container">
-                   <div class="row">
-                    <div class="col-sm-6">
-                           <div class="account-wall">
-                               <center><img src="${pageContext.request.contextPath}/images/ET_Logo.png" style="width:150px;height:100px;"></center>
-                   <form class="form-signin" method="post" action="${pageContext.request.contextPath}/ET?command=login">
-                      <input type="text" name="memberId" class="form-control" placeholder="ID" required autofocus>
-                      <input type="password" name="memberPw" class="form-control" placeholder="Password" required>
-                      <button class="btn btn-lg btn-success btn-block" type="submit">
-                          로그인</button>
-                   </form>
-                    </div>
-                        <a href="${pageContext.request.contextPath}/" class="text-center new-account">같이 드시고 싶으셨쎄여?_(회원가입)</a>
-                    </div>
-             </div>
-         </div>
-            
-            
-            
-            
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
-            </div>
-          </div> <!-- 모달 콘텐츠 -->
-        </div> <!-- 모달 다이얼로그 -->
-   </div> <!-- 모달 전체 윈도우 -->
-   
-   <%
-      } else {
-   %>
-   <nav class="navbar navbar-default navbar-static-top">
-      <div class="navigation">
-         <div class="container">
-            <div class="navbar-header">
-               <div class="navbar-brand">
-                  <a href="${pageContext.request.contextPath}/viewIntro/intro.jsp"> <img src="${pageContext.request.contextPath}/images/ET_Logo.png" width="125px"
-                     height="100px"
-                  >
-                  </a>
-               </div>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-               <li><a><span class="glyphicon glyphicon-user">&nbsp;</span><%=session.getAttribute("loginId")%> 님 즐거운 식사 되세요!</a></li>
-               <li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-            </ul>
-            <div class="navbar-collapse collapse">
-               <div class="menu">
-                  <ul class="nav nav-tabs navbar-right">
-                     <li><div></div></li>
-                     <li><div></div></li>
-                     <li><div></div></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li><a></a></li>
-                     <li role="presentation"><a href="../viewAboutUs/AboutUs.jsp"><font color="#4D8923">About US</font></a></li>
-                     <li role="presentation"><a id="nav1" href="${pageContext.request.contextPath}/viewMeeting/meetingIntro.jsp" onmouseover="overColor_nav1()" onmouseout="outColor_nav1()">Meet</a></li>
-                     <li role="presentation"><a id="nav2" href="board.jsp" onmouseover="overColor_nav2()" onmouseout="outColor_nav2()">Rate</a></li>
-                     <li role="presentation"><a id="nav3" href="${pageContext.request.contextPath}/viewMyPage/myPageIntro.jsp" onmouseover="overColor_nav3()" onmouseout="outColor_nav3()">MyPage</a></li>
-                     
-                     
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </nav>
-   <%
-      }
-   %>
->>>>>>> branch 'master' of https://github.com/KOSTA184WEB/E.T
->>>>>>> branch 'master' of https://github.com/KOSTA184WEB/E.T.git
 </body>
 </html>

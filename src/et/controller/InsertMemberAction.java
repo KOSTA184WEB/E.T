@@ -20,7 +20,7 @@ public class InsertMemberAction implements Action {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ModelAndView mv = new ModelAndView();
-		mv.setPath("viewSignUp/signUpIntro.jsp");
+		mv.setPath("index.html");
 		mv.setRedirect(true);
 		try {
 			request.setCharacterEncoding("UTF-8");// post방식 한글처리
@@ -38,8 +38,7 @@ public class InsertMemberAction implements Action {
 			String email = request.getParameter("email");
 			String quest = request.getParameter("ask");
 			String anser = request.getParameter("answ");
-			
-			MemberDTO memberDTO = new MemberDTO(id, pw, name, Integer.parseInt(age), Integer.parseInt(birth), gender, phone, email, quest, anser);
+			MemberDTO memberDTO = new MemberDTO(id, pw, name, 0, Integer.parseInt(birth), gender, phone, email, quest, anser);
 
 			int result = service.insertMember(memberDTO);
 			if (result == 0) {

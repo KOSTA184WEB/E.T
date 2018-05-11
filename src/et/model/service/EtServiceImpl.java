@@ -111,8 +111,6 @@ public class EtServiceImpl implements EtService {
 		 * if (flag) { if (dao.updateByReadNum(meetingId) == 0) { throw new
 		 * SQLException("조회수 증가 문제"); } }
 		 */
-		System.out.println("et서비스:"+meetingId);
-		System.out.println("et서비스:"+loginId);
 		MeetResDTO dto = dao.selectById(meetingId, loginId);
 		if (dto == null) {
 			throw new SQLException(meetingId + "에 해당하는 게시물이없습니다.");
@@ -132,7 +130,6 @@ public class EtServiceImpl implements EtService {
 		// int applyNum = dao.countApplyNum(dto.getMeetingId());
 		MeetResDTO mrDTO = dao.selectById(dto.getMeetingId(), loginId);
 		int checkResult = dao.meetCheck(dto.getMeetingId(), loginId);
-		System.out.println("checkRe=" + checkResult);
 		if (checkResult == 1) {
 			throw new SQLException("이미 참여되어있습니다.");
 		}
@@ -153,10 +150,7 @@ public class EtServiceImpl implements EtService {
 		ParticipatingDAO dao = new ParticipatingDAO();
 		MeetResDTO mrDTO = dao.meetingCheck(meetingId, loginId);
 		int result=0;
-		System.out.println("memberId:"+mrDTO.getMemberId());
-		System.out.println("partId:"+mrDTO.getPartMemberId());
 		if(mrDTO.getMemberId().equals(mrDTO.getPartMemberId())) {
-			System.out.println("같다");
 			result=1;
 		}
 		return result;
@@ -269,7 +263,6 @@ public class EtServiceImpl implements EtService {
 	@Override
 	public List<ReviewDTO> selectAllReview() throws SQLException {
 		List<ReviewDTO> list = reviewDAO.selectAllReview();
-		//System.out.println("서비스:"+list);
 		return list;
 	}
 
@@ -506,8 +499,6 @@ public class EtServiceImpl implements EtService {
 	public String searchResIdByMeetingId(String meetingId) throws SQLException {
 		
 		String dbResId = MeetingDAO.searchResIdByMeetingId(meetingId);
-		System.out.println("meetingId:"+meetingId);
-		System.out.println("서비스ResId"+dbResId);
 		if(dbResId ==null) {
 			throw new SQLException("해당 meeting의 식당정보가 없습니다.");
 		}

@@ -83,7 +83,6 @@ public class MemberDAO {
 
 			if (rs.next()) { // 입력된 아이디에 해당하는 비밀번호가 존재하는 경우
 				dbPW = rs.getString(1);
-				System.out.println("디비비밀번호: " + dbPW);
 
 				if (dbPW.equals(memberPw))
 					result = 1; // 넘겨받은 비번이 같음

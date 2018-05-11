@@ -24,7 +24,6 @@ public class InsertMeetingAction implements Action {
 		EtService etService = new EtServiceImpl();
 		HttpSession session =  request.getSession();
 		String memberId = (String)session.getAttribute("loginId");
-		System.out.println("memberId insertMeetingAction: "+memberId);
 		// 지도에서 레스토랑 정보를 받아와서 서비스로 전달 (service에서 등록여부 판단한 후 레스토랑 등록)
 		String resName = request.getParameter("resName");
 		String resAddr = request.getParameter("resAddr");

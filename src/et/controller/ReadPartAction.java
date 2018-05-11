@@ -39,7 +39,6 @@ public class ReadPartAction implements Action {
 			
 			if(dto!=null) {
 				request.setAttribute("dto", dto);
-				System.out.println(dto.getLng());
 				mv.setPath("viewMeeting/readPart.jsp");
 			}
 		}catch (SQLException e) {

@@ -29,8 +29,6 @@ public class MeetAction implements Action {
 		String loginId =(String)session.getAttribute("loginId");
 		
 		ParticipantDTO dto = new ParticipantDTO(null, loginId, meetingId, "N");
-		System.out.println("meetingId="+meetingId);
-		System.out.println("loginId="+loginId);
 		
 		PrintWriter out = response.getWriter();
 		
@@ -40,8 +38,6 @@ public class MeetAction implements Action {
 		
 		try {
 			int result = etService.insertParticipant(dto,loginId);
-			
-			System.out.println("action:"+ result);
 			
 			if(result >0) {
 				mv.setPath("ET?command=selectParticipating");
