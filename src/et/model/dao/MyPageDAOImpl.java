@@ -18,7 +18,8 @@ public class MyPageDAOImpl implements MyPageDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select meeting.meeting_id, meeting.meeting_date, meeting.meeting_title, participant.PARTICIPANT__DATE, participant.participant_id from meeting, participant, restaurant where meeting.meeting_id=participant.meeting_id and meeting.res_id=restaurant.res_id and participant.participant_cancel='n' and meeting.deadline > sysdate and participant.member_id=? order by meeting.meeting_date desc";
+		System.out.println(memberId+"=memberId");
+		String sql = "select meeting.meeting_id, meeting.meeting_date, meeting.meeting_title, participant.PARTICIPANT__DATE, participant.participant_id from meeting, participant, restaurant where meeting.meeting_id=participant.meeting_id and meeting.res_id=restaurant.res_id and participant.participant_cancel='N' and meeting.deadline > sysdate and participant.member_id=? order by meeting.meeting_date desc";
 		List<MeetResPartDTO> userMeetingList = new ArrayList<>();
 		
 		try {

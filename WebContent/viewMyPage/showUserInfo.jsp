@@ -95,7 +95,7 @@ input.upload {
 		%>
 		<script>
 			//alert("로그인 해주세요.");
-			location.href="${path}/viewLogin/loginForm.jsp";
+			location.href="${path}/index.html";
 		</script>
 		<%
 	}else{
