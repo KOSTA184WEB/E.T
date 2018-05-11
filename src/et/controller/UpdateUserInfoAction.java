@@ -23,13 +23,13 @@ public class UpdateUserInfoAction implements Action {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		String loginId = (String)session.getAttribute("loginId");
-		String loginPw = (String)session.getAttribute("loginPw");
+		String memberPw = request.getParameter("Password");
 		String memberGender = request.getParameter("gender");
-		String memberPhone = request.getParameter("phone1") + request.getParameter("phone2") + request.getParameter("phone3");
+		String memberPhone = request.getParameter("phone");
 		String memberEmail = request.getParameter("email");
 		String memberAnswer = request.getParameter("answer");
 		
-		MemberDTO memberDTO = new MemberDTO(loginId, loginPw, memberGender, memberPhone, memberEmail, memberAnswer);
+		MemberDTO memberDTO = new MemberDTO(loginId, memberPw, memberGender, memberPhone, memberEmail, memberAnswer);
 		
 		try {
 			EtService service = new EtServiceImpl();

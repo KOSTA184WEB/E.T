@@ -233,6 +233,79 @@
 <%
 	}
 %>
+<%
+	request.setCharacterEncoding("utf-8");
+	String isUpdate = (String) request.getAttribute("update");
+	System.out.println(isUpdate);
+	if (isUpdate != null) {
+%>
+<script type="text/javascript">
+	alert("수정완료!");
+	top.location.href = "viewMeeting/meetingIntro.jsp";
+</script>
+<%
+	}
+%>
+<script>
+
+
+function sendData(){
+	if($('#enroll').val()=="등록"){
+		document.requestForm.command.value="insertMeeting";
+		document.requestForm.submit();
+	}else{
+		document.requestForm.command.value="updateMeeting";
+		document.requestForm.submit();
+	}
+}
+var meetingId = "<%=request.getParameter("meetingId")%>";
+	$(function() {
+		function selectAll() {
+			$.ajax({
+				type : "post", //전송방식
+				url : "../updateMeetingServlet", //서버주소
+				data : "meetingId=" + meetingId,//서버에게 보낼 parameter 정보
+				dataType : "json", //서버가 front로 보내주는 데이터 타입 (text ,html, xml, json)
+				success : function(result) {
+					$.each(result, function(index, item) {
+						$('#enroll').val("수정")
+						$('#meetingTitle').val(item.meetingTitle);
+						$('#resName').val(item.resName);
+						var meetDate = item.meetingDate;
+						var meetDateArr = meetDate.split(" ");
+						meetDate = meetDateArr[0];
+						var meetTime = meetDateArr[1];
+						var meetDate = meetDate.split("-");
+
+						$('#meetingId').val(meetingId);
+						$('#meetDate').val(meetDate[1] + "/" + meetDate[2] + "/" + meetDate[0]);
+						$('#meetTime').val(meetTime);
+						$('#resKind').val(item.resKind);
+						$('#maxNum').val(item.maxNum);
+						$('#meetDescription').val(item.meetingDescription);
+						$('#resLat').val(item.lat);
+						$('#resLng').val(item.lng);
+						$('#resAddr').val(item.resAddr);
+						$('#resPhone').val(item.resPhone);
+						alert(meetingId);
+						alert(item.resAddr);
+						alert(item.resPhone)
+						alert(item.lat)
+						alert(item.lng)
+						alert(item.genderOption)
+
+					})
+
+				},
+				error : function(err) {
+					console.log(err)
+				}
+			});
+		}
+		selectAll();
+
+	})
+</script>
 <script>
 	$(function() {
 		$("#meetDate").datepicker();
@@ -250,19 +323,20 @@
 </head>
 <body>
 	<div class="container" id="form-div">
-		<table class="table table-bordered" height="500">
-			<tbody>
-				<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">
+		<form name="requestForm" action="${pageContext.request.contextPath}/ET" method="post">
+			<table class="table table-bordered" height="500">
+				<tbody>
 					<tr>
 						<th>모임 제목:</th>
 						<td colspan=3><input type="text" placeholder="제목을 입력하세요. " name="meetingTitle" id="meetingTitle" class="form-control" /></td>
 					</tr>
 					<tr>
 						<th>음식점이름</th>
-						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr" name="resAddr" />
-							<input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
+						<td><input type="text" id="resName" name="resName" readonly="readonly" value="지도에서 음식점을 찾아 클릭하세요" /> <input type="hidden" id="resAddr"
+								name="resAddr"
+							/> <input type="hidden" id="resPhone" name="resPhone" /> <input type="hidden" id="resLat" name="resLat" /> <input type="hidden" id="resLng"
 								name="resLng"
-							/></td>
+							/> <input type="hidden" name="command"> <input id="meetingId" type="hidden" name="meetingId"></td>
 						<th>음식메뉴</th>
 						<td><input type="text" id="resKind" name="resKind"></td>
 					</tr>
@@ -287,14 +361,13 @@
 						<td colspan=3><textarea cols="10" placeholder="내용을 입력하세요. " id="meetDescription" name="meetDescription" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan=4><input type="submit" value="등록" onclick="sendData()" class="pull-right" />
-					<!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+						<td colspan=4><input id="enroll" type="button" value="등록" onclick="sendData()" class="pull-right" /> <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
                     <a class="btn btn-default" type="reset"> reset </a>
                     <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> --></td>
 					</tr>
-				</form>
-			</tbody>
-		</table>
+					</form>
+				</tbody>
+			</table>
 	</div>
 	<%-- <div id="form-div">
 		<form action="${pageContext.request.contextPath}/ET?command=insertMeeting" method="post">

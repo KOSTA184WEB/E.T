@@ -22,7 +22,8 @@
 $(function(){
 	$("#cancel").click(function(){		
 		console.log("취소 선택");
-		//location.href="../ET?command=leaveMeeting&participantId="+$("#participantId").val();	
+		console.log($("#participantId").val());
+		location.href="${path}/ET?command=leaveMeeting&participantId="+$("#participantId").val();	
 	})	
 })
 </script>    
@@ -34,7 +35,7 @@ $(function(){
 		%>
 		<script>
 			//alert("로그인 해주세요.");
-			location.href="../viewLogin/loginForm.jsp";
+			location.href="${path}/viewLogin/loginForm.jsp";
 		</script>
 		<%
 	}else{

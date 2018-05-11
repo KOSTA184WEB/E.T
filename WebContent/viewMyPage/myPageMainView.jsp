@@ -7,6 +7,19 @@
 
 <style type="text/css">
 
+/* body */
+body {
+scrollbar-face-color:#FFFFFF;
+scrollbar-highlight-color: navy;
+scrollbar-3dlight-color: #FFFFFF;
+scrollbar-shadow-color: navy;
+scrollbar-darkshadow-color: #FFFFFF;
+scrollbar-track-color: #FFFFFF;
+scrollbar-arrow-color: navy
+}
+
+
+
 /* Style the tab */
 .tab {
     float: left;
@@ -48,7 +61,7 @@
     /* border: 1px solid #ccc; */
     width: 80%;
     border-left: none;
-    height: 100%;
+    height: auto;
 }
 </style>
 
@@ -74,38 +87,53 @@ function openCategory(evt, category) {
      document.getElementById(category).style.display = "block";
      evt.currentTarget.className += " active";
 }
+
+/* // iframe 동적 사이즈 조절 
+function iframeSize() {
+	var obj = document.getElementById('deposit');
+	var ifHeight = obj.contentWindow.document.body.scrollHeight;
+	obj.height = ifHeight;
+}
+	
+window.onload = iframeSize;
+ */
+
 </script>
 
 <title>Insert title here</title>
 </head>
-<body>
+<body  onload="openCategory(event, 'myInfo')" class="full">
 
 <c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCategory(event, 'myInfo')" style="text-align: center;font-size:medium;">MY INFO</button>
-  <button class="tablinks" onclick="openCategory(event, 'myMeeting')" style="text-align: center;font-size:medium;">MY MEETING</button>
-  <button class="tablinks" onclick="openCategory(event, 'myDeposit')" style="text-align: center;font-size:medium;">MY SPOON</button>
+  <button class="tablinks" onclick="openCategory(event, 'myInfo')" style="text-align: center;">MY INFO</button>
+  <button class="tablinks" onclick="openCategory(event, 'myMeeting')" style="text-align: center;">MY MEETING</button>
+  <button class="tablinks" onclick="openCategory(event, 'myDeposit')" style="text-align: center;">MY SPOON</button>
 </div>
+
 
 
 <div id="myInfo" class="tabcontent">	
-  	<iframe src="${path}/ET?command=showUserInfo" width=100% height="600px" frameborder="no">
+  	<iframe src="${path}/ET?command=showUserInfo" width=100% height="2000px" frameborder="no" scrolling=no>
 	</iframe>
-
 </div>
 
-<div id="myMeeting" class="tabcontent">
-  	<iframe src="${path}/ET?command=userMeetingList" width=100% height="600px" frameborder="no">
+
+
+<div id="myMeeting" class="tabcontent" >
+  	<iframe src="${path}/ET?command=userMeetingList" width=100% height="2000px" frameborder="no" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0>
   	</iframe>
-
 </div>
+
+
 
 <div id="myDeposit" class="tabcontent">
- 	 <iframe src="${path}/ET?command=depositList" width=100% height="600px" frameborder="no">
+ 	 <iframe src="${path}/ET?command=depositList" width=100% height="2000px" frameborder="no" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0>
 	 </iframe>
-
 </div>
+
+
 
 
 </body>

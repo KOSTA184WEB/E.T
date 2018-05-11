@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import et.model.dto.MeetingDTO;
+import et.model.dto.ParticipantDTO;
 import et.model.dto.RestaurantDTO;
 import et.model.service.EtService;
 import et.model.service.EtServiceImpl;
@@ -20,6 +22,8 @@ public class InsertMeetingAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		mv.setPath("/viewMeeting/meetingForm.jsp");
 		EtService etService = new EtServiceImpl();
+		HttpSession session =  request.getSession();
+		String memberId = (String)session.getAttribute("loginId");
 		// 지도에서 레스토랑 정보를 받아와서 서비스로 전달 (service에서 등록여부 판단한 후 레스토랑 등록)
 		String resName = request.getParameter("resName");
 		String resAddr = request.getParameter("resAddr");
@@ -44,7 +48,7 @@ public class InsertMeetingAction implements Action {
 
 		String meetingDate = meetDate + meetTime;
 
-		MeetingDTO meetingDto = new MeetingDTO(null, null, resDto.getResId(), 0, resKind, Integer.parseInt(maxNum), meetingDate, null, meetDescription,
+		MeetingDTO meetingDto = new MeetingDTO(null, memberId, resDto.getResId(), 0, resKind, Integer.parseInt(maxNum), meetingDate, null, meetDescription,
 				meetingTitle, genderOption);
 
 		try {

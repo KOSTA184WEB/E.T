@@ -83,7 +83,6 @@ public class MemberDAO {
 
 			if (rs.next()) { // 입력된 아이디에 해당하는 비밀번호가 존재하는 경우
 				dbPW = rs.getString(1);
-				System.out.println("디비비밀번호: " + dbPW);
 
 				if (dbPW.equals(memberPw))
 					result = 1; // 넘겨받은 비번이 같음
@@ -150,16 +149,17 @@ public class MemberDAO {
 
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql = "update member set member_phone=?, member_email=?, member_answer=? where member_id=?"; // 전화번호, 이메일, 답변
+		String sql = "update member set member_pw=?, member_phone=?, member_email=?, member_answer=? where member_id=?"; // 비밀번호, 전화번호, 이메일, 답변
 		int result = 0;
 
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, memberDTO.getMemberPhone());
-			ps.setString(2, memberDTO.getMemberEmail());
-			ps.setString(3, memberDTO.getMemberAnswer());
-			ps.setString(4, memberDTO.getMemberId());
+			ps.setString(1, memberDTO.getMemberPw());
+			ps.setString(2, memberDTO.getMemberPhone());
+			ps.setString(3, memberDTO.getMemberEmail());
+			ps.setString(4, memberDTO.getMemberAnswer());
+			ps.setString(5, memberDTO.getMemberId()); 
 
 			result = ps.executeUpdate();
 

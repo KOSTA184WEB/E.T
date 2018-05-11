@@ -24,12 +24,11 @@ public class MeetAction implements Action {
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();
 
-		String id = request.getSession().getId();
+		
 		String meetingId = request.getParameter("meetingId");
 		String loginId =(String)session.getAttribute("loginId");
 		
-		ParticipantDTO dto = new ParticipantDTO(null, id, meetingId, "N");
-		System.out.println(id+meetingId);
+		ParticipantDTO dto = new ParticipantDTO(null, loginId, meetingId, "N");
 		
 		PrintWriter out = response.getWriter();
 		
@@ -39,12 +38,12 @@ public class MeetAction implements Action {
 		
 		try {
 			int result = etService.insertParticipant(dto,loginId);
-			System.out.println("action:"+ result);
 			
 			if(result >0) {
-				mv.setPath("ET");
+				mv.setPath("ET?command=selectParticipating");
 				mv.setRedirect(true);
 			}
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());;

@@ -37,7 +37,15 @@ public class DepositDTO {
 		this.plusDeposit = plusDeposit;
 	}
 
-	// 모임참여신청, (cut)
+	// 모임참여신청, (cut) 리스트
+	public DepositDTO(String memberId, int minusDeposit, String depositDescription) {
+		super();
+		this.memberId = memberId;
+		this.depositDescription = depositDescription;
+		this.minusDeposit = minusDeposit;
+	}
+	
+	// 모임참여신청, (cut) 리스트
 	public DepositDTO(String memberId, String depositDescription, int minusDeposit, String depositUpdateDate, int currentDeposit) {
 		super();
 		this.memberId = memberId;

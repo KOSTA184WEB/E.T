@@ -19,7 +19,6 @@ public class SelectParticipatingAction implements Action {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-		System.out.println("¾È³ç");
 		EtService etService = new EtServiceImpl();
 		ModelAndView mv = new ModelAndView();
 		List<MeetingDTO> list;

@@ -3,9 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<<<<<<< HEAD
 <c:set var="path" value="${pageContext.request.contextPath}" scope="application" />
 
 
+=======
+<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
+<link rel="stylesheet" href="${path}/css/style.css">
+>>>>>>> branch 'master' of https://github.com/KOSTA184WEB/E.T.git
 <!DOCTYPE html>
 <html>
 <head>
